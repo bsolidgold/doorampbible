@@ -18,11 +18,17 @@ doorampbible/
 ├── rules.html          # Rules of dooramp (current + version history)
 ├── history.html        # Founders, 90s era, game evolution
 ├── style.css           # Shared styles (dark sports-league theme)
+├── logos/              # Brand assets
+│   ├── dooSilhouette.png   # Primary logo (1024x1536)
+│   ├── favicon-32.png      # Browser tab favicon
+│   └── favicon-180.png     # Apple touch icon
 ├── .gitignore          # Vercel config excluded
 ├── nationaldooleague/  # Child site: nationaldooleague.com
-│   └── index.html
+│   ├── index.html
+│   └── README.md
 ├── dooleague/          # Child site: dooleague.com
-│   └── index.html
+│   ├── index.html
+│   └── README.md
 └── HANDOFF.md          # This file
 ```
 
@@ -50,7 +56,7 @@ doorampbible/
 
 - **Colors:** Dark background (`#1a1a2e`), red accent (`#e94560`), light text (`#eaeaea`)
 - **Typography:** System font stack
-- **Logo:** Not yet designed — placeholder text "NDL Dooramp" in nav
+- **Logo:** `logos/dooSilhouette.png` — used in nav (40px), hero (120px), footer (50px, dimmed)
 - **Style:** Sports-league aesthetic, uppercase headings, card-based layouts
 
 ---
@@ -68,7 +74,7 @@ doorampbible/
 - [ ] Write and publish official rules
 - [ ] Add rule version history/changelog
 - [ ] Shop section: official doorampball, trampoline, dome, retaining wall
-- [ ] Logo and branding finalized
+- [x] Logo integrated (dooSilhouette) — nav, hero, footer, favicon
 - [ ] Additional social media links as accounts are created
 
 ### Phase 3 — Player Stats
