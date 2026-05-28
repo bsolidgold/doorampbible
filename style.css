@@ -233,6 +233,131 @@ footer p {
   margin-top: 0.5rem;
 }
 
+/* STATS PAGE */
+.search-bar {
+  margin-bottom: 2rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--secondary);
+  border: 1px solid var(--surface);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: var(--accent);
+}
+
+.search-bar input::placeholder {
+  color: var(--text-muted);
+}
+
+.player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.player-card {
+  background: var(--secondary);
+  border-radius: 8px;
+  border: 1px solid var(--surface);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.player-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 110px;
+}
+
+.player-photo {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--surface);
+}
+
+.player-name-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.player-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--text);
+}
+
+.player-status {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.player-status.active {
+  background: #1a3a1a;
+  color: #4caf50;
+}
+
+.player-status.retired {
+  background: #3a1a1a;
+  color: var(--accent);
+}
+
+.player-stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--primary);
+  border-radius: 6px;
+  padding: 0.6rem 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem;
+}
+
 /* RESPONSIVE */
 @media (max-width: 600px) {
   nav {
@@ -246,5 +371,25 @@ footer p {
 
   .hero h1 {
     font-size: 2rem;
+  }
+
+  .player-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .player-identity {
+    flex-direction: row;
+    min-width: unset;
+    align-items: center;
+  }
+
+  .player-name-block {
+    align-items: flex-start;
+  }
+
+  .player-stats {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
   }
 }
