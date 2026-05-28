@@ -234,6 +234,36 @@ footer p {
 }
 
 /* STATS PAGE */
+.stats-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stats-tab {
+  padding: 0.5rem 1.25rem;
+  background: var(--secondary);
+  border: 1px solid var(--surface);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.stats-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.stats-tab:hover:not(.active) {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
 .search-bar {
   margin-bottom: 2rem;
 }
