@@ -41,7 +41,7 @@
 
       <div class="player-card" data-name="adam swarzfager">
         <div class="player-identity">
-          <img src="logos/dooSilhouette.png" alt="Adam Swarzfager" class="player-photo">
+          <img src="logos/dooSilhouette.png" alt="Adam Swarzfager" class="player-photo" onclick="openProfile('adam-swarzfager')">
           <div class="player-name-block">
             <span class="player-name">Adam Swarzfager</span>
           </div>
@@ -74,7 +74,7 @@
 
       <div class="player-card" data-name="ashton anderegg">
         <div class="player-identity">
-          <img src="images/ashton-anderegg.jpg" alt="Ashton Anderegg" class="player-photo">
+          <img src="images/ashton-anderegg.jpg" alt="Ashton Anderegg" class="player-photo" onclick="openProfile('ashton-anderegg')">
           <div class="player-name-block">
             <span class="player-name">Ashton Anderegg</span>
           </div>
@@ -107,7 +107,7 @@
 
       <div class="player-card" data-name="finn anderegg">
         <div class="player-identity">
-          <img src="images/finn-anderegg.jpg" alt="Finn Anderegg" class="player-photo">
+          <img src="images/finn-anderegg.jpg" alt="Finn Anderegg" class="player-photo" onclick="openProfile('finn-anderegg')">
           <div class="player-name-block">
             <span class="player-name">Finn Anderegg</span>
           </div>
@@ -140,7 +140,7 @@
 
       <div class="player-card" data-name="grant bowers">
         <div class="player-identity">
-          <img src="logos/dooSilhouette.png" alt="Grant Bowers" class="player-photo">
+          <img src="logos/dooSilhouette.png" alt="Grant Bowers" class="player-photo" onclick="openProfile('grant-bowers')">
           <div class="player-name-block">
             <span class="player-name">Grant Bowers</span>
           </div>
@@ -173,7 +173,7 @@
 
       <div class="player-card" data-name="david anderegg">
         <div class="player-identity">
-          <img src="images/david-anderegg.jpg" alt="David Anderegg" class="player-photo">
+          <img src="images/david-anderegg.jpg" alt="David Anderegg" class="player-photo" onclick="openProfile('david-anderegg')">
           <div class="player-name-block">
             <span class="player-name">David Anderegg</span>
           </div>
@@ -209,6 +209,31 @@
     <p id="noResults" class="no-results" style="display:none;">No players found.</p>
   </div>
 
+  <!-- Player Profile Modal -->
+  <div id="profileModal" class="modal-overlay" onclick="closeProfile(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeProfileBtn()">&times;</button>
+      <div class="modal-header">
+        <img id="modalPhoto" src="" alt="" class="modal-photo">
+        <h2 id="modalName"></h2>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>Nicknames</h3>
+          <p id="modalNicknames" class="modal-text"></p>
+        </div>
+        <div class="modal-section">
+          <h3>Description</h3>
+          <p id="modalDescription" class="modal-text"></p>
+        </div>
+        <div class="modal-section">
+          <h3>Accolades</h3>
+          <p id="modalAccolades" class="modal-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <img src="logos/dooSilhouette.png" alt="NDL" class="footer-logo">
     <div class="socials">
@@ -218,6 +243,65 @@
   </footer>
 
   <script>
+    const players = {
+      'adam-swarzfager': {
+        name: 'Adam Swarzfager',
+        photo: 'logos/dooSilhouette.png',
+        nicknames: '—',
+        description: '—',
+        accolades: '—'
+      },
+      'ashton-anderegg': {
+        name: 'Ashton Anderegg',
+        photo: 'images/ashton-anderegg.jpg',
+        nicknames: '—',
+        description: '—',
+        accolades: '—'
+      },
+      'finn-anderegg': {
+        name: 'Finn Anderegg',
+        photo: 'images/finn-anderegg.jpg',
+        nicknames: '—',
+        description: '—',
+        accolades: '—'
+      },
+      'grant-bowers': {
+        name: 'Grant Bowers',
+        photo: 'logos/dooSilhouette.png',
+        nicknames: '—',
+        description: '—',
+        accolades: '—'
+      },
+      'david-anderegg': {
+        name: 'David Anderegg',
+        photo: 'images/david-anderegg.jpg',
+        nicknames: '—',
+        description: '—',
+        accolades: '—'
+      }
+    };
+
+    function openProfile(id) {
+      const p = players[id];
+      document.getElementById('modalPhoto').src = p.photo;
+      document.getElementById('modalPhoto').alt = p.name;
+      document.getElementById('modalName').textContent = p.name;
+      document.getElementById('modalNicknames').textContent = p.nicknames;
+      document.getElementById('modalDescription').textContent = p.description;
+      document.getElementById('modalAccolades').textContent = p.accolades;
+      document.getElementById('profileModal').classList.add('open');
+    }
+
+    function closeProfileBtn() {
+      document.getElementById('profileModal').classList.remove('open');
+    }
+
+    function closeProfile(e) {
+      if (e.target === document.getElementById('profileModal')) {
+        document.getElementById('profileModal').classList.remove('open');
+      }
+    }
+
     function switchTab(tab) {
       document.querySelectorAll('.stats-tab').forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
