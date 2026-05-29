@@ -393,7 +393,7 @@ footer p {
 }
 
 .standings-table td {
-  padding: 0.7rem 0.75rem;
+  padding: 0.85rem 0.75rem;
   text-align: center;
   color: var(--text-muted);
 }
@@ -408,11 +408,12 @@ footer p {
 }
 
 .team-logo {
-  height: 24px;
-  width: 24px;
+  height: 44px;
+  width: 44px;
   object-fit: contain;
-  border-radius: 3px;
+  border-radius: 4px;
   flex-shrink: 0;
+  mix-blend-mode: multiply;
 }
 
 @media (max-width: 800px) {
