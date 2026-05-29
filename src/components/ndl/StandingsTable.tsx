@@ -47,8 +47,8 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                     <Image
                       src={team.logo}
                       alt={`${team.name} logo`}
-                      width={160}
-                      height={160}
+                      width={240}
+                      height={240}
                       className="object-contain rounded"
                     />
                   )}
