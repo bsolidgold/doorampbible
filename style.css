@@ -323,6 +323,40 @@ footer p {
   font-size: 0.8rem;
 }
 
+/* RULES */
+.temp-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #3a2a00;
+  color: #f0a500;
+  border: 1px solid #f0a500;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.rule-list {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rule-item {
+  background: var(--secondary);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid #f0a500;
+}
+
+.rule-item h3 {
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
 /* PAGE CONTENT */
 .page-header {
   text-align: center;
