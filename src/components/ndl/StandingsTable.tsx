@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Table,
   TableBody,
@@ -41,7 +42,18 @@ export function StandingsTable({ teams }: StandingsTableProps) {
               }`}
             >
               <TableCell className="font-heading font-semibold text-sm text-ndl-text">
-                {team.name}
+                <div className="flex items-center gap-3">
+                  {team.logo && (
+                    <Image
+                      src={team.logo}
+                      alt={`${team.name} logo`}
+                      width={48}
+                      height={48}
+                      className="object-contain rounded"
+                    />
+                  )}
+                  {team.name}
+                </div>
               </TableCell>
               <TableCell className="text-center text-sm text-ndl-muted">
                 {team.wins}
