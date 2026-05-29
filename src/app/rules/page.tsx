@@ -38,7 +38,7 @@ export default function RulesPage() {
           />
           <RuleItem
             title="Free Throw Fadeaway Off Back of Trampoline"
-            body="During free throw attempts, players may use the back of the trampoline to execute a fadeaway. The shot must still originate from the free throw line."
+            body="A free throw must be taken as a fadeaway shot on the back of the tramp. The shooter must release the ball mid-air and land off of the back of the tramp similar to how shooting for the ball is done."
             badge={<Badge variant="outline" className="text-ndl-gold border-ndl-gold text-[10px] font-heading uppercase tracking-widest">Temporary</Badge>}
           />
         </div>
