@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>History - NDL</title>
+  <title>Feedback - NDL</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logos/favicon-32.png">
   <link rel="apple-touch-icon" href="logos/favicon-180.png">
@@ -22,23 +22,25 @@
   </nav>
 
   <div class="page-header">
-    <h1>Dooramp History</h1>
-    <p>From backyard origins to the National Dooramp League.</p>
+    <h1>Feedback</h1>
+    <p>Got something to say? Leave a comment below &mdash; rules, players, the site, anything.</p>
   </div>
 
   <div class="section">
-    <h2>The Founders</h2>
-    <p>The story of the original players who created dooramp. Details coming soon.</p>
-  </div>
-
-  <div class="section">
-    <h2>The 90s Era</h2>
-    <p>Where it all began. Original player accounts and stories from the early days will be documented here.</p>
-  </div>
-
-  <div class="section">
-    <h2>Evolution of the Game</h2>
-    <p>How dooramp grew from its origins into an organized league with official rules, equipment, and competition.</p>
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://bsolidgold.github.io/doorampbible/feedback.html';
+        this.page.identifier = 'feedback';
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://DISQUS_SHORTNAME.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view comments.</noscript>
   </div>
 
   <footer>
@@ -46,7 +48,7 @@
     <div class="socials">
       <a href="https://youtube.com/@Doorampball" target="_blank">YouTube</a>
     </div>
-    <p>&copy; NDL â€” National Dooramp League</p>
+    <p>&copy; NDL &mdash; National Dooramp League</p>
   </footer>
 </body>
 </html>
