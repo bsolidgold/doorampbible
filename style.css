@@ -408,8 +408,8 @@ footer p {
 }
 
 .team-logo {
-  height: 64px;
-  width: 64px;
+  height: 100px;
+  width: 100px;
   object-fit: contain;
   flex-shrink: 0;
 }
