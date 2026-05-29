@@ -19,16 +19,16 @@ export function StandingsTable({ teams }: StandingsTableProps) {
       <Table>
         <TableHeader>
           <TableRow className="bg-ndl-surface border-b border-ndl-surface hover:bg-ndl-surface">
-            <TableHead className="text-ndl-muted text-xs font-heading font-semibold uppercase tracking-widest w-full">
+            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest w-full py-5">
               Team
             </TableHead>
-            <TableHead className="text-ndl-muted text-xs font-heading font-semibold uppercase tracking-widest text-center">
+            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest text-center py-5">
               W
             </TableHead>
-            <TableHead className="text-ndl-muted text-xs font-heading font-semibold uppercase tracking-widest text-center">
+            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest text-center py-5">
               L
             </TableHead>
-            <TableHead className="text-ndl-muted text-xs font-heading font-semibold uppercase tracking-widest text-center">
+            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest text-center py-5">
               ELO
             </TableHead>
           </TableRow>
@@ -41,27 +41,27 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                 i === teams.length - 1 ? "border-b-0" : ""
               }`}
             >
-              <TableCell className="font-heading font-semibold text-sm text-ndl-text">
-                <div className="flex items-center gap-3">
+              <TableCell className="font-heading font-semibold text-2xl text-ndl-text py-5 px-6">
+                <div className="flex items-center gap-5">
                   {team.logo && (
                     <Image
                       src={team.logo}
                       alt={`${team.name} logo`}
-                      width={96}
-                      height={96}
+                      width={160}
+                      height={160}
                       className="object-contain rounded"
                     />
                   )}
                   {team.name}
                 </div>
               </TableCell>
-              <TableCell className="text-center text-sm text-ndl-muted">
+              <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
                 {team.wins}
               </TableCell>
-              <TableCell className="text-center text-sm text-ndl-muted">
+              <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
                 {team.losses}
               </TableCell>
-              <TableCell className="text-center text-sm text-ndl-muted">
+              <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
                 {team.elo}
               </TableCell>
             </TableRow>
