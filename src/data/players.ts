@@ -35,7 +35,7 @@ export const players: Player[] = [
   {
     id: "adam-swarzfager",
     name: "Adam Swarzfager",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/adam-swarzfager.png",
     status: "active",
     seasonAverages: blank,
     seasonTotals: blank,
