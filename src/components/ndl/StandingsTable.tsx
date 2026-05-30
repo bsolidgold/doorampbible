@@ -19,7 +19,6 @@ export function StandingsTable({ teams }: StandingsTableProps) {
       <Table>
         <TableHeader>
           <TableRow className="bg-ndl-surface border-b border-ndl-surface hover:bg-ndl-surface">
-            <TableHead className="py-5 w-[260px]" />
             <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest w-full py-5">
               Team
             </TableHead>
@@ -42,19 +41,21 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                 i === teams.length - 1 ? "border-b-0" : ""
               }`}
             >
-              <TableCell className="py-5 px-6 w-[260px]">
-                {team.logo && (
-                  <Image
-                    src={team.logo}
-                    alt={`${team.name} logo`}
-                    width={240}
-                    height={240}
-                    className="object-contain rounded"
-                  />
-                )}
-              </TableCell>
-              <TableCell className="font-heading font-semibold text-2xl text-ndl-text py-5 px-6 whitespace-nowrap">
-                {team.name}
+              <TableCell className="font-heading font-semibold text-2xl text-ndl-text py-5 px-6">
+                <div className="flex items-center gap-5">
+                  {team.logo && (
+                    <div className="flex-shrink-0">
+                      <Image
+                        src={team.logo}
+                        alt={`${team.name} logo`}
+                        width={240}
+                        height={240}
+                        className="object-contain rounded"
+                      />
+                    </div>
+                  )}
+                  <span className="whitespace-nowrap">{team.name}</span>
+                </div>
               </TableCell>
               <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
                 {team.wins}
