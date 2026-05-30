@@ -19,7 +19,7 @@ export function StandingsTable({ teams }: StandingsTableProps) {
       <Table>
         <TableHeader>
           <TableRow className="bg-ndl-surface border-b border-ndl-surface hover:bg-ndl-surface">
-            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest w-full py-5">
+            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest w-full min-w-[520px] py-5">
               Team
             </TableHead>
             <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest text-center py-5">
