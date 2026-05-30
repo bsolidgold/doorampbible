@@ -71,7 +71,7 @@ export const players: Player[] = [
   {
     id: "grant-bowers",
     name: "Grant Bowers",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/grant-bowers.png",
     status: "active",
     seasonAverages: blank,
     seasonTotals: blank,
