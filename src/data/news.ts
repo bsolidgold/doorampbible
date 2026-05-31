@@ -9,6 +9,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "finn-ucl-tear",
+    title: "Finn Anderegg Suffers Minor UCL Tear Ahead of 2026 Season",
+    date: "May 30, 2026",
+    excerpt:
+      "Finn Anderegg has suffered a minor UCL tear while playing baseball, raising concerns about his availability as the 2026 NDL regular season approaches.",
+    image: "/images/finn-ucl-injury.jpg",
+    imageAlt: "Finn Anderegg down after UCL injury",
+  },
+  {
     slug: "bret-gold-challenge",
     title: "Bret Gold Issues 2v1 Challenge — \"Beat Me and I'll Let You Quit\"",
     date: "May 28, 2026",
