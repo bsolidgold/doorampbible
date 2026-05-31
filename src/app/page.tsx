@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Hero } from "@/components/ndl/Hero";
 import { NewsGrid } from "@/components/ndl/NewsGrid";
 import { StandingsTable } from "@/components/ndl/StandingsTable";
@@ -15,7 +16,15 @@ export default function Home() {
           {/* News */}
           <section>
             <SectionHeader title="Latest News" />
-            <NewsGrid articles={newsArticles} />
+            <NewsGrid articles={newsArticles.slice(0, 3)} />
+            <div className="mt-4 flex justify-end">
+              <Link
+                href="/news"
+                className="inline-block px-5 py-2 text-xs font-heading font-semibold uppercase tracking-widest border border-ndl-accent text-ndl-accent rounded hover:bg-ndl-accent hover:text-ndl-bg transition-colors duration-200"
+              >
+                View All News →
+              </Link>
+            </div>
           </section>
 
           {/* Standings sidebar */}
