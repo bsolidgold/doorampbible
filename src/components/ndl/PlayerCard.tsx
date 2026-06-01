@@ -38,9 +38,16 @@ export function PlayerCard({ player, activeStats, onPhotoClick }: PlayerCardProp
             />
           </button>
           <div>
-            <p className="font-heading font-bold text-sm uppercase tracking-wide text-ndl-text">
-              {player.name}
-            </p>
+            <div className="flex items-center gap-2">
+              <p className="font-heading font-bold text-sm uppercase tracking-wide text-ndl-text">
+                {player.name}
+              </p>
+              {player.isCaptain && (
+                <span className="text-[10px] font-heading font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-ndl-accent/20 text-ndl-accent">
+                  Captain
+                </span>
+              )}
+            </div>
             <span
               className={`text-xs font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${
                 player.status === "active"

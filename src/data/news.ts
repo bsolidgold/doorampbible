@@ -9,6 +9,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "draft-results",
+    title: "NDL Draft Results — Captains Stock Their Rosters",
+    date: "May 31, 2026",
+    excerpt:
+      "The inaugural NDL draft is in the books. Captains Grant, Finn, Ashton, Adam, and David traded picks across three rounds to build out the Freaky Fredholers, Trampoline Titans, River Kings, Murray Mice, and BDT's.",
+    image: "/images/draft-results.png",
+    imageAlt: "NDL team logos",
+  },
+  {
     slug: "finn-ucl-tear",
     title: "Finn Anderegg Suffers Minor UCL Tear Ahead of 2026 Season",
     date: "May 30, 2026",
