@@ -45,16 +45,22 @@ function formatSummary(
   if (gameNotes) lines.push(`Notes: ${gameNotes}`);
   lines.push("");
 
-  for (const id of selected) {
-    const player = players.find((p) => p.id === id);
-    if (!player) continue;
-    const s = stats[id] ?? blankStats();
-    lines.push(`--- ${player.name} (${player.team ?? "?"}) ---`);
-    lines.push(`1pt:  ${s.onePtMade || 0}/${s.onePtAtt || 0} (${pct(s.onePtMade, s.onePtAtt)})`);
-    lines.push(`2pt:  ${s.twoPtMade || 0}/${s.twoPtAtt || 0} (${pct(s.twoPtMade, s.twoPtAtt)})`);
-    lines.push(`3pt:  ${s.threePtMade || 0}/${s.threePtAtt || 0} (${pct(s.threePtMade, s.threePtAtt)})`);
-    lines.push(`AST:  ${s.assists || 0}  |  BLK/STL: ${s.blocks || 0}`);
-    lines.push("");
+  // Group by team
+  for (const team of teamOrder) {
+    const teamSelected = selected.filter((id) => players.find((p) => p.id === id)?.team === team);
+    if (teamSelected.length === 0) continue;
+    lines.push(`=== ${team} ===`);
+    for (const id of teamSelected) {
+      const player = players.find((p) => p.id === id);
+      if (!player) continue;
+      const s = stats[id] ?? blankStats();
+      lines.push(`--- ${player.name} ---`);
+      lines.push(`1pt:  ${s.onePtMade || 0}/${s.onePtAtt || 0} (${pct(s.onePtMade, s.onePtAtt)})`);
+      lines.push(`2pt:  ${s.twoPtMade || 0}/${s.twoPtAtt || 0} (${pct(s.twoPtMade, s.twoPtAtt)})`);
+      lines.push(`3pt:  ${s.threePtMade || 0}/${s.threePtAtt || 0} (${pct(s.threePtMade, s.threePtAtt)})`);
+      lines.push(`AST:  ${s.assists || 0}  |  BLK/STL: ${s.blocks || 0}`);
+      lines.push("");
+    }
   }
 
   return lines.join("\n");
@@ -84,6 +90,16 @@ function StatInput({
   onMade: (v: string) => void;
   onAtt: (v: string) => void;
 }) {
+  function handleMadeChange(v: string) {
+    onMade(v);
+    // Auto-increment attempts if made exceeds current attempts
+    const made = Number(v);
+    const att = Number(attVal);
+    if (v !== "" && made > att) {
+      onAtt(v);
+    }
+  }
+
   return (
     <div className="flex items-center gap-2">
       <span className="text-xs font-heading uppercase tracking-widest text-ndl-muted w-8">{label}</span>
@@ -92,7 +108,7 @@ function StatInput({
         min={0}
         placeholder="Made"
         value={madeVal}
-        onChange={(e) => onMade(e.target.value)}
+        onChange={(e) => handleMadeChange(e.target.value)}
         className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
       />
       <span className="text-ndl-muted text-sm">/</span>
@@ -105,6 +121,74 @@ function StatInput({
         className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
       />
       <span className="text-xs text-ndl-muted w-10 text-right">{pct(madeVal, attVal)}</span>
+    </div>
+  );
+}
+
+function PlayerStatCard({
+  id,
+  stats,
+  updateStat,
+}: {
+  id: string;
+  stats: Record<string, PlayerStats>;
+  updateStat: (id: string, field: keyof PlayerStats, value: string) => void;
+}) {
+  const player = players.find((p) => p.id === id);
+  if (!player) return null;
+  const s = stats[id] ?? blankStats();
+  return (
+    <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4 space-y-3">
+      <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-sm">
+        {player.name}
+      </p>
+      <div className="space-y-2">
+        <StatInput
+          label="1pt"
+          madeVal={s.onePtMade}
+          attVal={s.onePtAtt}
+          onMade={(v) => updateStat(id, "onePtMade", v)}
+          onAtt={(v) => updateStat(id, "onePtAtt", v)}
+        />
+        <StatInput
+          label="2pt"
+          madeVal={s.twoPtMade}
+          attVal={s.twoPtAtt}
+          onMade={(v) => updateStat(id, "twoPtMade", v)}
+          onAtt={(v) => updateStat(id, "twoPtAtt", v)}
+        />
+        <StatInput
+          label="3pt"
+          madeVal={s.threePtMade}
+          attVal={s.threePtAtt}
+          onMade={(v) => updateStat(id, "threePtMade", v)}
+          onAtt={(v) => updateStat(id, "threePtAtt", v)}
+        />
+        <div className="flex items-center gap-4 pt-1">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-heading uppercase tracking-widest text-ndl-muted w-8">AST</span>
+            <input
+              type="number"
+              min={0}
+              placeholder="0"
+              value={s.assists}
+              onChange={(e) => updateStat(id, "assists", e.target.value)}
+              className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-heading uppercase tracking-widest text-ndl-muted">BLK/STL</span>
+            <input
+              type="number"
+              min={0}
+              placeholder="0"
+              value={s.blocks}
+              onChange={(e) => updateStat(id, "blocks", e.target.value)}
+              className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -160,8 +244,13 @@ export default function TrackerPage() {
     ? formatSummary(selected, stats, gameDate, gameNotes)
     : null;
 
+  // Get teams that have at least one selected player
+  const activeTeams = teamOrder.filter((team) =>
+    selected.some((id) => players.find((p) => p.id === id)?.team === team)
+  );
+
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       {/* Toast */}
       {toast && (
         <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-ndl-accent text-ndl-bg px-4 py-2 rounded font-heading font-semibold text-sm uppercase tracking-wide shadow-lg">
@@ -205,11 +294,11 @@ export default function TrackerPage() {
           </div>
         </div>
 
-        {/* Player selection */}
+        {/* Player selection — two columns by team */}
         <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-6">
           <SectionHeader title="Select Players" />
           <p className="text-xs text-ndl-muted mt-1 mb-4">Tap players who participated in this game.</p>
-          <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-6">
             {teamOrder.map((team) => {
               const teamPlayers = players.filter((p) => p.team === team);
               return (
@@ -241,72 +330,27 @@ export default function TrackerPage() {
           </div>
         </div>
 
-        {/* Stat entry */}
+        {/* Stat entry — two columns by team */}
         {selected.length > 0 && (
           <div className="space-y-4">
             <SectionHeader title="Enter Stats" />
-            {selected.map((id) => {
-              const player = players.find((p) => p.id === id);
-              if (!player) return null;
-              const s = stats[id] ?? blankStats();
-              return (
-                <div key={id} className="bg-ndl-secondary border border-ndl-surface rounded-lg p-5 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <p className="font-heading font-bold uppercase tracking-wide text-ndl-text">
-                      {player.name}
+            <div className="grid grid-cols-2 gap-6">
+              {activeTeams.map((team) => {
+                const teamSelected = selected.filter(
+                  (id) => players.find((p) => p.id === id)?.team === team
+                );
+                return (
+                  <div key={team} className="space-y-3">
+                    <p className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-accent">
+                      {team}
                     </p>
-                    <p className="text-xs text-ndl-muted">{player.team}</p>
+                    {teamSelected.map((id) => (
+                      <PlayerStatCard key={id} id={id} stats={stats} updateStat={updateStat} />
+                    ))}
                   </div>
-                  <div className="space-y-2">
-                    <StatInput
-                      label="1pt"
-                      madeVal={s.onePtMade}
-                      attVal={s.onePtAtt}
-                      onMade={(v) => updateStat(id, "onePtMade", v)}
-                      onAtt={(v) => updateStat(id, "onePtAtt", v)}
-                    />
-                    <StatInput
-                      label="2pt"
-                      madeVal={s.twoPtMade}
-                      attVal={s.twoPtAtt}
-                      onMade={(v) => updateStat(id, "twoPtMade", v)}
-                      onAtt={(v) => updateStat(id, "twoPtAtt", v)}
-                    />
-                    <StatInput
-                      label="3pt"
-                      madeVal={s.threePtMade}
-                      attVal={s.threePtAtt}
-                      onMade={(v) => updateStat(id, "threePtMade", v)}
-                      onAtt={(v) => updateStat(id, "threePtAtt", v)}
-                    />
-                    <div className="flex items-center gap-4 pt-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-heading uppercase tracking-widest text-ndl-muted w-8">AST</span>
-                        <input
-                          type="number"
-                          min={0}
-                          placeholder="0"
-                          value={s.assists}
-                          onChange={(e) => updateStat(id, "assists", e.target.value)}
-                          className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
-                        />
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-heading uppercase tracking-widest text-ndl-muted">BLK/STL</span>
-                        <input
-                          type="number"
-                          min={0}
-                          placeholder="0"
-                          value={s.blocks}
-                          onChange={(e) => updateStat(id, "blocks", e.target.value)}
-                          className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         )}
 
@@ -315,12 +359,10 @@ export default function TrackerPage() {
           <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-6 space-y-5">
             <SectionHeader title="Export" />
 
-            {/* Preview */}
             <pre className="bg-ndl-primary border border-ndl-surface rounded p-4 text-xs text-ndl-muted whitespace-pre-wrap leading-relaxed">
               {summary}
             </pre>
 
-            {/* Email input */}
             <div>
               <label className="block text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
                 Email Address
@@ -334,7 +376,6 @@ export default function TrackerPage() {
               />
             </div>
 
-            {/* Buttons */}
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={handleCopy}
