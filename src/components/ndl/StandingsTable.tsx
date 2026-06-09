@@ -14,6 +14,12 @@ interface StandingsTableProps {
 }
 
 export function StandingsTable({ teams }: StandingsTableProps) {
+  const sorted = [...teams].sort((a, b) => {
+    const aElo = a.elo === "---" ? -1 : Number(a.elo);
+    const bElo = b.elo === "---" ? -1 : Number(b.elo);
+    return bElo - aElo;
+  });
+
   return (
     <div className="rounded-lg overflow-hidden border border-ndl-surface">
       <Table>
@@ -34,7 +40,7 @@ export function StandingsTable({ teams }: StandingsTableProps) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {teams.map((team, i) => (
+          {sorted.map((team, i) => (
             <TableRow
               key={team.name}
               className={`border-b border-ndl-surface/30 hover:bg-ndl-surface/20 transition-colors ${
