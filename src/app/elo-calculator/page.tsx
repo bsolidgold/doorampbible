@@ -226,24 +226,24 @@ export default function EloCalculatorPage() {
           <SectionHeader title="How It Works" />
           <ul className="mt-3 space-y-2 text-sm text-ndl-muted leading-relaxed">
             <li>
-              <span className="text-ndl-text font-semibold">Participation bonus:</span>{" "}
-              Both teams earn at least +{PARTICIPATION_BONUS} ELO just for playing — no team ever loses ELO. The losing team&apos;s bonus also scales with their draft tier and player count.
-            </li>
-            <li>
-              <span className="text-ndl-text font-semibold">K-Factor:</span>{" "}
-              Base win reward is {K_FACTOR}, scaled by roster composition.
+              <span className="text-ndl-text font-semibold">No ELO loss:</span>{" "}
+              Both teams always gain at least +{PARTICIPATION_BONUS} ELO just for playing — no team ever loses ELO.
             </li>
             <li>
               <span className="text-ndl-text font-semibold">Player count:</span>{" "}
-              Using more players multiplies the winner&apos;s reward (1 player = 0.70×, 4 players = 1.40×).
+              Using more players multiplies the winner&apos;s reward (1 player = 0.60×, 2 = 0.75×, 3 = 1.10×, 4 = 1.30×). Fewer players = less reward for winning.
             </li>
             <li>
               <span className="text-ndl-text font-semibold">Draft tier:</span>{" "}
-              Lower draft picks (3rd/4th round) earn more when they win.
+              Winning with later-round picks (2nd, 3rd round) earns more ELO than winning with a captain or 1st round pick.
             </li>
             <li>
-              <span className="text-ndl-text font-semibold">Upset bonus:</span>{" "}
-              Winning with a weaker roster than your opponent multiplies your reward further.
+              <span className="text-ndl-text font-semibold">Opponent strength:</span>{" "}
+              Your win reward scales with your opponent&apos;s average player quality. Beating a team with strong players (captain, 1st round) earns more. If they add weak players and dilute their average, your reward goes down — it&apos;s an easier win.
+            </li>
+            <li>
+              <span className="text-ndl-text font-semibold">Loser reward:</span>{" "}
+              The losing team also earns ELO based on their own draft tier and player count — better roster = more ELO even in a loss.
             </li>
             <li>
               <span className="text-ndl-text font-semibold">First game:</span>{" "}
