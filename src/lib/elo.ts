@@ -20,12 +20,12 @@ export const K_FACTOR = 40;
 export const PARTICIPATION_BONUS = 5; // Both teams earn this just for playing — teams never lose ELO
 export const ELO_SCALE = 400;
 
-// More players used = more reward for wins
+// More players = more reward for wins. Range tightened so fewer players can't win as much.
 const PLAYER_COUNT_WIN_MULT: Record<number, number> = {
-  1: 0.70,
-  2: 0.90,
-  3: 1.15,
-  4: 1.40,
+  1: 0.60,
+  2: 0.75,
+  3: 1.10,
+  4: 1.30,
 };
 
 export function expectedScore(teamElo: number, opponentElo: number): number {
