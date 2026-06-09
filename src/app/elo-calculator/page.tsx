@@ -24,6 +24,17 @@ function randomEmoji() {
   return RESULT_EMOJIS[Math.floor(Math.random() * RESULT_EMOJIS.length)];
 }
 
+const RUSSIAN_CHARS = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+function toRussian(n: number): string {
+  const sign = n >= 0 ? "+" : "-";
+  const len = Math.min(3 + (Math.abs(n) % 5), 8);
+  let chars = "";
+  for (let i = 0; i < len; i++) {
+    chars += RUSSIAN_CHARS[Math.floor(Math.random() * RUSSIAN_CHARS.length)];
+  }
+  return sign + chars;
+}
+
 const POPUPS = [
   { label: "Check the Standings", href: "/standings", emoji: "🏆" },
   { label: "Read the Latest News", href: "/news", emoji: "📰" },
@@ -268,7 +279,7 @@ export default function EloCalculatorPage() {
                   Team A — Win
                 </p>
                 <p className="text-4xl font-heading font-black text-green-400">
-                  {results.emojis[0]} +{results.aWins.winnerDelta.toLocaleString()}
+                  {results.emojis[0]} {toRussian(results.aWins.winnerDelta)}
                 </p>
                 <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
                 {winnerElo !== null && (
@@ -284,7 +295,7 @@ export default function EloCalculatorPage() {
                   Team A — Loss
                 </p>
                 <p className="text-4xl font-heading font-black text-red-400">
-                  {results.emojis[1]} {results.bWins.loserDelta >= 0 ? "+" : ""}{results.bWins.loserDelta.toLocaleString()}
+                  {results.emojis[1]} {toRussian(results.bWins.loserDelta)}
                 </p>
                 <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
                 {winnerElo !== null && (
@@ -300,7 +311,7 @@ export default function EloCalculatorPage() {
                   Team B — Win
                 </p>
                 <p className="text-4xl font-heading font-black text-green-400">
-                  {results.emojis[2]} +{results.bWins.winnerDelta.toLocaleString()}
+                  {results.emojis[2]} {toRussian(results.bWins.winnerDelta)}
                 </p>
                 <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
                 {loserElo !== null && (
@@ -316,7 +327,7 @@ export default function EloCalculatorPage() {
                   Team B — Loss
                 </p>
                 <p className="text-4xl font-heading font-black text-red-400">
-                  {results.emojis[3]} {results.aWins.loserDelta >= 0 ? "+" : ""}{results.aWins.loserDelta.toLocaleString()}
+                  {results.emojis[3]} {toRussian(results.aWins.loserDelta)}
                 </p>
                 <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
                 {loserElo !== null && (
