@@ -45,10 +45,10 @@ export function draftTierWinMult(avg: number): number {
   return 0.6 + avg * 0.2;
 }
 
-// Bonus when winner's roster score is lower than loser's (depth upset)
+// Bonus when winner used later-round (weaker) picks than the loser — that's the real upset
 export function upsetBonus(winnerScore: number, loserScore: number): number {
-  if (loserScore <= winnerScore) return 1;
-  return Math.pow(loserScore / winnerScore, 1.2);
+  if (winnerScore <= loserScore) return 1;
+  return Math.pow(winnerScore / loserScore, 1.2);
 }
 
 export interface EloResult {
