@@ -1,12 +1,14 @@
 export type PlayerStatus = "active" | "retired";
 
 export interface PlayerStats {
-  ppg: string;
-  apg: string;
-  bpg: string;
-  fpg: string;
-  threepg: string;
-  twopg: string;
+  onePtMade: string;
+  onePtAtt: string;
+  twoPtMade: string;
+  twoPtAtt: string;
+  threePtMade: string;
+  threePtAtt: string;
+  assists: string;
+  blocks: string;
 }
 
 export interface Player {
@@ -14,7 +16,6 @@ export interface Player {
   name: string;
   photo: string;
   status: PlayerStatus;
-  seasonAverages: PlayerStats;
   seasonTotals: PlayerStats;
   allTimeTotals: PlayerStats;
   nicknames: string;
@@ -34,12 +35,14 @@ export const teamOrder = [
 ];
 
 const blank: PlayerStats = {
-  ppg: "---",
-  apg: "---",
-  bpg: "---",
-  fpg: "---",
-  threepg: "---",
-  twopg: "---",
+  onePtMade: "---",
+  onePtAtt: "---",
+  twoPtMade: "---",
+  twoPtAtt: "---",
+  threePtMade: "---",
+  threePtAtt: "---",
+  assists: "---",
+  blocks: "---",
 };
 
 export const players: Player[] = [
@@ -48,9 +51,8 @@ export const players: Player[] = [
     name: "Adam Swarzfager",
     photo: "/images/adam-swarzfager.png",
     status: "active",
-    seasonAverages: blank,
-    seasonTotals: blank,
-    allTimeTotals: blank,
+    seasonTotals: { onePtMade: "9", onePtAtt: "26", twoPtMade: "0", twoPtAtt: "1", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "8" },
+    allTimeTotals: { onePtMade: "9", onePtAtt: "26", twoPtMade: "0", twoPtAtt: "1", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "8" },
     nicknames: "---",
     description: "---",
     accolades: "---",
@@ -62,9 +64,8 @@ export const players: Player[] = [
     name: "Ashton Anderegg",
     photo: "/images/ashton-anderegg.jpg",
     status: "active",
-    seasonAverages: blank,
-    seasonTotals: blank,
-    allTimeTotals: blank,
+    seasonTotals: { onePtMade: "4", onePtAtt: "8", twoPtMade: "0", twoPtAtt: "1", threePtMade: "1", threePtAtt: "3", assists: "0", blocks: "5" },
+    allTimeTotals: { onePtMade: "4", onePtAtt: "8", twoPtMade: "0", twoPtAtt: "1", threePtMade: "1", threePtAtt: "3", assists: "0", blocks: "5" },
     nicknames: "---",
     description: "---",
     accolades: "---",
@@ -76,7 +77,6 @@ export const players: Player[] = [
     name: "Finn Anderegg",
     photo: "/images/finn-anderegg.jpg",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -90,7 +90,6 @@ export const players: Player[] = [
     name: "Grant Bowers",
     photo: "/images/grant-bowers.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -104,7 +103,6 @@ export const players: Player[] = [
     name: "David Anderegg",
     photo: "/images/david-anderegg.jpg",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -118,7 +116,6 @@ export const players: Player[] = [
     name: "Eros Mejia",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -131,7 +128,6 @@ export const players: Player[] = [
     name: "Eli Huntsman",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -144,7 +140,6 @@ export const players: Player[] = [
     name: "Ben Martinsen",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -157,7 +152,6 @@ export const players: Player[] = [
     name: "Atlee Gallagher",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -170,7 +164,6 @@ export const players: Player[] = [
     name: "Isaac Cameron",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -183,7 +176,6 @@ export const players: Player[] = [
     name: "Ben Shapiro",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -196,7 +188,6 @@ export const players: Player[] = [
     name: "Ben Hoag",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -209,9 +200,8 @@ export const players: Player[] = [
     name: "Jack Baker",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
-    seasonTotals: blank,
-    allTimeTotals: blank,
+    seasonTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0" },
+    allTimeTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0" },
     nicknames: "---",
     description: "---",
     accolades: "---",
@@ -222,7 +212,6 @@ export const players: Player[] = [
     name: "Clark Sheffield",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -235,7 +224,6 @@ export const players: Player[] = [
     name: "Devin Murray",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -248,7 +236,6 @@ export const players: Player[] = [
     name: "Isaac Solemen",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -261,7 +248,6 @@ export const players: Player[] = [
     name: "Jameson Bench",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -274,7 +260,6 @@ export const players: Player[] = [
     name: "Daniel Hassan",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -287,7 +272,6 @@ export const players: Player[] = [
     name: "Jaxon Gladhart",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",
@@ -300,7 +284,6 @@ export const players: Player[] = [
     name: "Frank Patrone",
     photo: "/logos/dooSilhouette.png",
     status: "active",
-    seasonAverages: blank,
     seasonTotals: blank,
     allTimeTotals: blank,
     nicknames: "---",

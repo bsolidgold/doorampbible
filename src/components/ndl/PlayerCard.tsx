@@ -3,14 +3,28 @@
 import Image from "next/image";
 import { Player, PlayerStats } from "@/data/players";
 
-const statLabels: Record<keyof PlayerStats, string> = {
-  ppg: "PPG",
-  apg: "APG",
-  bpg: "BPG",
-  fpg: "FPG",
-  threepg: "3PG",
-  twopg: "2PG",
-};
+function pct(made: string, att: string): string {
+  const m = Number(made);
+  const a = Number(att);
+  if (isNaN(m) || isNaN(a) || !a) return "---";
+  return ((m / a) * 100).toFixed(0) + "%";
+}
+
+interface StatBoxProps {
+  label: string;
+  value: string;
+  sub?: string;
+}
+
+function StatBox({ label, value, sub }: StatBoxProps) {
+  return (
+    <div className="bg-ndl-primary rounded-md px-2 py-2 text-center">
+      <p className="text-ndl-text font-heading font-black text-sm leading-none">{value}</p>
+      {sub && <p className="text-ndl-muted text-[9px] font-heading leading-none mt-0.5">{sub}</p>}
+      <p className="text-ndl-muted text-[10px] font-heading font-semibold uppercase tracking-wider mt-1">{label}</p>
+    </div>
+  );
+}
 
 interface PlayerCardProps {
   player: Player;
@@ -18,7 +32,9 @@ interface PlayerCardProps {
   onPhotoClick: () => void;
 }
 
-export function PlayerCard({ player, activeStats, onPhotoClick }: PlayerCardProps) {
+export function PlayerCard({ player, activeStats: s, onPhotoClick }: PlayerCardProps) {
+  const hasStats = s.onePtAtt !== "---";
+
   return (
     <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4 hover:border-ndl-accent/40 transition-colors">
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
@@ -61,21 +77,19 @@ export function PlayerCard({ player, activeStats, onPhotoClick }: PlayerCardProp
         </div>
 
         {/* Stats */}
-        <div className="flex-1 grid grid-cols-3 sm:grid-cols-6 gap-2">
-          {(Object.keys(statLabels) as (keyof PlayerStats)[]).map((key) => (
-            <div
-              key={key}
-              className="bg-ndl-primary rounded-md px-2 py-2 text-center"
-            >
-              <p className="text-ndl-text font-heading font-black text-base leading-none">
-                {activeStats[key]}
-              </p>
-              <p className="text-ndl-muted text-[10px] font-heading font-semibold uppercase tracking-wider mt-1">
-                {statLabels[key]}
-              </p>
-            </div>
-          ))}
-        </div>
+        {hasStats ? (
+          <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2">
+            <StatBox label="1PT" value={`${s.onePtMade}/${s.onePtAtt}`} sub={pct(s.onePtMade, s.onePtAtt)} />
+            <StatBox label="2PT" value={`${s.twoPtMade}/${s.twoPtAtt}`} sub={pct(s.twoPtMade, s.twoPtAtt)} />
+            <StatBox label="3PT" value={`${s.threePtMade}/${s.threePtAtt}`} sub={pct(s.threePtMade, s.threePtAtt)} />
+            <StatBox label="AST" value={s.assists} />
+            <StatBox label="BLK/STL" value={s.blocks} />
+          </div>
+        ) : (
+          <div className="flex-1">
+            <p className="text-ndl-muted text-xs font-heading uppercase tracking-widest">No stats yet</p>
+          </div>
+        )}
       </div>
     </div>
   );

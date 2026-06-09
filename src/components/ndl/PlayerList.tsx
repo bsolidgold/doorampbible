@@ -7,16 +7,14 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlayerCard } from "./PlayerCard";
 import { PlayerProfileModal } from "./PlayerProfileModal";
 
-type TabKey = "averages" | "totals" | "alltime";
+type TabKey = "totals" | "alltime";
 
 const tabLabels: Record<TabKey, string> = {
-  averages: "Season Averages",
   totals: "Season Totals",
   alltime: "All-Time Totals",
 };
 
 function getStats(player: Player, tab: TabKey): PlayerStats {
-  if (tab === "averages") return player.seasonAverages;
   if (tab === "totals") return player.seasonTotals;
   return player.allTimeTotals;
 }
@@ -52,7 +50,7 @@ interface PlayerListProps {
 }
 
 export function PlayerList({ players }: PlayerListProps) {
-  const [activeTab, setActiveTab] = useState<TabKey>("averages");
+  const [activeTab, setActiveTab] = useState<TabKey>("totals");
   const [search, setSearch] = useState("");
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
 
