@@ -8,6 +8,8 @@ export default function BenMartinsenPoopyPage() {
     <ArticleLayout
       title="Breaking: Ben Martinsen is Poopy"
       date="June 9, 2026"
+      image="/images/ben-martinsen.jpg"
+      imageAlt="Ben Martinsen, confirmed poopy"
       backHref="/news"
       backLabel="← Back to News"
     >

@@ -14,6 +14,8 @@ export const newsArticles: NewsArticle[] = [
     date: "June 9, 2026",
     excerpt:
       "In a stunning development that has rocked the NDL community, multiple sources have confirmed that Ben Martinsen is, in fact, poopy.",
+    image: "/images/ben-martinsen.jpg",
+    imageAlt: "Ben Martinsen, confirmed poopy",
   },
   {
     slug: "game1-adam-victory",
