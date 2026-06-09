@@ -63,6 +63,22 @@ export function upsetBonus(winnerStrength: number, loserStrength: number): numbe
   return Math.pow(loserStrength / winnerStrength, 1.0);
 }
 
+// How the opponent's player count affects the winner's reward:
+// 1 player = baseline, 2 players = peak (hardest to beat), 3-4 players = drops back down.
+// The size of the drop for 3+ depends on the round quality of those extra players —
+// weak extra picks (3rd round) drop reward more; strong extra picks (captain) drop it less.
+export function opponentCountMult(loserRoster: DraftRound[]): number {
+  const lp = loserRoster.length;
+  if (lp === 1) return 1.0;
+  if (lp === 2) return 1.3;
+  // Players beyond the first 2 — their avg strength determines how much the reward drops
+  const extraPlayers = loserRoster.slice(2);
+  const extraAvgStrength = extraPlayers.reduce((s, r) => s + STRENGTH[r], 0) / extraPlayers.length;
+  // extraAvgStrength: captain=4 (small drop), 3rd round=1 (big drop)
+  const penalty = (5 - extraAvgStrength) * 0.09;
+  return Math.max(0.75, 1.3 - penalty);
+}
+
 export interface EloResult {
   winnerElo: number;
   loserElo: number;
@@ -93,7 +109,8 @@ export function calculateElo(
   const winMult =
     PLAYER_COUNT_WIN_MULT[wp] *
     draftTierWinMult(wa) *
-    upsetBonus(ws, ls);
+    upsetBonus(ws, ls) *
+    opponentCountMult(loserRoster);
 
   const winnerDelta =
     PARTICIPATION_BONUS + Math.round(K_FACTOR * winMult * (1 - expected));
