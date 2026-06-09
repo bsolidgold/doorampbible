@@ -127,6 +127,10 @@ function StatRow({
     if (v > att) onAtt(v);
   }
 
+  function handleAtt(v: number) {
+    onAtt(Math.max(v, made));
+  }
+
   return (
     <div className="space-y-1">
       <div className="flex items-center justify-between">
@@ -136,7 +140,7 @@ function StatRow({
         <span className="text-xs text-ndl-muted">{pct(made, att)}</span>
       </div>
       <Counter label="Made" value={made} onChange={handleMade} />
-      <Counter label="Attempts" value={att} onChange={onAtt} />
+      <Counter label="Attempts" value={att} onChange={handleAtt} />
     </div>
   );
 }
