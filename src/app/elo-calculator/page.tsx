@@ -131,18 +131,18 @@ export default function EloCalculatorPage() {
       </div>
 
       <div className="space-y-8">
-        {/* Winner */}
+        {/* Team A */}
         <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-6 space-y-5">
-          <SectionHeader title="Winning Team" />
-          <EloInput label="Winner" value={winnerEloStr} onChange={setWinnerEloStr} />
-          <RosterSelector label="Winner" roster={winnerRoster} onChange={setWinnerRoster} />
+          <SectionHeader title="Team A" />
+          <EloInput label="Team A" value={winnerEloStr} onChange={setWinnerEloStr} />
+          <RosterSelector label="Team A" roster={winnerRoster} onChange={setWinnerRoster} />
         </div>
 
-        {/* Loser */}
+        {/* Team B */}
         <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-6 space-y-5">
-          <SectionHeader title="Losing Team" />
-          <EloInput label="Loser" value={loserEloStr} onChange={setLoserEloStr} />
-          <RosterSelector label="Loser" roster={loserRoster} onChange={setLoserRoster} />
+          <SectionHeader title="Team B" />
+          <EloInput label="Team B" value={loserEloStr} onChange={setLoserEloStr} />
+          <RosterSelector label="Team B" roster={loserRoster} onChange={setLoserRoster} />
         </div>
 
         {/* Results */}
