@@ -45,10 +45,16 @@ export function draftTierWinMult(avg: number): number {
   return 0.6 + avg * 0.2;
 }
 
-// Bonus when winner used later-round (weaker) picks than the loser — that's the real upset
-export function upsetBonus(winnerScore: number, loserScore: number): number {
-  if (winnerScore <= loserScore) return 1;
-  return Math.pow(winnerScore / loserScore, 1.2);
+// Bonus when winner used weaker avg tier than loser — uses avg so player count doesn't dilute it
+export function upsetBonus(winnerAvg: number, loserAvg: number): number {
+  if (winnerAvg <= loserAvg) return 1;
+  return Math.pow(winnerAvg / loserAvg, 1.2);
+}
+
+// Bonus when winner had fewer players than loser — outnumbered and still won
+export function outnumberedBonus(winnerCount: number, loserCount: number): number {
+  if (loserCount <= winnerCount) return 1;
+  return Math.pow(loserCount / winnerCount, 0.6);
 }
 
 export interface EloResult {
@@ -72,20 +78,21 @@ export function calculateElo(
   const expected = firstGame ? 0.5 : expectedScore(wElo, lElo);
 
   const wp = winnerRoster.length;
-  const ws = rosterScore(winnerRoster);
-  const ls = rosterScore(loserRoster);
+  const lp = loserRoster.length;
+  const wa = avgTier(winnerRoster);
+  const la = avgTier(loserRoster);
 
   const winMult =
     PLAYER_COUNT_WIN_MULT[wp] *
-    draftTierWinMult(avgTier(winnerRoster)) *
-    upsetBonus(ws, ls);
+    draftTierWinMult(wa) *
+    upsetBonus(wa, la) *
+    outnumberedBonus(wp, lp);
 
   const winnerDelta =
     PARTICIPATION_BONUS + Math.round(K_FACTOR * winMult * (1 - expected));
 
   // Losers earn participation bonus scaled by their draft tier — harder roster = more reward even in a loss
-  const lp = loserRoster.length;
-  const lossMult = PLAYER_COUNT_WIN_MULT[lp] * draftTierWinMult(avgTier(loserRoster));
+  const lossMult = PLAYER_COUNT_WIN_MULT[lp] * draftTierWinMult(la);
   const loserDelta = PARTICIPATION_BONUS + Math.round((K_FACTOR * 0.3) * lossMult * expected);
 
   return {
