@@ -5,32 +5,30 @@ import { players, teamOrder } from "@/data/players";
 import { SectionHeader } from "@/components/ndl/SectionHeader";
 
 interface PlayerStats {
-  onePtMade: string;
-  onePtAtt: string;
-  twoPtMade: string;
-  twoPtAtt: string;
-  threePtMade: string;
-  threePtAtt: string;
-  assists: string;
-  blocks: string;
+  onePtMade: number;
+  onePtAtt: number;
+  twoPtMade: number;
+  twoPtAtt: number;
+  threePtMade: number;
+  threePtAtt: number;
+  assists: number;
+  blocks: number;
 }
 
 const blankStats = (): PlayerStats => ({
-  onePtMade: "",
-  onePtAtt: "",
-  twoPtMade: "",
-  twoPtAtt: "",
-  threePtMade: "",
-  threePtAtt: "",
-  assists: "",
-  blocks: "",
+  onePtMade: 0,
+  onePtAtt: 0,
+  twoPtMade: 0,
+  twoPtAtt: 0,
+  threePtMade: 0,
+  threePtAtt: 0,
+  assists: 0,
+  blocks: 0,
 });
 
-function pct(made: string, att: string): string {
-  const m = Number(made);
-  const a = Number(att);
-  if (!a) return "---";
-  return ((m / a) * 100).toFixed(0) + "%";
+function pct(made: number, att: number): string {
+  if (!att) return "---";
+  return ((made / att) * 100).toFixed(0) + "%";
 }
 
 function formatSummary(
@@ -45,7 +43,6 @@ function formatSummary(
   if (gameNotes) lines.push(`Notes: ${gameNotes}`);
   lines.push("");
 
-  // Group by team
   for (const team of teamOrder) {
     const teamSelected = selected.filter((id) => players.find((p) => p.id === id)?.team === team);
     if (teamSelected.length === 0) continue;
@@ -55,10 +52,10 @@ function formatSummary(
       if (!player) continue;
       const s = stats[id] ?? blankStats();
       lines.push(`--- ${player.name} ---`);
-      lines.push(`1pt:  ${s.onePtMade || 0}/${s.onePtAtt || 0} (${pct(s.onePtMade, s.onePtAtt)})`);
-      lines.push(`2pt:  ${s.twoPtMade || 0}/${s.twoPtAtt || 0} (${pct(s.twoPtMade, s.twoPtAtt)})`);
-      lines.push(`3pt:  ${s.threePtMade || 0}/${s.threePtAtt || 0} (${pct(s.threePtMade, s.threePtAtt)})`);
-      lines.push(`AST:  ${s.assists || 0}  |  BLK/STL: ${s.blocks || 0}`);
+      lines.push(`1pt:  ${s.onePtMade}/${s.onePtAtt} (${pct(s.onePtMade, s.onePtAtt)})`);
+      lines.push(`2pt:  ${s.twoPtMade}/${s.twoPtAtt} (${pct(s.twoPtMade, s.twoPtAtt)})`);
+      lines.push(`3pt:  ${s.threePtMade}/${s.threePtAtt} (${pct(s.threePtMade, s.threePtAtt)})`);
+      lines.push(`AST:  ${s.assists}  |  BLK/STL: ${s.blocks}`);
       lines.push("");
     }
   }
@@ -77,50 +74,69 @@ function encodeShareUrl(
   return `${window.location.origin}/stats/tracker?data=${encoded}`;
 }
 
-function StatInput({
+function Counter({
   label,
-  madeVal,
-  attVal,
+  value,
+  onChange,
+  color = "default",
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  color?: "default" | "accent";
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className={`text-xs font-heading uppercase tracking-widest w-16 ${color === "accent" ? "text-ndl-accent" : "text-ndl-muted"}`}>
+        {label}
+      </span>
+      <button
+        onClick={() => onChange(Math.max(0, value - 1))}
+        className="w-10 h-10 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 text-lg font-bold flex items-center justify-center active:bg-red-500/40 transition-colors"
+      >
+        −
+      </button>
+      <span className="w-8 text-center font-heading font-bold text-ndl-text text-lg">
+        {value}
+      </span>
+      <button
+        onClick={() => onChange(value + 1)}
+        className="w-10 h-10 rounded-full bg-green-500/20 border border-green-500/50 text-green-400 text-lg font-bold flex items-center justify-center active:bg-green-500/40 transition-colors"
+      >
+        +
+      </button>
+    </div>
+  );
+}
+
+function StatRow({
+  label,
+  made,
+  att,
   onMade,
   onAtt,
 }: {
   label: string;
-  madeVal: string;
-  attVal: string;
-  onMade: (v: string) => void;
-  onAtt: (v: string) => void;
+  made: number;
+  att: number;
+  onMade: (v: number) => void;
+  onAtt: (v: number) => void;
 }) {
-  function handleMadeChange(v: string) {
+  function handleMade(v: number) {
     onMade(v);
-    // Auto-increment attempts if made exceeds current attempts
-    const made = Number(v);
-    const att = Number(attVal);
-    if (v !== "" && made > att) {
-      onAtt(v);
-    }
+    if (v > att) onAtt(v);
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="text-xs font-heading uppercase tracking-widest text-ndl-muted w-8">{label}</span>
-      <input
-        type="number"
-        min={0}
-        placeholder="Made"
-        value={madeVal}
-        onChange={(e) => handleMadeChange(e.target.value)}
-        className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
-      />
-      <span className="text-ndl-muted text-sm">/</span>
-      <input
-        type="number"
-        min={0}
-        placeholder="Att"
-        value={attVal}
-        onChange={(e) => onAtt(e.target.value)}
-        className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
-      />
-      <span className="text-xs text-ndl-muted w-10 text-right">{pct(madeVal, attVal)}</span>
+    <div className="space-y-1">
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-heading uppercase tracking-widest text-ndl-accent font-semibold">
+          {label}
+        </span>
+        <span className="text-xs text-ndl-muted">{pct(made, att)}</span>
+      </div>
+      <Counter label="Made" value={made} onChange={handleMade} />
+      <Counter label="Attempts" value={att} onChange={onAtt} />
     </div>
   );
 }
@@ -132,62 +148,43 @@ function PlayerStatCard({
 }: {
   id: string;
   stats: Record<string, PlayerStats>;
-  updateStat: (id: string, field: keyof PlayerStats, value: string) => void;
+  updateStat: (id: string, field: keyof PlayerStats, value: number) => void;
 }) {
   const player = players.find((p) => p.id === id);
   if (!player) return null;
   const s = stats[id] ?? blankStats();
+
   return (
-    <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4 space-y-3">
+    <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4 space-y-4">
       <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-sm">
         {player.name}
       </p>
-      <div className="space-y-2">
-        <StatInput
-          label="1pt"
-          madeVal={s.onePtMade}
-          attVal={s.onePtAtt}
-          onMade={(v) => updateStat(id, "onePtMade", v)}
-          onAtt={(v) => updateStat(id, "onePtAtt", v)}
-        />
-        <StatInput
-          label="2pt"
-          madeVal={s.twoPtMade}
-          attVal={s.twoPtAtt}
-          onMade={(v) => updateStat(id, "twoPtMade", v)}
-          onAtt={(v) => updateStat(id, "twoPtAtt", v)}
-        />
-        <StatInput
-          label="3pt"
-          madeVal={s.threePtMade}
-          attVal={s.threePtAtt}
-          onMade={(v) => updateStat(id, "threePtMade", v)}
-          onAtt={(v) => updateStat(id, "threePtAtt", v)}
-        />
-        <div className="flex items-center gap-4 pt-1">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-heading uppercase tracking-widest text-ndl-muted w-8">AST</span>
-            <input
-              type="number"
-              min={0}
-              placeholder="0"
-              value={s.assists}
-              onChange={(e) => updateStat(id, "assists", e.target.value)}
-              className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
-            />
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-heading uppercase tracking-widest text-ndl-muted">BLK/STL</span>
-            <input
-              type="number"
-              min={0}
-              placeholder="0"
-              value={s.blocks}
-              onChange={(e) => updateStat(id, "blocks", e.target.value)}
-              className="w-16 bg-ndl-primary border border-ndl-surface rounded px-2 py-1 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
-            />
-          </div>
-        </div>
+
+      <StatRow
+        label="1pt"
+        made={s.onePtMade}
+        att={s.onePtAtt}
+        onMade={(v) => updateStat(id, "onePtMade", v)}
+        onAtt={(v) => updateStat(id, "onePtAtt", v)}
+      />
+      <StatRow
+        label="2pt"
+        made={s.twoPtMade}
+        att={s.twoPtAtt}
+        onMade={(v) => updateStat(id, "twoPtMade", v)}
+        onAtt={(v) => updateStat(id, "twoPtAtt", v)}
+      />
+      <StatRow
+        label="3pt"
+        made={s.threePtMade}
+        att={s.threePtAtt}
+        onMade={(v) => updateStat(id, "threePtMade", v)}
+        onAtt={(v) => updateStat(id, "threePtAtt", v)}
+      />
+
+      <div className="grid grid-cols-2 gap-3 pt-1">
+        <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
+        <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
       </div>
     </div>
   );
@@ -210,7 +207,7 @@ export default function TrackerPage() {
     }
   }
 
-  function updateStat(id: string, field: keyof PlayerStats, value: string) {
+  function updateStat(id: string, field: keyof PlayerStats, value: number) {
     setStats((prev) => ({
       ...prev,
       [id]: { ...(prev[id] ?? blankStats()), [field]: value },
@@ -244,14 +241,12 @@ export default function TrackerPage() {
     ? formatSummary(selected, stats, gameDate, gameNotes)
     : null;
 
-  // Get teams that have at least one selected player
   const activeTeams = teamOrder.filter((team) =>
     selected.some((id) => players.find((p) => p.id === id)?.team === team)
   );
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-      {/* Toast */}
       {toast && (
         <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-ndl-accent text-ndl-bg px-4 py-2 rounded font-heading font-semibold text-sm uppercase tracking-wide shadow-lg">
           {toast}
@@ -294,7 +289,7 @@ export default function TrackerPage() {
           </div>
         </div>
 
-        {/* Player selection — two columns by team */}
+        {/* Player selection */}
         <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-6">
           <SectionHeader title="Select Players" />
           <p className="text-xs text-ndl-muted mt-1 mb-4">Tap players who participated in this game.</p>
@@ -330,11 +325,11 @@ export default function TrackerPage() {
           </div>
         </div>
 
-        {/* Stat entry — two columns by team */}
+        {/* Stat entry */}
         {selected.length > 0 && (
           <div className="space-y-4">
             <SectionHeader title="Enter Stats" />
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {activeTeams.map((team) => {
                 const teamSelected = selected.filter(
                   (id) => players.find((p) => p.id === id)?.team === team
@@ -358,11 +353,9 @@ export default function TrackerPage() {
         {summary && (
           <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-6 space-y-5">
             <SectionHeader title="Export" />
-
             <pre className="bg-ndl-primary border border-ndl-surface rounded p-4 text-xs text-ndl-muted whitespace-pre-wrap leading-relaxed">
               {summary}
             </pre>
-
             <div>
               <label className="block text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
                 Email Address
@@ -375,7 +368,6 @@ export default function TrackerPage() {
                 className="w-full bg-ndl-primary border border-ndl-surface rounded px-3 py-2 text-sm text-ndl-text placeholder:text-ndl-muted/40 focus:outline-none focus:border-ndl-accent"
               />
             </div>
-
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={handleCopy}
