@@ -104,9 +104,17 @@ export default function EloCalculatorPage() {
   const loserElo = loserEloStr.trim() === "" ? null : Number(loserEloStr);
   const canCalculate = winnerRoster.length > 0 && loserRoster.length > 0;
 
-  const result = canCalculate
+  // Scenario: Team A wins
+  const resultAWins = canCalculate
     ? calculateElo(winnerElo, loserElo, winnerRoster, loserRoster)
     : null;
+
+  // Scenario: Team B wins (swap teams)
+  const resultBWins = canCalculate
+    ? calculateElo(loserElo, winnerElo, loserRoster, winnerRoster)
+    : null;
+
+  const result = resultAWins; // keep for type checks
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
@@ -138,36 +146,73 @@ export default function EloCalculatorPage() {
         </div>
 
         {/* Results */}
-        {result ? (
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-ndl-secondary border border-green-500/50 rounded-lg p-6 text-center">
-              <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-2">
-                Winning Team
-              </p>
-              <p className="text-5xl font-heading font-black text-green-400">
-                +{result.winnerDelta}
-              </p>
-              <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
-              {winnerElo !== null && (
-                <p className="text-xs text-ndl-muted mt-2">
-                  {winnerElo} → {result.winnerElo}
+        {resultAWins && resultBWins ? (
+          <div className="space-y-4">
+            <SectionHeader title="Results" />
+            <div className="grid grid-cols-2 gap-4">
+              {/* Team A wins */}
+              <div className="bg-ndl-secondary border border-green-500/50 rounded-lg p-6 text-center">
+                <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
+                  Team A — Win
                 </p>
-              )}
-            </div>
+                <p className="text-5xl font-heading font-black text-green-400">
+                  +{resultAWins.winnerDelta}
+                </p>
+                <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
+                {winnerElo !== null && (
+                  <p className="text-xs text-ndl-muted mt-2">
+                    {winnerElo} → {resultAWins.winnerElo}
+                  </p>
+                )}
+              </div>
 
-            <div className="bg-ndl-secondary border border-ndl-accent/50 rounded-lg p-6 text-center">
-              <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-2">
-                Losing Team
-              </p>
-              <p className="text-5xl font-heading font-black text-ndl-accent">
-                +{result.loserDelta}
-              </p>
-              <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
-              {loserElo !== null && (
-                <p className="text-xs text-ndl-muted mt-2">
-                  {loserElo} → {result.loserElo}
+              {/* Team A loses */}
+              <div className="bg-ndl-secondary border border-red-500/30 rounded-lg p-6 text-center">
+                <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
+                  Team A — Loss
                 </p>
-              )}
+                <p className="text-5xl font-heading font-black text-red-400">
+                  +{resultBWins.loserDelta}
+                </p>
+                <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
+                {winnerElo !== null && (
+                  <p className="text-xs text-ndl-muted mt-2">
+                    {winnerElo} → {winnerElo + resultBWins.loserDelta}
+                  </p>
+                )}
+              </div>
+
+              {/* Team B wins */}
+              <div className="bg-ndl-secondary border border-green-500/50 rounded-lg p-6 text-center">
+                <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
+                  Team B — Win
+                </p>
+                <p className="text-5xl font-heading font-black text-green-400">
+                  +{resultBWins.winnerDelta}
+                </p>
+                <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
+                {loserElo !== null && (
+                  <p className="text-xs text-ndl-muted mt-2">
+                    {loserElo} → {resultBWins.winnerElo}
+                  </p>
+                )}
+              </div>
+
+              {/* Team B loses */}
+              <div className="bg-ndl-secondary border border-red-500/30 rounded-lg p-6 text-center">
+                <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
+                  Team B — Loss
+                </p>
+                <p className="text-5xl font-heading font-black text-red-400">
+                  +{resultAWins.loserDelta}
+                </p>
+                <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
+                {loserElo !== null && (
+                  <p className="text-xs text-ndl-muted mt-2">
+                    {loserElo} → {loserElo + resultAWins.loserDelta}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         ) : (
@@ -182,7 +227,7 @@ export default function EloCalculatorPage() {
           <ul className="mt-3 space-y-2 text-sm text-ndl-muted leading-relaxed">
             <li>
               <span className="text-ndl-text font-semibold">Participation bonus:</span>{" "}
-              Both teams always earn +{PARTICIPATION_BONUS} ELO just for playing — no team ever loses ELO.
+              Both teams earn at least +{PARTICIPATION_BONUS} ELO just for playing — no team ever loses ELO. The losing team&apos;s bonus also scales with their draft tier and player count.
             </li>
             <li>
               <span className="text-ndl-text font-semibold">K-Factor:</span>{" "}

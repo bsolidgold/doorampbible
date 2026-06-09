@@ -82,7 +82,11 @@ export function calculateElo(
 
   const winnerDelta =
     PARTICIPATION_BONUS + Math.round(K_FACTOR * winMult * (1 - expected));
-  const loserDelta = PARTICIPATION_BONUS; // Losers never drop ELO — always motivated to play
+
+  // Losers earn participation bonus scaled by their draft tier — harder roster = more reward even in a loss
+  const lp = loserRoster.length;
+  const lossMult = PLAYER_COUNT_WIN_MULT[lp] * draftTierWinMult(avgTier(loserRoster));
+  const loserDelta = PARTICIPATION_BONUS + Math.round((K_FACTOR * 0.3) * lossMult * expected);
 
   return {
     winnerElo: wElo + winnerDelta,
