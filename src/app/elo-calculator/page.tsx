@@ -104,10 +104,9 @@ export default function EloCalculatorPage() {
   const loserElo = loserEloStr.trim() === "" ? null : Number(loserEloStr);
   const canCalculate = winnerRoster.length > 0 && loserRoster.length > 0;
 
-  const result =
-    canCalculate
-      ? calculateElo(winnerElo, loserElo, winnerRoster, loserRoster)
-      : null;
+  const result = canCalculate
+    ? calculateElo(winnerElo, loserElo, winnerRoster, loserRoster)
+    : null;
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
@@ -116,8 +115,7 @@ export default function EloCalculatorPage() {
           ELO Calculator
         </h1>
         <p className="mt-2 text-ndl-muted text-sm">
-          Simulate any hypothetical game to see how much ELO each team would
-          gain.
+          Simulate any hypothetical game to see how much ELO each team would gain.
         </p>
         <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-500/10 border border-yellow-500/40 rounded text-yellow-400 text-xs font-heading font-semibold uppercase tracking-wide">
           ⚠ Experimental — the ELO system is still being finalized before the season starts
@@ -128,69 +126,51 @@ export default function EloCalculatorPage() {
         {/* Winner */}
         <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-6 space-y-5">
           <SectionHeader title="Winning Team" />
-          <EloInput
-            label="Winner"
-            value={winnerEloStr}
-            onChange={setWinnerEloStr}
-          />
-          <RosterSelector
-            label="Winner"
-            roster={winnerRoster}
-            onChange={setWinnerRoster}
-          />
+          <EloInput label="Winner" value={winnerEloStr} onChange={setWinnerEloStr} />
+          <RosterSelector label="Winner" roster={winnerRoster} onChange={setWinnerRoster} />
         </div>
 
         {/* Loser */}
         <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-6 space-y-5">
           <SectionHeader title="Losing Team" />
-          <EloInput
-            label="Loser"
-            value={loserEloStr}
-            onChange={setLoserEloStr}
-          />
-          <RosterSelector
-            label="Loser"
-            roster={loserRoster}
-            onChange={setLoserRoster}
-          />
+          <EloInput label="Loser" value={loserEloStr} onChange={setLoserEloStr} />
+          <RosterSelector label="Loser" roster={loserRoster} onChange={setLoserRoster} />
         </div>
 
         {/* Results */}
-        {result && (
-          <div className="bg-ndl-secondary border border-ndl-accent rounded-lg p-6">
-            <SectionHeader title="Result" />
-            <div className="grid grid-cols-2 gap-6 mt-4">
-              <div className="text-center">
-                <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
-                  Winner gains
+        {result ? (
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-ndl-secondary border border-green-500/50 rounded-lg p-6 text-center">
+              <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-2">
+                Winning Team
+              </p>
+              <p className="text-5xl font-heading font-black text-green-400">
+                +{result.winnerDelta}
+              </p>
+              <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
+              {winnerElo !== null && (
+                <p className="text-xs text-ndl-muted mt-2">
+                  {winnerElo} → {result.winnerElo}
                 </p>
-                <p className="text-4xl font-heading font-black text-green-400">
-                  +{result.winnerDelta}
+              )}
+            </div>
+
+            <div className="bg-ndl-secondary border border-ndl-accent/50 rounded-lg p-6 text-center">
+              <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-2">
+                Losing Team
+              </p>
+              <p className="text-5xl font-heading font-black text-ndl-accent">
+                +{result.loserDelta}
+              </p>
+              <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
+              {loserElo !== null && (
+                <p className="text-xs text-ndl-muted mt-2">
+                  {loserElo} → {result.loserElo}
                 </p>
-                {winnerElo !== null && (
-                  <p className="text-xs text-ndl-muted mt-1">
-                    {winnerElo} → {result.winnerElo}
-                  </p>
-                )}
-              </div>
-              <div className="text-center">
-                <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
-                  Loser gains
-                </p>
-                <p className="text-4xl font-heading font-black text-ndl-accent">
-                  +{result.loserDelta}
-                </p>
-                {loserElo !== null && (
-                  <p className="text-xs text-ndl-muted mt-1">
-                    {loserElo} → {result.loserElo}
-                  </p>
-                )}
-              </div>
+              )}
             </div>
           </div>
-        )}
-
-        {!canCalculate && (
+        ) : (
           <p className="text-center text-ndl-muted text-sm">
             Select at least one player per team to see results.
           </p>
