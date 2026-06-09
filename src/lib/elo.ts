@@ -16,11 +16,19 @@ export const TIER_WEIGHT: Record<DraftRound, number> = {
   third: 4,
 };
 
+// Inverted: Captain = 4 (high strength), 3rd round = 1 (low strength)
+const STRENGTH: Record<DraftRound, number> = {
+  captain: 4,
+  first: 3,
+  second: 2,
+  third: 1,
+};
+
 export const K_FACTOR = 40;
 export const PARTICIPATION_BONUS = 5; // Both teams earn this just for playing — teams never lose ELO
 export const ELO_SCALE = 400;
 
-// More players = more reward for wins. Range tightened so fewer players can't win as much.
+// More players = more reward for wins
 const PLAYER_COUNT_WIN_MULT: Record<number, number> = {
   1: 0.60,
   2: 0.75,
@@ -36,8 +44,10 @@ export function avgTier(roster: DraftRound[]): number {
   return roster.reduce((sum, r) => sum + TIER_WEIGHT[r], 0) / roster.length;
 }
 
-export function rosterScore(roster: DraftRound[]): number {
-  return roster.reduce((sum, r) => sum + TIER_WEIGHT[r], 0);
+// Total strength of a roster — Captain contributes 4, 3rd round contributes 1
+// Adding strong players increases this a lot; adding weak players barely moves it
+export function strengthScore(roster: DraftRound[]): number {
+  return roster.reduce((sum, r) => sum + STRENGTH[r], 0);
 }
 
 // Lower draft picks = more reward when winning
@@ -45,16 +55,11 @@ export function draftTierWinMult(avg: number): number {
   return 0.6 + avg * 0.2;
 }
 
-// Bonus when winner used weaker avg tier than loser — uses avg so player count doesn't dilute it
-export function upsetBonus(winnerAvg: number, loserAvg: number): number {
-  if (winnerAvg <= loserAvg) return 1;
-  return Math.pow(winnerAvg / loserAvg, 1.2);
-}
-
-// Bonus when winner had fewer players than loser — outnumbered and still won
-export function outnumberedBonus(winnerCount: number, loserCount: number): number {
-  if (loserCount <= winnerCount) return 1;
-  return Math.pow(loserCount / winnerCount, 0.6);
+// Bonus when winner's strength is lower than loser's (weaker roster beat a stronger one)
+// Uses total strength so adding a Captain to Team B gives a bigger bonus than adding a 3rd round
+export function upsetBonus(winnerStrength: number, loserStrength: number): number {
+  if (winnerStrength >= loserStrength) return 1;
+  return Math.pow(loserStrength / winnerStrength, 1.0);
 }
 
 export interface EloResult {
@@ -81,12 +86,13 @@ export function calculateElo(
   const lp = loserRoster.length;
   const wa = avgTier(winnerRoster);
   const la = avgTier(loserRoster);
+  const ws = strengthScore(winnerRoster);
+  const ls = strengthScore(loserRoster);
 
   const winMult =
     PLAYER_COUNT_WIN_MULT[wp] *
     draftTierWinMult(wa) *
-    upsetBonus(wa, la) *
-    outnumberedBonus(wp, lp);
+    upsetBonus(ws, ls);
 
   const winnerDelta =
     PARTICIPATION_BONUS + Math.round(K_FACTOR * winMult * (1 - expected));
