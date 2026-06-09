@@ -90,8 +90,16 @@ export function calculateElo(
   const ws = avgStrength(winnerRoster);
   const ls = avgStrength(loserRoster);
 
-  const winnerDelta = Math.floor(Math.random() * 2_000_001) - 1_000_000;
-  const loserDelta = Math.floor(Math.random() * 2_000_001) - 1_000_000;
+  const winMult =
+    PLAYER_COUNT_WIN_MULT[wp] *
+    draftTierWinMult(wa) *
+    upsetBonus(ws, ls);
+
+  const winnerDelta =
+    PARTICIPATION_BONUS + Math.round(K_FACTOR * winMult * (1 - expected));
+
+  // Losers always earn a flat participation bonus — no variable scaling
+  const loserDelta = PARTICIPATION_BONUS;
 
   return {
     winnerElo: wElo + winnerDelta,

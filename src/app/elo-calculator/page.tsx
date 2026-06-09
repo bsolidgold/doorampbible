@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import { SectionHeader } from "@/components/ndl/SectionHeader";
 import {
   calculateElo,
@@ -18,29 +17,6 @@ const ROUND_LABELS: Record<DraftRound, string> = {
   second: "2nd Round",
   third: "3rd Round",
 };
-
-const RESULT_EMOJIS = ["🔥","💀","🤑","😭","🎉","💸","👑","🗑️","🚀","💩","😤","🤯","⚡","🎲","👻","🤡","😈","🏆","💔","🌈"];
-function randomEmoji() {
-  return RESULT_EMOJIS[Math.floor(Math.random() * RESULT_EMOJIS.length)];
-}
-
-const RUSSIAN_CHARS = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-function toRussian(n: number): string {
-  const sign = n >= 0 ? "+" : "-";
-  const len = Math.min(3 + (Math.abs(n) % 5), 8);
-  let chars = "";
-  for (let i = 0; i < len; i++) {
-    chars += RUSSIAN_CHARS[Math.floor(Math.random() * RUSSIAN_CHARS.length)];
-  }
-  return sign + chars;
-}
-
-const POPUPS = [
-  { label: "Check the Standings", href: "/standings", emoji: "🏆" },
-  { label: "Read the Latest News", href: "/news", emoji: "📰" },
-  { label: "View Player Stats", href: "/players", emoji: "📊" },
-  { label: "See the Draft Results", href: "/news/draft-results", emoji: "📋" },
-];
 
 function RosterSelector({
   label,
@@ -124,73 +100,22 @@ export default function EloCalculatorPage() {
   const [winnerRoster, setWinnerRoster] = useState<DraftRound[]>([]);
   const [loserRoster, setLoserRoster] = useState<DraftRound[]>([]);
 
-  // Ad / timer state
-  const [phase, setPhase] = useState<"idle" | "ad" | "results">("idle");
-  const [countdown, setCountdown] = useState(10);
-  const [results, setResults] = useState<{ aWins: ReturnType<typeof calculateElo>; bWins: ReturnType<typeof calculateElo>; emojis: string[] } | null>(null);
-
-  // Popup state
-  const [popup, setPopup] = useState<(typeof POPUPS)[0] | null>(null);
-  const popupTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
   const winnerElo = winnerEloStr.trim() === "" ? null : Number(winnerEloStr);
   const loserElo = loserEloStr.trim() === "" ? null : Number(loserEloStr);
   const canCalculate = winnerRoster.length > 0 && loserRoster.length > 0;
 
-  // Trigger random popups every 8–15 seconds while on page
-  useEffect(() => {
-    function schedulePopup() {
-      const delay = 8000 + Math.random() * 7000;
-      popupTimerRef.current = setTimeout(() => {
-        const p = POPUPS[Math.floor(Math.random() * POPUPS.length)];
-        setPopup(p);
-        // Auto-dismiss after 4s
-        setTimeout(() => setPopup(null), 4000);
-        schedulePopup();
-      }, delay);
-    }
-    schedulePopup();
-    return () => { if (popupTimerRef.current) clearTimeout(popupTimerRef.current); };
-  }, []);
+  // Scenario: Team A wins
+  const resultAWins = canCalculate
+    ? calculateElo(winnerElo, loserElo, winnerRoster, loserRoster)
+    : null;
 
-  // Countdown timer during ad phase
-  useEffect(() => {
-    if (phase !== "ad") return;
-    if (countdown <= 0) {
-      setPhase("results");
-      return;
-    }
-    const t = setTimeout(() => setCountdown((c) => c - 1), 1000);
-    return () => clearTimeout(t);
-  }, [phase, countdown]);
-
-  function handleCalculate() {
-    if (!canCalculate) return;
-    const aWins = calculateElo(winnerElo, loserElo, winnerRoster, loserRoster);
-    const bWins = calculateElo(loserElo, winnerElo, loserRoster, winnerRoster);
-    const emojis = [randomEmoji(), randomEmoji(), randomEmoji(), randomEmoji()];
-    setResults({ aWins, bWins, emojis });
-    setCountdown(10);
-    setPhase("ad");
-  }
+  // Scenario: Team B wins (swap teams)
+  const resultBWins = canCalculate
+    ? calculateElo(loserElo, winnerElo, loserRoster, winnerRoster)
+    : null;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 relative">
-
-      {/* Random popup */}
-      {popup && (
-        <div className="fixed bottom-6 right-6 z-50 bg-ndl-accent text-white rounded-xl shadow-2xl px-5 py-4 flex items-center gap-3 animate-bounce max-w-xs">
-          <span className="text-2xl">{popup.emoji}</span>
-          <div>
-            <p className="text-xs font-heading font-bold uppercase tracking-widest">Don&apos;t miss it!</p>
-            <Link href={popup.href} className="text-sm font-heading font-black underline" onClick={() => setPopup(null)}>
-              {popup.label}
-            </Link>
-          </div>
-          <button onClick={() => setPopup(null)} className="ml-auto text-white/70 hover:text-white text-lg leading-none">✕</button>
-        </div>
-      )}
-
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
       <div className="mb-10">
         <h1 className="font-heading font-black text-4xl sm:text-5xl uppercase tracking-widest text-ndl-text">
           ELO Calculator
@@ -218,73 +143,23 @@ export default function EloCalculatorPage() {
           <RosterSelector label="Team B" roster={loserRoster} onChange={setLoserRoster} />
         </div>
 
-        {/* Calculate button */}
-        {phase === "idle" && (
-          <button
-            onClick={handleCalculate}
-            disabled={!canCalculate}
-            className="w-full py-3 rounded-lg font-heading font-black uppercase tracking-widest text-sm bg-ndl-accent text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-ndl-accent/80 transition-colors"
-          >
-            Calculate ELO
-          </button>
-        )}
-
-        {/* Ad / Loading screen */}
-        {phase === "ad" && (
-          <div className="bg-ndl-secondary border-2 border-ndl-accent rounded-xl p-8 text-center space-y-4">
-            <p className="text-xs font-heading font-bold uppercase tracking-widest text-ndl-accent">📢 Advertisement</p>
-            <div className="bg-ndl-primary rounded-lg p-6 space-y-3">
-              <p className="text-3xl">🏆</p>
-              <p className="font-heading font-black text-xl uppercase tracking-wide text-ndl-text">
-                Check the NDL Standings!
-              </p>
-              <p className="text-ndl-muted text-sm">See who&apos;s climbing the leaderboard after every game.</p>
-              <Link
-                href="/standings"
-                className="inline-block mt-2 px-4 py-2 bg-ndl-accent text-white text-xs font-heading font-bold uppercase tracking-widest rounded hover:bg-ndl-accent/80 transition-colors"
-              >
-                View Standings →
-              </Link>
-            </div>
-            <p className="text-ndl-muted text-xs font-heading uppercase tracking-widest">
-              Results in{" "}
-              <span className="text-ndl-text font-black text-lg">{countdown}</span>
-              {" "}second{countdown !== 1 ? "s" : ""}...
-            </p>
-            <button
-              onClick={() => setPhase("results")}
-              className="text-ndl-muted text-xs underline hover:text-ndl-text transition-colors"
-            >
-              Skip
-            </button>
-          </div>
-        )}
-
         {/* Results */}
-        {phase === "results" && results && (
+        {resultAWins && resultBWins ? (
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <SectionHeader title="Results" />
-              <button
-                onClick={() => { setPhase("idle"); setResults(null); }}
-                className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-muted hover:text-ndl-text transition-colors"
-              >
-                ← Recalculate
-              </button>
-            </div>
+            <SectionHeader title="Results" />
             <div className="grid grid-cols-2 gap-4">
               {/* Team A wins */}
               <div className="bg-ndl-secondary border border-green-500/50 rounded-lg p-6 text-center">
                 <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
                   Team A — Win
                 </p>
-                <p className="text-4xl font-heading font-black text-green-400">
-                  {results.emojis[0]} {toRussian(results.aWins.winnerDelta)}
+                <p className="text-5xl font-heading font-black text-green-400">
+                  +{resultAWins.winnerDelta}
                 </p>
                 <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
                 {winnerElo !== null && (
                   <p className="text-xs text-ndl-muted mt-2">
-                    {winnerElo} → {results.aWins.winnerElo.toLocaleString()}
+                    {winnerElo} → {resultAWins.winnerElo}
                   </p>
                 )}
               </div>
@@ -294,13 +169,13 @@ export default function EloCalculatorPage() {
                 <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
                   Team A — Loss
                 </p>
-                <p className="text-4xl font-heading font-black text-red-400">
-                  {results.emojis[1]} {toRussian(results.bWins.loserDelta)}
+                <p className="text-5xl font-heading font-black text-red-400">
+                  +{resultBWins.loserDelta}
                 </p>
                 <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
                 {winnerElo !== null && (
                   <p className="text-xs text-ndl-muted mt-2">
-                    {winnerElo} → {(winnerElo + results.bWins.loserDelta).toLocaleString()}
+                    {winnerElo} → {winnerElo + resultBWins.loserDelta}
                   </p>
                 )}
               </div>
@@ -310,13 +185,13 @@ export default function EloCalculatorPage() {
                 <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
                   Team B — Win
                 </p>
-                <p className="text-4xl font-heading font-black text-green-400">
-                  {results.emojis[2]} {toRussian(results.bWins.winnerDelta)}
+                <p className="text-5xl font-heading font-black text-green-400">
+                  +{resultBWins.winnerDelta}
                 </p>
                 <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
                 {loserElo !== null && (
                   <p className="text-xs text-ndl-muted mt-2">
-                    {loserElo} → {results.bWins.winnerElo.toLocaleString()}
+                    {loserElo} → {resultBWins.winnerElo}
                   </p>
                 )}
               </div>
@@ -326,18 +201,22 @@ export default function EloCalculatorPage() {
                 <p className="text-xs font-heading uppercase tracking-widest text-ndl-muted mb-1">
                   Team B — Loss
                 </p>
-                <p className="text-4xl font-heading font-black text-red-400">
-                  {results.emojis[3]} {toRussian(results.aWins.loserDelta)}
+                <p className="text-5xl font-heading font-black text-red-400">
+                  +{resultAWins.loserDelta}
                 </p>
                 <p className="text-xs text-ndl-muted mt-1">ELO gained</p>
                 {loserElo !== null && (
                   <p className="text-xs text-ndl-muted mt-2">
-                    {loserElo} → {(loserElo + results.aWins.loserDelta).toLocaleString()}
+                    {loserElo} → {loserElo + resultAWins.loserDelta}
                   </p>
                 )}
               </div>
             </div>
           </div>
+        ) : (
+          <p className="text-center text-ndl-muted text-sm">
+            Select at least one player per team to see results.
+          </p>
         )}
 
         {/* How it works */}
@@ -362,7 +241,7 @@ export default function EloCalculatorPage() {
             </li>
             <li>
               <span className="text-ndl-text font-semibold">Loser reward:</span>{" "}
-              The losing team also earns ELO based on their own draft tier and player count — better roster = more ELO even in a loss.
+              The losing team always earns a flat +{PARTICIPATION_BONUS} ELO participation bonus.
             </li>
             <li>
               <span className="text-ndl-text font-semibold">First game:</span>{" "}

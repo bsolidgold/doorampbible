@@ -9,15 +9,6 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
-    slug: "ben-martinsen-poopy",
-    title: "Breaking: Ben Martinsen is Poopy",
-    date: "June 9, 2026",
-    excerpt:
-      "In a stunning development that has rocked the NDL community, multiple sources have confirmed that Ben Martinsen is, in fact, poopy.",
-    image: "/images/ben-martinsen.jpg",
-    imageAlt: "Ben Martinsen, confirmed poopy",
-  },
-  {
     slug: "game1-adam-victory",
     title: "Adam Goes Solo — Murray Mice Captain Wins the Season Opener",
     date: "June 9, 2026",
