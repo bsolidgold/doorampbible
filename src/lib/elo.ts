@@ -44,10 +44,10 @@ export function avgTier(roster: DraftRound[]): number {
   return roster.reduce((sum, r) => sum + TIER_WEIGHT[r], 0) / roster.length;
 }
 
-// Total strength of a roster — Captain contributes 4, 3rd round contributes 1
-// Adding strong players increases this a lot; adding weak players barely moves it
-export function strengthScore(roster: DraftRound[]): number {
-  return roster.reduce((sum, r) => sum + STRENGTH[r], 0);
+// Average strength of a roster — Captain contributes 4, 3rd round contributes 1
+// Adding weak players lowers the average (easier opponent), adding strong players raises it (harder opponent)
+export function avgStrength(roster: DraftRound[]): number {
+  return roster.reduce((sum, r) => sum + STRENGTH[r], 0) / roster.length;
 }
 
 // Lower draft picks = more reward when winning
@@ -86,8 +86,8 @@ export function calculateElo(
   const lp = loserRoster.length;
   const wa = avgTier(winnerRoster);
   const la = avgTier(loserRoster);
-  const ws = strengthScore(winnerRoster);
-  const ls = strengthScore(loserRoster);
+  const ws = avgStrength(winnerRoster);
+  const ls = avgStrength(loserRoster);
 
   const winMult =
     PLAYER_COUNT_WIN_MULT[wp] *
