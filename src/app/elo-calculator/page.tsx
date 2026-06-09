@@ -231,7 +231,7 @@ export default function EloCalculatorPage() {
             </li>
             <li>
               <span className="text-ndl-text font-semibold">Player count:</span>{" "}
-              Using more players multiplies the winner&apos;s reward (1 player = 0.60×, 2 = 0.75×, 3 = 1.10×, 4 = 1.30×). Fewer players = less reward for winning.
+              Solo wins earn the most (1 player = 1.40×). Adding a second player dips the reward since it&apos;s a much easier win (2 = 0.65×). Going to 3 or 4 players climbs back up (3 = 1.00×, 4 = 1.25×).
             </li>
             <li>
               <span className="text-ndl-text font-semibold">Draft tier:</span>{" "}

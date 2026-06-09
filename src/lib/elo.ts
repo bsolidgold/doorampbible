@@ -28,12 +28,13 @@ export const K_FACTOR = 40;
 export const PARTICIPATION_BONUS = 5; // Both teams earn this just for playing — teams never lose ELO
 export const ELO_SCALE = 400;
 
-// More players = more reward for wins
+// Solo (1) = highest reward — hardest to win alone. 2 players = dip (easiest relative win).
+// 3 and 4 climb back up as coordinating more players adds difficulty.
 const PLAYER_COUNT_WIN_MULT: Record<number, number> = {
-  1: 0.60,
-  2: 0.75,
-  3: 1.10,
-  4: 1.30,
+  1: 1.40,
+  2: 0.65,
+  3: 1.00,
+  4: 1.25,
 };
 
 export function expectedScore(teamElo: number, opponentElo: number): number {
