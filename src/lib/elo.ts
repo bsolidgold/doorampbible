@@ -98,9 +98,8 @@ export function calculateElo(
   const winnerDelta =
     PARTICIPATION_BONUS + Math.round(K_FACTOR * winMult * (1 - expected));
 
-  // Losers earn participation bonus scaled by their draft tier — harder roster = more reward even in a loss
-  const lossMult = PLAYER_COUNT_WIN_MULT[lp] * draftTierWinMult(la);
-  const loserDelta = PARTICIPATION_BONUS + Math.round((K_FACTOR * 0.3) * lossMult * expected);
+  // Losers always earn a flat participation bonus — no variable scaling
+  const loserDelta = PARTICIPATION_BONUS;
 
   return {
     winnerElo: wElo + winnerDelta,
