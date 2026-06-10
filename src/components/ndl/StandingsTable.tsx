@@ -52,13 +52,13 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                   {team.logo && (
                     <div
                       className="flex-shrink-0 flex items-center justify-center"
-                      style={{ width: 120, height: 120, padding: team.logoPadding ?? 0 }}
+                      style={{ width: 240, height: 240, padding: team.logoPadding ?? 0 }}
                     >
                       <Image
                         src={team.logo}
                         alt={`${team.name} logo`}
-                        width={team.logoSize ?? 120}
-                        height={team.logoSize ?? 120}
+                        width={team.logoSize ?? 240}
+                        height={team.logoSize ?? 240}
                         className="w-full h-full object-contain rounded"
                       />
                     </div>
