@@ -47,18 +47,15 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                 i === teams.length - 1 ? "border-b-0" : ""
               }`}
             >
-              <TableCell className="font-heading font-semibold text-2xl text-ndl-text py-2 px-6">
+              <TableCell className="font-heading font-semibold text-2xl text-ndl-text py-5 px-6">
                 <div className="flex items-center gap-5">
                   {team.logo && (
-                    <div
-                      className="flex-shrink-0 flex items-center justify-center"
-                      style={{ width: 240, height: 240, padding: team.logoPadding ?? 0 }}
-                    >
+                    <div className="flex-shrink-0">
                       <Image
                         src={team.logo}
                         alt={`${team.name} logo`}
-                        width={team.logoSize ?? 240}
-                        height={team.logoSize ?? 240}
+                        width={240}
+                        height={240}
                         className="object-contain rounded"
                       />
                     </div>
@@ -66,13 +63,13 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                   <span className="whitespace-nowrap">{team.name}</span>
                 </div>
               </TableCell>
-              <TableCell className="text-center text-2xl text-ndl-muted py-2 px-6">
+              <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
                 {team.wins}
               </TableCell>
-              <TableCell className="text-center text-2xl text-ndl-muted py-2 px-6">
+              <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
                 {team.losses}
               </TableCell>
-              <TableCell className="text-center text-2xl text-ndl-muted py-2 px-6">
+              <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
                 {team.elo}
               </TableCell>
             </TableRow>
