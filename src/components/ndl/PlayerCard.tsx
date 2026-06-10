@@ -90,11 +90,11 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
         {showAverages ? (
           hasAverages ? (
             <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2">
-              <StatBox label="1PT" value={avg(s.onePtMade, gamesPlayed)} sub="per game" />
-              <StatBox label="2PT" value={avg(s.twoPtMade, gamesPlayed)} sub="per game" />
-              <StatBox label="3PT" value={avg(s.threePtMade, gamesPlayed)} sub="per game" />
-              <StatBox label="AST" value={avg(s.assists, gamesPlayed)} sub="per game" />
-              <StatBox label="BLK/STL" value={avg(s.blocks, gamesPlayed)} sub="per game" />
+              <StatBox label="1PT" value={avg(s.onePtMade, gamesPlayed)} />
+              <StatBox label="2PT" value={avg(s.twoPtMade, gamesPlayed)} />
+              <StatBox label="3PT" value={avg(s.threePtMade, gamesPlayed)} />
+              <StatBox label="AST" value={avg(s.assists, gamesPlayed)} />
+              <StatBox label="BLK/STL" value={avg(s.blocks, gamesPlayed)} />
             </div>
           ) : (
             <div className="flex-1">
