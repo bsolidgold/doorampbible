@@ -198,7 +198,7 @@ export const players: Player[] = [
   {
     id: "jack-baker",
     name: "Jack Baker",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/jack-baker.jpg",
     status: "active",
     seasonTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0" },
     allTimeTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0" },
