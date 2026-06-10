@@ -52,7 +52,7 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                   {team.logo && (
                     <div
                       className="flex-shrink-0 flex items-center justify-center"
-                      style={{ width: 240, height: 240, padding: team.logoPadding ?? 0 }}
+                      style={{ width: 140, height: 140, padding: team.logoPadding ?? 0 }}
                     >
                       <Image
                         src={team.logo}
