@@ -50,13 +50,14 @@ export function StandingsTable({ teams }: StandingsTableProps) {
               <TableCell className="font-heading font-semibold text-2xl text-ndl-text py-5 px-6">
                 <div className="flex items-center gap-5">
                   {team.logo && (
-                    <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center">
+                    <div className="flex-shrink-0 flex items-center justify-center" style={{ width: 60, height: 60 }}>
                       <Image
                         src={team.logo}
                         alt={`${team.name} logo`}
-                        width={56}
-                        height={56}
-                        className="w-14 h-14 object-contain"
+                        width={team.logoSize ?? 60}
+                        height={team.logoSize ?? 60}
+                        className="object-contain"
+                        style={{ width: team.logoSize ?? 60, height: team.logoSize ?? 60 }}
                       />
                     </div>
                   )}
