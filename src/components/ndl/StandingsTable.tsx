@@ -59,7 +59,7 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                         alt={`${team.name} logo`}
                         width={team.logoSize ?? 240}
                         height={team.logoSize ?? 240}
-                        className="w-full h-full object-contain rounded"
+                        className="object-contain rounded"
                       />
                     </div>
                   )}
