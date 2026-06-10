@@ -7,16 +7,22 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlayerCard } from "./PlayerCard";
 import { PlayerProfileModal } from "./PlayerProfileModal";
 
-type TabKey = "totals" | "alltime";
+export type TabKey = "totals" | "averages" | "alltime";
 
 const tabLabels: Record<TabKey, string> = {
   totals: "Season Totals",
+  averages: "Game Averages",
   alltime: "All-Time Totals",
 };
 
 function getStats(player: Player, tab: TabKey): PlayerStats {
-  if (tab === "totals") return player.seasonTotals;
-  return player.allTimeTotals;
+  if (tab === "alltime") return player.allTimeTotals;
+  return player.seasonTotals;
+}
+
+export function getGamesPlayed(player: Player, tab: TabKey): number {
+  if (tab === "alltime") return player.allTimeGamesPlayed;
+  return player.seasonGamesPlayed;
 }
 
 const UNASSIGNED = "Free Agents";
@@ -100,6 +106,8 @@ export function PlayerList({ players }: PlayerListProps) {
                     key={player.id}
                     player={player}
                     activeStats={getStats(player, activeTab)}
+                    gamesPlayed={getGamesPlayed(player, activeTab)}
+                    showAverages={activeTab === "averages"}
                     onPhotoClick={() => setSelectedPlayer(player)}
                   />
                 ))}

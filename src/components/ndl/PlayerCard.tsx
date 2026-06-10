@@ -10,6 +10,13 @@ function pct(made: string, att: string): string {
   return ((m / a) * 100).toFixed(0) + "%";
 }
 
+function avg(made: string, games: number): string {
+  const m = Number(made);
+  if (isNaN(m) || games === 0) return "---";
+  const result = m / games;
+  return Number.isInteger(result) ? String(result) : result.toFixed(1);
+}
+
 interface StatBoxProps {
   label: string;
   value: string;
@@ -29,11 +36,14 @@ function StatBox({ label, value, sub }: StatBoxProps) {
 interface PlayerCardProps {
   player: Player;
   activeStats: PlayerStats;
+  gamesPlayed: number;
+  showAverages: boolean;
   onPhotoClick: () => void;
 }
 
-export function PlayerCard({ player, activeStats: s, onPhotoClick }: PlayerCardProps) {
+export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, onPhotoClick }: PlayerCardProps) {
   const hasStats = s.onePtAtt !== "---";
+  const hasAverages = showAverages && gamesPlayed > 0;
 
   return (
     <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4 hover:border-ndl-accent/40 transition-colors">
@@ -77,7 +87,21 @@ export function PlayerCard({ player, activeStats: s, onPhotoClick }: PlayerCardP
         </div>
 
         {/* Stats */}
-        {hasStats ? (
+        {showAverages ? (
+          hasAverages ? (
+            <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2">
+              <StatBox label="1PT" value={avg(s.onePtMade, gamesPlayed)} sub="per game" />
+              <StatBox label="2PT" value={avg(s.twoPtMade, gamesPlayed)} sub="per game" />
+              <StatBox label="3PT" value={avg(s.threePtMade, gamesPlayed)} sub="per game" />
+              <StatBox label="AST" value={avg(s.assists, gamesPlayed)} sub="per game" />
+              <StatBox label="BLK/STL" value={avg(s.blocks, gamesPlayed)} sub="per game" />
+            </div>
+          ) : (
+            <div className="flex-1">
+              <p className="text-ndl-muted text-xs font-heading uppercase tracking-widest">No games played</p>
+            </div>
+          )
+        ) : hasStats ? (
           <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2">
             <StatBox label="1PT" value={`${s.onePtMade}/${s.onePtAtt}`} sub={pct(s.onePtMade, s.onePtAtt)} />
             <StatBox label="2PT" value={`${s.twoPtMade}/${s.twoPtAtt}`} sub={pct(s.twoPtMade, s.twoPtAtt)} />
