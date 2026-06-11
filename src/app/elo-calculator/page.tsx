@@ -29,6 +29,8 @@ function RosterSelector({
 }) {
   function toggle(round: DraftRound) {
     if (roster.includes(round)) {
+      // Don't allow deselecting below 2
+      if (roster.length <= 2) return;
       onChange(roster.filter((r) => r !== round));
     } else if (roster.length < 4) {
       onChange([...roster, round]);
@@ -58,8 +60,8 @@ function RosterSelector({
           );
         })}
       </div>
-      {roster.length === 0 && (
-        <p className="mt-2 text-xs text-red-400">Select at least 1 player</p>
+      {roster.length < 2 && (
+        <p className="mt-2 text-xs text-red-400">Select at least 2 players</p>
       )}
     </div>
   );
@@ -102,7 +104,7 @@ export default function EloCalculatorPage() {
 
   const winnerElo = winnerEloStr.trim() === "" ? null : Number(winnerEloStr);
   const loserElo = loserEloStr.trim() === "" ? null : Number(loserEloStr);
-  const canCalculate = winnerRoster.length > 0 && loserRoster.length > 0;
+  const canCalculate = winnerRoster.length >= 2 && loserRoster.length >= 2;
 
   // Scenario: Team A wins
   const resultAWins = canCalculate
@@ -229,7 +231,7 @@ export default function EloCalculatorPage() {
             </li>
             <li>
               <span className="text-ndl-text font-semibold">Player count:</span>{" "}
-              Solo wins earn the most (1 player = 1.40×). Adding a second player dips the reward since it&apos;s a much easier win (2 = 0.65×). Going to 3 or 4 players climbs back up (3 = 1.00×, 4 = 1.25×).
+              Solo play is not allowed — minimum 2 players per team. Two players is the baseline (1.00×). Larger rosters earn slightly more ELO as coordinating more players adds difficulty (3 = 1.15×, 4 = 1.30×).
             </li>
             <li>
               <span className="text-ndl-text font-semibold">Draft tier:</span>{" "}

@@ -28,13 +28,12 @@ export const K_FACTOR = 40;
 export const PARTICIPATION_BONUS = 5; // Both teams earn this just for playing — teams never lose ELO
 export const ELO_SCALE = 400;
 
-// Solo (1) = highest reward — hardest to win alone. 2 players = dip (easiest relative win).
-// 3 and 4 climb back up as coordinating more players adds difficulty.
+// Solo play removed from NDL. 2 players is the minimum and baseline.
+// More players = slightly more reward as coordinating larger rosters adds difficulty.
 const PLAYER_COUNT_WIN_MULT: Record<number, number> = {
-  1: 1.40,
-  2: 0.65,
-  3: 1.00,
-  4: 1.25,
+  2: 1.00,
+  3: 1.15,
+  4: 1.30,
 };
 
 export function expectedScore(teamElo: number, opponentElo: number): number {
@@ -63,20 +62,20 @@ export function upsetBonus(winnerStrength: number, loserStrength: number): numbe
   return Math.pow(loserStrength / winnerStrength, 1.0);
 }
 
-// How the opponent's player count affects the winner's reward:
-// 1 player = baseline, 2 players = peak (hardest to beat), 3-4 players = drops back down.
-// The size of the drop for 3+ depends on the round quality of those extra players —
-// weak extra picks (3rd round) drop reward more; strong extra picks (captain) drop it less.
+// How the opponent's player count affects the winner's reward.
+// 2 players = baseline (1.0×). For 3+ players, extra picks adjust the reward
+// based on their quality: strong extras (captain) make the opponent harder to beat
+// so winner earns more; weak extras (3rd round) dilute the opponent so winner earns less.
 export function opponentCountMult(loserRoster: DraftRound[]): number {
   const lp = loserRoster.length;
-  if (lp === 1) return 1.0;
-  if (lp === 2) return 1.3;
-  // Players beyond the first 2 — their avg strength determines how much the reward drops
+  if (lp <= 2) return 1.0;
+  // Players beyond the first 2 — their avg strength shifts reward up or down
   const extraPlayers = loserRoster.slice(2);
   const extraAvgStrength = extraPlayers.reduce((s, r) => s + STRENGTH[r], 0) / extraPlayers.length;
-  // extraAvgStrength: captain=4 (small drop), 3rd round=1 (big drop)
-  const penalty = (5 - extraAvgStrength) * 0.09;
-  return Math.max(0.75, 1.3 - penalty);
+  // extraAvgStrength ranges 1–4. At 2.5 (midpoint) = no change.
+  // Above 2.5 (stronger) = slight bonus; below 2.5 (weaker) = slight penalty.
+  const adjustment = (extraAvgStrength - 2.5) * 0.08;
+  return Math.max(0.75, Math.min(1.25, 1.0 + adjustment));
 }
 
 export interface EloResult {
