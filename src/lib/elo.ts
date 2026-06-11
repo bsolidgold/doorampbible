@@ -99,9 +99,7 @@ export function calculateElo(
   const expected = firstGame ? 0.5 : expectedScore(wElo, lElo);
 
   const wp = winnerRoster.length;
-  const lp = loserRoster.length;
   const wa = avgTier(winnerRoster);
-  const la = avgTier(loserRoster);
   const ws = avgStrength(winnerRoster);
   const ls = avgStrength(loserRoster);
 
