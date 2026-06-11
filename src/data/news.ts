@@ -9,6 +9,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "solo-play-banned",
+    title: "Solo Play Banned — NDL Mandates Minimum Two-Man Rosters",
+    date: "June 11, 2026",
+    excerpt:
+      "The NDL has officially banned solo play, requiring all teams to field at least two players per game. The move reshapes strategy league-wide and closes a loophole in the ELO system.",
+  },
+  {
     slug: "game1-adam-victory",
     title: "Adam Goes Solo — Murray Mice Captain Wins the Season Opener",
     date: "June 9, 2026",
