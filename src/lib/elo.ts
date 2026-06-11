@@ -114,8 +114,11 @@ export function calculateElo(
   const winnerDelta =
     PARTICIPATION_BONUS + Math.round(K_FACTOR * winMult * (1 - expected));
 
-  // Losers always earn a flat participation bonus — no variable scaling
-  const loserDelta = PARTICIPATION_BONUS;
+  // Losers earn base participation bonus + a small bonus per later-round pick used.
+  // Captain/1st = +0, 2nd round = +1, 3rd round = +2 — incentivizes bringing later picks.
+  const LOSS_ROUND_BONUS: Record<DraftRound, number> = { captain: 0, first: 0, second: 1, third: 2 };
+  const lossRoundBonus = loserRoster.reduce((sum, r) => sum + LOSS_ROUND_BONUS[r], 0);
+  const loserDelta = PARTICIPATION_BONUS + lossRoundBonus;
 
   return {
     winnerElo: wElo + winnerDelta,
