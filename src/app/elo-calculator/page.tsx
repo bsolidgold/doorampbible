@@ -29,8 +29,6 @@ function RosterSelector({
 }) {
   function toggle(round: DraftRound) {
     if (roster.includes(round)) {
-      // Don't allow deselecting below 2
-      if (roster.length <= 2) return;
       onChange(roster.filter((r) => r !== round));
     } else if (roster.length < 4) {
       onChange([...roster, round]);
