@@ -9,6 +9,7 @@ export interface PlayerStats {
   threePtAtt: string;
   assists: string;
   blocks: string;
+  rebounds: string;
 }
 
 export interface Player {
@@ -45,6 +46,7 @@ const blank: PlayerStats = {
   threePtAtt: "---",
   assists: "---",
   blocks: "---",
+  rebounds: "---",
 };
 
 export const players: Player[] = [
@@ -53,8 +55,8 @@ export const players: Player[] = [
     name: "Adam Swarzfager",
     photo: "/images/adam-swarzfager.png",
     status: "active",
-    seasonTotals: { onePtMade: "9", onePtAtt: "26", twoPtMade: "0", twoPtAtt: "1", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "8" },
-    allTimeTotals: { onePtMade: "9", onePtAtt: "26", twoPtMade: "0", twoPtAtt: "1", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "8" },
+    seasonTotals: { onePtMade: "9", onePtAtt: "26", twoPtMade: "0", twoPtAtt: "1", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "8", rebounds: "0" },
+    allTimeTotals: { onePtMade: "9", onePtAtt: "26", twoPtMade: "0", twoPtAtt: "1", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "8", rebounds: "0" },
     seasonGamesPlayed: 1,
     allTimeGamesPlayed: 1,
     nicknames: "---",
@@ -68,8 +70,8 @@ export const players: Player[] = [
     name: "Ashton Anderegg",
     photo: "/images/ashton-anderegg.jpg",
     status: "active",
-    seasonTotals: { onePtMade: "4", onePtAtt: "8", twoPtMade: "0", twoPtAtt: "1", threePtMade: "1", threePtAtt: "3", assists: "0", blocks: "5" },
-    allTimeTotals: { onePtMade: "4", onePtAtt: "8", twoPtMade: "0", twoPtAtt: "1", threePtMade: "1", threePtAtt: "3", assists: "0", blocks: "5" },
+    seasonTotals: { onePtMade: "4", onePtAtt: "8", twoPtMade: "0", twoPtAtt: "1", threePtMade: "1", threePtAtt: "3", assists: "0", blocks: "5", rebounds: "0" },
+    allTimeTotals: { onePtMade: "4", onePtAtt: "8", twoPtMade: "0", twoPtAtt: "1", threePtMade: "1", threePtAtt: "3", assists: "0", blocks: "5", rebounds: "0" },
     seasonGamesPlayed: 1,
     allTimeGamesPlayed: 1,
     nicknames: "---",
@@ -226,8 +228,8 @@ export const players: Player[] = [
     name: "Jack Baker",
     photo: "/images/jack-baker.jpg",
     status: "active",
-    seasonTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0" },
-    allTimeTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0" },
+    seasonTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0", rebounds: "0" },
+    allTimeTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0", rebounds: "0" },
     seasonGamesPlayed: 1,
     allTimeGamesPlayed: 1,
     nicknames: "---",

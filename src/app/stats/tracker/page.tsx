@@ -13,6 +13,7 @@ interface PlayerStats {
   threePtAtt: number;
   assists: number;
   blocks: number;
+  rebounds: number;
 }
 
 const blankStats = (): PlayerStats => ({
@@ -24,6 +25,7 @@ const blankStats = (): PlayerStats => ({
   threePtAtt: 0,
   assists: 0,
   blocks: 0,
+  rebounds: 0,
 });
 
 function pct(made: number, att: number): string {
@@ -55,7 +57,7 @@ function formatSummary(
       lines.push(`1pt:  ${s.onePtMade}/${s.onePtAtt} (${pct(s.onePtMade, s.onePtAtt)})`);
       lines.push(`2pt:  ${s.twoPtMade}/${s.twoPtAtt} (${pct(s.twoPtMade, s.twoPtAtt)})`);
       lines.push(`3pt:  ${s.threePtMade}/${s.threePtAtt} (${pct(s.threePtMade, s.threePtAtt)})`);
-      lines.push(`AST:  ${s.assists}  |  BLK/STL: ${s.blocks}`);
+      lines.push(`AST:  ${s.assists}  |  BLK/STL: ${s.blocks}  |  REB: ${s.rebounds}`);
       lines.push("");
     }
   }
@@ -189,6 +191,7 @@ function PlayerStatCard({
       <div className="grid grid-cols-2 gap-3 pt-1">
         <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
         <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
+        <Counter label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} color="accent" />
       </div>
     </div>
   );

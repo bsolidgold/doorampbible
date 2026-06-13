@@ -95,6 +95,7 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
               <StatBox label="3PT" value={avg(s.threePtMade, gamesPlayed)} />
               <StatBox label="AST" value={avg(s.assists, gamesPlayed)} />
               <StatBox label="BLK/STL" value={avg(s.blocks, gamesPlayed)} />
+              <StatBox label="REB" value={avg(s.rebounds, gamesPlayed)} />
             </div>
           ) : (
             <div className="flex-1">
@@ -108,6 +109,7 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
             <StatBox label="3PT" value={`${s.threePtMade}/${s.threePtAtt}`} sub={pct(s.threePtMade, s.threePtAtt)} />
             <StatBox label="AST" value={s.assists} />
             <StatBox label="BLK/STL" value={s.blocks} />
+            <StatBox label="REB" value={s.rebounds} />
           </div>
         ) : (
           <div className="flex-1">
