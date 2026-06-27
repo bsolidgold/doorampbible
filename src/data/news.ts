@@ -6,6 +6,7 @@ export interface NewsArticle {
   image?: string;
   imageAlt?: string;
   imagePosition?: string;
+  imageHeight?: string;
 }
 
 export const newsArticles: NewsArticle[] = [
@@ -17,7 +18,8 @@ export const newsArticles: NewsArticle[] = [
       "David Anderegg hit a clutch one-pointer with five seconds left to give the BDT's a 5–4 victory over the River Kings in one of the most dramatic finishes the NDL has seen.",
     image: "/images/news/dave-game-winner.png",
     imageAlt: "David Anderegg hitting the game-winning shot",
-    imagePosition: "object-[center_20%]",
+    imagePosition: "object-top",
+    imageHeight: "h-72",
   },
   {
     slug: "solo-play-banned",
