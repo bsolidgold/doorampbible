@@ -170,7 +170,7 @@ export const players: Player[] = [
   {
     id: "atlee-gallagher",
     name: "Atlee Gallagher",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/atlee-gallagher.png",
     status: "active",
     seasonTotals: { onePtMade: "0", onePtAtt: "4", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "1", assists: "0", blocks: "5", rebounds: "0" },
     allTimeTotals: { onePtMade: "0", onePtAtt: "4", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "1", assists: "0", blocks: "5", rebounds: "0" },
