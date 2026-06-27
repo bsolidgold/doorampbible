@@ -142,7 +142,7 @@ export const players: Player[] = [
   {
     id: "eli-huntsman",
     name: "Eli Huntsman",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/eli-huntsman.jpg",
     status: "active",
     seasonTotals: { onePtMade: "0", onePtAtt: "2", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "1", assists: "1", blocks: "6", rebounds: "1" },
     allTimeTotals: { onePtMade: "0", onePtAtt: "2", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "1", assists: "1", blocks: "6", rebounds: "1" },
