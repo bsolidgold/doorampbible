@@ -10,8 +10,8 @@ import { PlayerProfileModal } from "./PlayerProfileModal";
 export type TabKey = "totals" | "averages" | "alltime";
 
 const tabLabels: Record<TabKey, string> = {
-  totals: "Season Totals",
   averages: "Game Averages",
+  totals: "Season Totals",
   alltime: "All-Time Totals",
 };
 
@@ -56,7 +56,7 @@ interface PlayerListProps {
 }
 
 export function PlayerList({ players }: PlayerListProps) {
-  const [activeTab, setActiveTab] = useState<TabKey>("totals");
+  const [activeTab, setActiveTab] = useState<TabKey>("averages");
   const [search, setSearch] = useState("");
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
 

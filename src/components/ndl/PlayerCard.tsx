@@ -104,6 +104,7 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
           )
         ) : hasStats ? (
           <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2">
+            <StatBox label="PTS" value={String(Number(s.onePtMade) + Number(s.twoPtMade) * 2 + Number(s.threePtMade) * 3)} />
             <StatBox label="1PT" value={s.onePtMade} />
             <StatBox label="2PT" value={s.twoPtMade} />
             <StatBox label="3PT" value={s.threePtMade} />
