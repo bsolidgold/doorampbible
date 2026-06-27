@@ -60,7 +60,7 @@ export default function DraftResultsPage() {
 
       <div className="relative w-full h-64 sm:h-80 rounded-lg overflow-hidden my-6">
         <Image
-          src="/images/draft-results.png"
+          src="/images/news/draft-results.png"
           alt="NDL team logos"
           fill
           className="object-cover"

@@ -21,7 +21,7 @@ export const newsArticles: NewsArticle[] = [
     date: "June 9, 2026",
     excerpt:
       "Adam Swarzfager stepped up alone as a solo captain and took down Ashton Anderegg and Jack Baker of the River Kings in the first game of the 2026 NDL season.",
-    image: "/images/game1-adam-victory.jpg",
+    image: "/images/news/game1-adam-victory.jpg",
     imageAlt: "Players gathered around the dooramp before Game 1",
   },
   {
@@ -30,7 +30,7 @@ export const newsArticles: NewsArticle[] = [
     date: "May 31, 2026",
     excerpt:
       "The inaugural NDL draft is in the books. Captains Grant, Finn, Ashton, Adam, and David traded picks across three rounds to build out the Freaky Fredholers, Trampoline Titans, River Kings, Murray Mice, and BDT's.",
-    image: "/images/draft-results.png",
+    image: "/images/news/draft-results.png",
     imageAlt: "NDL team logos",
   },
   {
@@ -39,7 +39,7 @@ export const newsArticles: NewsArticle[] = [
     date: "May 30, 2026",
     excerpt:
       "Finn Anderegg has suffered a minor UCL tear while playing baseball, raising concerns about his availability as the 2026 NDL regular season approaches.",
-    image: "/images/finn-ucl-injury.jpg",
+    image: "/images/news/finn-ucl-injury.jpg",
     imageAlt: "Finn Anderegg down after UCL injury",
   },
   {
@@ -48,7 +48,7 @@ export const newsArticles: NewsArticle[] = [
     date: "May 28, 2026",
     excerpt:
       "In a stunning development, former 90s pro dooramper Bret Gold has issued a direct challenge to retirees Owen Buckwalter and Max M: face him in a 2v1 match, and if they win, he will formally accept their retirements.",
-    image: "/images/owen-bret-retirement.png",
+    image: "/images/news/owen-bret-retirement.png",
     imageAlt: "Owen Buckwalter and Bret Gold",
   },
   {

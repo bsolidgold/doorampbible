@@ -53,7 +53,7 @@ export const players: Player[] = [
   {
     id: "adam-swarzfager",
     name: "Adam Swarzfager",
-    photo: "/images/adam-swarzfager.png",
+    photo: "/images/players/adam-swarzfager.png",
     status: "active",
     seasonTotals: { onePtMade: "9", onePtAtt: "26", twoPtMade: "0", twoPtAtt: "1", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "8", rebounds: "0" },
     allTimeTotals: { onePtMade: "9", onePtAtt: "26", twoPtMade: "0", twoPtAtt: "1", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "8", rebounds: "0" },
@@ -68,7 +68,7 @@ export const players: Player[] = [
   {
     id: "ashton-anderegg",
     name: "Ashton Anderegg",
-    photo: "/images/ashton-anderegg.jpg",
+    photo: "/images/players/ashton-anderegg.jpg",
     status: "active",
     seasonTotals: { onePtMade: "8", onePtAtt: "17", twoPtMade: "0", twoPtAtt: "1", threePtMade: "1", threePtAtt: "6", assists: "0", blocks: "8", rebounds: "0" },
     allTimeTotals: { onePtMade: "8", onePtAtt: "17", twoPtMade: "0", twoPtAtt: "1", threePtMade: "1", threePtAtt: "6", assists: "0", blocks: "8", rebounds: "0" },
@@ -83,7 +83,7 @@ export const players: Player[] = [
   {
     id: "finn-anderegg",
     name: "Finn Anderegg",
-    photo: "/images/finn-anderegg.jpg",
+    photo: "/images/players/finn-anderegg.jpg",
     status: "active",
     seasonTotals: blank,
     allTimeTotals: blank,
@@ -98,7 +98,7 @@ export const players: Player[] = [
   {
     id: "grant-bowers",
     name: "Grant Bowers",
-    photo: "/images/grant-bowers.png",
+    photo: "/images/players/grant-bowers.png",
     status: "active",
     seasonTotals: blank,
     allTimeTotals: blank,
@@ -113,7 +113,7 @@ export const players: Player[] = [
   {
     id: "david-anderegg",
     name: "David Anderegg",
-    photo: "/images/david-anderegg.jpg",
+    photo: "/images/players/david-anderegg.jpg",
     status: "active",
     seasonTotals: { onePtMade: "5", onePtAtt: "11", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "5", assists: "0", blocks: "2", rebounds: "0" },
     allTimeTotals: { onePtMade: "5", onePtAtt: "11", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "5", assists: "0", blocks: "2", rebounds: "0" },
@@ -142,7 +142,7 @@ export const players: Player[] = [
   {
     id: "eli-huntsman",
     name: "Eli Huntsman",
-    photo: "/images/eli-huntsman.jpg",
+    photo: "/images/players/eli-huntsman.jpg",
     status: "active",
     seasonTotals: { onePtMade: "0", onePtAtt: "2", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "1", assists: "1", blocks: "6", rebounds: "1" },
     allTimeTotals: { onePtMade: "0", onePtAtt: "2", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "1", assists: "1", blocks: "6", rebounds: "1" },
@@ -226,7 +226,7 @@ export const players: Player[] = [
   {
     id: "jack-baker",
     name: "Jack Baker",
-    photo: "/images/jack-baker.jpg",
+    photo: "/images/players/jack-baker.jpg",
     status: "active",
     seasonTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0", rebounds: "0" },
     allTimeTotals: { onePtMade: "1", onePtAtt: "9", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "2", blocks: "0", rebounds: "0" },

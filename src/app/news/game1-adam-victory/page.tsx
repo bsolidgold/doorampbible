@@ -8,7 +8,7 @@ export default function Game1AdamVictoryPage() {
     <ArticleLayout
       title="Adam Goes Solo — Murray Mice Captain Wins the Season Opener"
       date="June 9, 2026"
-      image="/images/game1-adam-victory.jpg"
+      image="/images/news/game1-adam-victory.jpg"
       imageAlt="Players gathered around the dooramp before Game 1"
     >
       <p>
