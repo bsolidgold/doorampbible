@@ -9,6 +9,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "bdts-beat-river-kings",
+    title: "Dave's Game-Winner — BDT's Edge River Kings in Thriller",
+    date: "June 27, 2026",
+    excerpt:
+      "David Anderegg hit a clutch one-pointer with five seconds left to give the BDT's a 5–4 victory over the River Kings in one of the most dramatic finishes the NDL has seen.",
+    image: "/images/news/dave-game-winner.png",
+    imageAlt: "David Anderegg hitting the game-winning shot",
+  },
+  {
     slug: "solo-play-banned",
     title: "Solo Play Banned — NDL Mandates Minimum Two-Man Rosters",
     date: "June 11, 2026",
