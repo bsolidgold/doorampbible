@@ -31,7 +31,7 @@ export function NewsCard({ article }: NewsCardProps) {
                 src={article.image}
                 alt={article.imageAlt ?? article.title}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className={`object-cover transition-transform duration-300 group-hover:scale-105 ${article.imagePosition ?? ""}`}
               />
             </div>
           )}
