@@ -104,9 +104,9 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
           )
         ) : hasStats ? (
           <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2">
-            <StatBox label="1PT" value={`${s.onePtMade}/${s.onePtAtt}`} sub={pct(s.onePtMade, s.onePtAtt)} />
-            <StatBox label="2PT" value={`${s.twoPtMade}/${s.twoPtAtt}`} sub={pct(s.twoPtMade, s.twoPtAtt)} />
-            <StatBox label="3PT" value={`${s.threePtMade}/${s.threePtAtt}`} sub={pct(s.threePtMade, s.threePtAtt)} />
+            <StatBox label="1PT" value={s.onePtMade} sub={pct(s.onePtMade, s.onePtAtt)} />
+            <StatBox label="2PT" value={s.twoPtMade} sub={pct(s.twoPtMade, s.twoPtAtt)} />
+            <StatBox label="3PT" value={s.threePtMade} sub={pct(s.threePtMade, s.threePtAtt)} />
             <StatBox label="AST" value={s.assists} />
             <StatBox label="BLK/STL" value={s.blocks} />
             <StatBox label="REB" value={s.rebounds} />
