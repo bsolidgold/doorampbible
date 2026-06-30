@@ -27,6 +27,20 @@ export default function HistoryPage() {
         <GameArchive />
       </section>
 
+      <section className="mb-12">
+        <SectionHeader title="2025 Winterdome" subtitle="The second annual Winterdome tournament." />
+        <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-5">
+          <p className="text-ndl-muted text-sm">Details coming soon.</p>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <SectionHeader title="2024 Winterdome" subtitle="The inaugural Winterdome tournament." />
+        <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-5">
+          <p className="text-ndl-muted text-sm">Details coming soon.</p>
+        </div>
+      </section>
+
       {[
         {
           title: "The Founders",
