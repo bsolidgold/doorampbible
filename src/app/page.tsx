@@ -38,6 +38,20 @@ export default function Home() {
           </aside>
         </div>
 
+        {/* Hotline */}
+        <section className="mt-16">
+          <div className="bg-ndl-secondary border border-ndl-accent/40 rounded-lg p-6 text-center">
+            <p className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-muted mb-2">Dooramp Hotline</p>
+            <p className="text-ndl-text text-sm mb-1">Contact us at</p>
+            <a
+              href="tel:+18018200326"
+              className="text-3xl font-heading font-black text-ndl-accent tracking-widest hover:opacity-80 transition-opacity"
+            >
+              (801) 820-0326
+            </a>
+          </div>
+        </section>
+
         {/* Coming Soon */}
         <section className="mt-16">
           <SectionHeader title="Coming Soon" />
