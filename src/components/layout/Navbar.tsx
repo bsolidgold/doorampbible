@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/history", label: "History" },
   { href: "/stats", label: "Stats" },
   { href: "/standings", label: "Standings" },
+  { href: "/elo-calculator", label: "ELO Calc" },
   { href: "/feedback", label: "Feedback" },
   { href: "https://youtube.com/@Doorampball", label: "YouTube", external: true },
 ];

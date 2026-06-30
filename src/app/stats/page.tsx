@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SectionHeader } from "@/components/ndl/SectionHeader";
 import { PlayerList } from "@/components/ndl/PlayerList";
 import { players } from "@/data/players";
@@ -15,6 +16,15 @@ export default function StatsPage() {
         <p className="mt-2 text-ndl-muted text-sm">
           Season averages, totals, and all-time records.
         </p>
+      </div>
+
+      <div className="mb-8 flex justify-end">
+        <Link
+          href="/stats/tracker"
+          className="inline-block px-5 py-2 text-xs font-heading font-semibold uppercase tracking-widest border border-ndl-accent text-ndl-accent rounded hover:bg-ndl-accent hover:text-ndl-bg transition-colors duration-200"
+        >
+          Game Tracker →
+        </Link>
       </div>
 
       <SectionHeader title="Players" />

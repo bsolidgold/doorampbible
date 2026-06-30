@@ -21,7 +21,7 @@ export default function FinnUCLTearPage() {
 
       <div className="relative w-full h-64 sm:h-80 rounded-lg overflow-hidden my-6">
         <Image
-          src="/images/finn-ucl-injury.jpg"
+          src="/images/news/finn-ucl-injury.jpg"
           alt="Finn Anderegg down after UCL injury"
           fill
           className="object-cover"

@@ -1,24 +1,54 @@
 "use client";
 
 import { useState } from "react";
-import { Player, PlayerStats } from "@/data/players";
+import { Player, PlayerStats, teamOrder } from "@/data/players";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlayerCard } from "./PlayerCard";
 import { PlayerProfileModal } from "./PlayerProfileModal";
 
-type TabKey = "averages" | "totals" | "alltime";
+export type TabKey = "totals" | "averages" | "alltime";
 
 const tabLabels: Record<TabKey, string> = {
-  averages: "Season Averages",
+  averages: "Game Averages",
   totals: "Season Totals",
   alltime: "All-Time Totals",
 };
 
 function getStats(player: Player, tab: TabKey): PlayerStats {
-  if (tab === "averages") return player.seasonAverages;
-  if (tab === "totals") return player.seasonTotals;
-  return player.allTimeTotals;
+  if (tab === "alltime") return player.allTimeTotals;
+  return player.seasonTotals;
+}
+
+export function getGamesPlayed(player: Player, tab: TabKey): number {
+  if (tab === "alltime") return player.allTimeGamesPlayed;
+  return player.seasonGamesPlayed;
+}
+
+const UNASSIGNED = "Free Agents";
+
+/** Group players by team, captains first, following teamOrder. */
+function groupByTeam(players: Player[]): { team: string; players: Player[] }[] {
+  const groups = new Map<string, Player[]>();
+  for (const player of players) {
+    const key = player.team ?? UNASSIGNED;
+    const list = groups.get(key) ?? [];
+    list.push(player);
+    groups.set(key, list);
+  }
+
+  const orderedKeys = [
+    ...teamOrder.filter((t) => groups.has(t)),
+    ...[...groups.keys()].filter((k) => !teamOrder.includes(k)),
+  ];
+
+  return orderedKeys.map((team) => ({
+    team,
+    players: groups
+      .get(team)!
+      .slice()
+      .sort((a, b) => Number(b.isCaptain ?? false) - Number(a.isCaptain ?? false)),
+  }));
 }
 
 interface PlayerListProps {
@@ -33,6 +63,8 @@ export function PlayerList({ players }: PlayerListProps) {
   const filtered = players.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  const groups = groupByTeam(filtered);
 
   return (
     <div className="space-y-4">
@@ -59,20 +91,31 @@ export function PlayerList({ players }: PlayerListProps) {
         />
       </div>
 
-      <div className="space-y-3">
-        {filtered.length === 0 ? (
-          <p className="text-ndl-muted text-sm py-6 text-center">No players found.</p>
-        ) : (
-          filtered.map((player) => (
-            <PlayerCard
-              key={player.id}
-              player={player}
-              activeStats={getStats(player, activeTab)}
-              onPhotoClick={() => setSelectedPlayer(player)}
-            />
-          ))
-        )}
-      </div>
+      {filtered.length === 0 ? (
+        <p className="text-ndl-muted text-sm py-6 text-center">No players found.</p>
+      ) : (
+        <div className="space-y-8">
+          {groups.map((group) => (
+            <div key={group.team} className="space-y-3">
+              <h3 className="font-heading font-bold text-lg uppercase tracking-widest text-ndl-text border-b border-ndl-surface pb-2">
+                {group.team}
+              </h3>
+              <div className="space-y-3">
+                {group.players.map((player) => (
+                  <PlayerCard
+                    key={player.id}
+                    player={player}
+                    activeStats={getStats(player, activeTab)}
+                    gamesPlayed={getGamesPlayed(player, activeTab)}
+                    showAverages={activeTab === "averages"}
+                    onPhotoClick={() => setSelectedPlayer(player)}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       <PlayerProfileModal
         player={selectedPlayer}

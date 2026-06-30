@@ -26,12 +26,12 @@ export function NewsCard({ article }: NewsCardProps) {
           </h3>
 
           {article.image && (
-            <div className="relative w-full h-48 rounded-md overflow-hidden mb-3">
+            <div className={`relative w-full ${article.imageHeight ?? "h-48"} rounded-md overflow-hidden mb-3`}>
               <Image
                 src={article.image}
                 alt={article.imageAlt ?? article.title}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className={`object-cover transition-transform duration-300 group-hover:scale-105 ${article.imagePosition ?? ""}`}
               />
             </div>
           )}

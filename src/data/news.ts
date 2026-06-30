@@ -5,16 +5,54 @@ export interface NewsArticle {
   excerpt: string;
   image?: string;
   imageAlt?: string;
+  imagePosition?: string;
+  imageHeight?: string;
 }
 
 export const newsArticles: NewsArticle[] = [
+  {
+    slug: "bdts-beat-river-kings",
+    title: "Dave's Game-Winner — BDT's Edge River Kings in Thriller",
+    date: "June 27, 2026",
+    excerpt:
+      "David Anderegg hit a clutch one-pointer with five seconds left to give the BDT's a 5–4 victory over the River Kings in one of the most dramatic finishes the NDL has seen.",
+    image: "/images/news/dave-game-winner.png",
+    imageAlt: "David Anderegg hitting the game-winning shot",
+    imagePosition: "object-top",
+    imageHeight: "h-72",
+  },
+  {
+    slug: "solo-play-banned",
+    title: "Solo Play Banned — NDL Mandates Minimum Two-Man Rosters",
+    date: "June 11, 2026",
+    excerpt:
+      "The NDL has officially banned solo play, requiring all teams to field at least two players per game. The move reshapes strategy league-wide and closes a loophole in the ELO system.",
+  },
+  {
+    slug: "game1-adam-victory",
+    title: "Adam Goes Solo — Murray Mice Captain Wins the Season Opener",
+    date: "June 9, 2026",
+    excerpt:
+      "Adam Swarzfager stepped up alone as a solo captain and took down Ashton Anderegg and Jack Baker of the River Kings in the first game of the 2026 NDL season.",
+    image: "/images/news/game1-adam-victory.jpg",
+    imageAlt: "Players gathered around the dooramp before Game 1",
+  },
+  {
+    slug: "draft-results",
+    title: "NDL Draft Results — Captains Stock Their Rosters",
+    date: "May 31, 2026",
+    excerpt:
+      "The inaugural NDL draft is in the books. Captains Grant, Finn, Ashton, Adam, and David traded picks across three rounds to build out the Freaky Fredholers, Trampoline Titans, River Kings, Murray Mice, and BDT's.",
+    image: "/images/news/draft-results.png",
+    imageAlt: "NDL team logos",
+  },
   {
     slug: "finn-ucl-tear",
     title: "Finn Anderegg Suffers Minor UCL Tear Ahead of 2026 Season",
     date: "May 30, 2026",
     excerpt:
       "Finn Anderegg has suffered a minor UCL tear while playing baseball, raising concerns about his availability as the 2026 NDL regular season approaches.",
-    image: "/images/finn-ucl-injury.jpg",
+    image: "/images/news/finn-ucl-injury.jpg",
     imageAlt: "Finn Anderegg down after UCL injury",
   },
   {
@@ -23,7 +61,7 @@ export const newsArticles: NewsArticle[] = [
     date: "May 28, 2026",
     excerpt:
       "In a stunning development, former 90s pro dooramper Bret Gold has issued a direct challenge to retirees Owen Buckwalter and Max M: face him in a 2v1 match, and if they win, he will formally accept their retirements.",
-    image: "/images/owen-bret-retirement.png",
+    image: "/images/news/owen-bret-retirement.png",
     imageAlt: "Owen Buckwalter and Bret Gold",
   },
   {

@@ -1,9 +1,12 @@
 import { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface ArticleLayoutProps {
   title: string;
   date: string;
+  image?: string;
+  imageAlt?: string;
   backHref?: string;
   backLabel?: string;
   children: ReactNode;
@@ -12,6 +15,8 @@ interface ArticleLayoutProps {
 export function ArticleLayout({
   title,
   date,
+  image,
+  imageAlt,
   backHref = "/",
   backLabel = "← Back to Home",
   children,
@@ -32,6 +37,17 @@ export function ArticleLayout({
         <h1 className="font-heading font-black text-3xl sm:text-4xl uppercase tracking-wide text-ndl-text leading-tight">
           {title}
         </h1>
+        {image && (
+          <div className="mt-6 rounded-lg overflow-hidden border border-ndl-surface">
+            <Image
+              src={image}
+              alt={imageAlt ?? title}
+              width={900}
+              height={600}
+              className="w-full object-cover"
+            />
+          </div>
+        )}
       </header>
 
       <article className="prose-ndl space-y-5 text-ndl-muted leading-relaxed">

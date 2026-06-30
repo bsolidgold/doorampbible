@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SectionHeader } from "@/components/ndl/SectionHeader";
+import { GameArchive } from "@/components/ndl/GameArchive";
 
 export const metadata: Metadata = { title: "History — NDL Dooramp" };
 
@@ -14,6 +15,14 @@ export default function HistoryPage() {
           The origins, legends, and evolution of the world&apos;s greatest sport.
         </p>
       </div>
+
+      <section className="mb-12">
+        <SectionHeader
+          title="Game Archive"
+          subtitle="Every game played in NDL history. Click a game to see the full box score."
+        />
+        <GameArchive />
+      </section>
 
       {[
         {

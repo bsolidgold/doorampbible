@@ -22,7 +22,7 @@ export default function BretGoldChallengePage() {
 
       <div className="relative w-full h-64 sm:h-80 rounded-lg overflow-hidden my-6">
         <Image
-          src="/images/owen-bret-retirement.png"
+          src="/images/news/owen-bret-retirement.png"
           alt="Owen Buckwalter and Bret Gold"
           fill
           className="object-cover"
