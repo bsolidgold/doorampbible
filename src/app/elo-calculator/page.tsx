@@ -241,7 +241,7 @@ export default function EloCalculatorPage() {
             </li>
             <li>
               <span className="text-ndl-text font-semibold">Loser reward:</span>{" "}
-              The losing team earns a base +{PARTICIPATION_BONUS} ELO, plus a bonus for bringing later-round picks — 2nd round adds +1, 3rd round adds +2 per player. A full roster (captain + 1st + 2nd + 3rd) earns +8 in a loss.
+              The losing team always earns exactly +{PARTICIPATION_BONUS} ELO, no matter which players were used.
             </li>
             <li>
               <span className="text-ndl-text font-semibold">First game:</span>{" "}
