@@ -87,11 +87,11 @@ export const winterdomes: Winterdome[] = [
     matchups: [
       { round: "Round of 8", teamA: "Owen Buckwalter", teamB: "Liam Cook", winner: "Owen Buckwalter" },
       { round: "Round of 8", teamA: "Eli Huntsman", teamB: "Zach Armijo", winner: "Eli Huntsman" },
-      { round: "Round of 8", teamA: "Mason Pay", teamB: "Daniel McCullough", winner: "Mason Pay" },
+      { round: "Round of 8", teamA: "Mason Pay", teamB: "Daniel McCullough", winner: "Mason Pay", notes: "Mason Pay disqualified after this match — replaced by Max Mitchell." },
       { round: "Round of 8", teamA: "Grant Bowers", teamB: "Jack Baker", winner: "Grant Bowers" },
       { round: "Semifinal", teamA: "Owen Buckwalter", teamB: "Eli Huntsman", winner: "Owen Buckwalter" },
-      { round: "Semifinal", teamA: "Mason Pay", teamB: "Grant Bowers", winner: "Mason Pay" },
-      { round: "Final", teamA: "Owen Buckwalter", teamB: "Mason Pay" },
+      { round: "Semifinal", teamA: "Max Mitchell", teamB: "Grant Bowers", winner: "Max Mitchell" },
+      { round: "Final", teamA: "Owen Buckwalter", teamB: "Max Mitchell" },
     ],
     teams: [
       {
