@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeader } from "@/components/ndl/SectionHeader";
 import { PlayerList } from "@/components/ndl/PlayerList";
+import { CollapsibleSection } from "@/components/ndl/CollapsibleSection";
 import { players } from "@/data/players";
 
 export const metadata: Metadata = { title: "Stats — NDL Dooramp" };
 
 export default function StatsPage() {
+  const activePlayers = players.filter((p) => p.status === "active");
+  const retiredPlayers = players.filter((p) => p.status === "retired");
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       <div className="mb-10">
@@ -28,7 +32,16 @@ export default function StatsPage() {
       </div>
 
       <SectionHeader title="Players" />
-      <PlayerList players={players} />
+      <PlayerList players={activePlayers} />
+
+      <div className="mt-12">
+        <CollapsibleSection
+          title="Inactive / Retired"
+          subtitle="Players who are no longer active in the NDL."
+        >
+          <PlayerList players={retiredPlayers} />
+        </CollapsibleSection>
+      </div>
     </div>
   );
 }
