@@ -1,0 +1,77 @@
+export interface WinterdomePlayer {
+  name: string;
+  playerId?: string; // links to players.ts if they're on the NDL roster
+  dnp?: boolean;
+}
+
+export interface WinterdomeTeam {
+  name: string;
+  players: WinterdomePlayer[];
+}
+
+export interface WinterdomeMatchup {
+  round: string;
+  teamA: string;
+  teamB: string;
+  winner?: string;
+  score?: string;
+  notes?: string;
+}
+
+export interface Winterdome {
+  year: number;
+  teams: WinterdomeTeam[];
+  matchups?: WinterdomeMatchup[];
+  champion?: string;
+  notes?: string;
+}
+
+export const winterdomes: Winterdome[] = [
+  {
+    year: 2025,
+    teams: [
+      {
+        name: "Murray Mice",
+        players: [
+          { name: "Adam Swarzfager", playerId: "adam-swarzfager" },
+          { name: "Ben Martinsen", playerId: "ben-martinsen" },
+          { name: "Orion Anderegg" },
+          { name: "Isaac Cameron", playerId: "isaac-cameron" },
+          { name: "Frank Patrone", playerId: "frank-patrone" },
+        ],
+      },
+      {
+        name: "Reno Reapers",
+        players: [
+          { name: "Ashton Anderegg", playerId: "ashton-anderegg" },
+          { name: "Eli Huntsman", playerId: "eli-huntsman" },
+          { name: "Jaxon Gladhart", playerId: "jaxon-gladhart" },
+          { name: "Zachary Armijo" },
+        ],
+      },
+      {
+        name: "Jolly Jackrackers",
+        players: [
+          { name: "Jack Baker", playerId: "jack-baker" },
+          { name: "Finn Anderegg", playerId: "finn-anderegg" },
+          { name: "Cooper Armijo" },
+          { name: "Archer Rugh" },
+        ],
+      },
+      {
+        name: "Bowling Bobblers",
+        players: [
+          { name: "Owen Buckwalter" },
+          { name: "Grant Bowers", playerId: "grant-bowers" },
+          { name: "Owen Simmons" },
+          { name: "Liam Cook", dnp: true },
+          { name: "Max Goodman", dnp: true },
+        ],
+      },
+    ],
+  },
+  {
+    year: 2024,
+    teams: [],
+  },
+];
