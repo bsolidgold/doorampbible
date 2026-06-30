@@ -83,6 +83,30 @@ export const winterdomes: Winterdome[] = [
   },
   {
     year: 2024,
-    teams: [],
+    notes: "Single-elimination 1v1 bracket tournament with 8 players seeded 1–4 per half.",
+    matchups: [
+      { round: "Round of 8", teamA: "Owen Buckwalter", teamB: "Liam Cook", winner: "Owen Buckwalter" },
+      { round: "Round of 8", teamA: "Eli Huntsman", teamB: "Zach Armijo", winner: "Eli Huntsman" },
+      { round: "Round of 8", teamA: "Mason Pay", teamB: "Daniel McCullough", winner: "Mason Pay" },
+      { round: "Round of 8", teamA: "Grant Bowers", teamB: "Jack Baker", winner: "Grant Bowers" },
+      { round: "Semifinal", teamA: "Owen Buckwalter", teamB: "Eli Huntsman", winner: "Owen Buckwalter" },
+      { round: "Semifinal", teamA: "Mason Pay", teamB: "Grant Bowers", winner: "Mason Pay" },
+      { round: "Final", teamA: "Owen Buckwalter", teamB: "Mason Pay" },
+    ],
+    teams: [
+      {
+        name: "Participants",
+        players: [
+          { name: "Owen Buckwalter", playerId: "owen-buckwalter" },
+          { name: "Liam Cook", playerId: "liam-cook" },
+          { name: "Eli Huntsman", playerId: "eli-huntsman" },
+          { name: "Zach Armijo", playerId: "zachary-armijo" },
+          { name: "Mason Pay", playerId: "mason-pay" },
+          { name: "Daniel McCullough", playerId: "daniel-mccullough" },
+          { name: "Grant Bowers", playerId: "grant-bowers" },
+          { name: "Jack Baker", playerId: "jack-baker" },
+        ],
+      },
+    ],
   },
 ];
