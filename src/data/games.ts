@@ -64,10 +64,10 @@ export const games: Game[] = [
         players: [
           {
             playerId: "ashton-anderegg",
-            onePtMade: null, onePtAtt: null,
-            twoPtMade: null, twoPtAtt: null,
-            threePtMade: null, threePtAtt: null,
-            assists: null, blocks: null, rebounds: null,
+            onePtMade: 4, onePtAtt: 9,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 3,
+            assists: 0, blocks: 3, rebounds: 0,
           },
           {
             playerId: "eli-huntsman",
@@ -108,10 +108,10 @@ export const games: Game[] = [
         players: [
           {
             playerId: "ashton-anderegg",
-            onePtMade: null, onePtAtt: null,
-            twoPtMade: null, twoPtAtt: null,
-            threePtMade: null, threePtAtt: null,
-            assists: null, blocks: null, rebounds: null,
+            onePtMade: 4, onePtAtt: 8,
+            twoPtMade: 0, twoPtAtt: 1,
+            threePtMade: 1, threePtAtt: 3,
+            assists: 0, blocks: 5, rebounds: 0,
           },
           {
             playerId: "jack-baker",
