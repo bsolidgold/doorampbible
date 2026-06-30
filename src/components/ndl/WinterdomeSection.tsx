@@ -4,6 +4,7 @@ import Image from "next/image";
 import { winterdomes, type Winterdome } from "@/data/winterdomes";
 import { players } from "@/data/players";
 import { CollapsibleSection } from "@/components/ndl/CollapsibleSection";
+import { BracketView } from "@/components/ndl/BracketView";
 
 function getPlayerPhoto(playerId?: string) {
   if (!playerId) return "/logos/dooSilhouette.png";
@@ -63,6 +64,10 @@ function WinterdomeCard({ dome }: { dome: Winterdome }) {
     <CollapsibleSection title={`${dome.year} Winterdome`} subtitle={subtitle}>
       <div className="space-y-4">
         {dome.notes && <p className="text-ndl-muted text-sm italic">{dome.notes}</p>}
+
+        {dome.bracket && (
+          <BracketView bracket={dome.bracket} champion={dome.champion} />
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {dome.teams.map((team) => (

@@ -1,3 +1,26 @@
+export interface BracketSlot {
+  name: string;
+  seed?: number;
+  note?: string; // e.g. "DQ", "sub"
+}
+
+export interface BracketMatch {
+  top: BracketSlot;
+  bottom: BracketSlot;
+  winner?: string;
+  score?: string;
+}
+
+export interface BracketRound {
+  name: string;
+  matches: BracketMatch[];
+}
+
+export interface BracketData {
+  rounds: BracketRound[];
+  note?: string;
+}
+
 export interface WinterdomePlayer {
   name: string;
   playerId?: string; // links to players.ts if they're on the NDL roster
@@ -24,6 +47,7 @@ export interface Winterdome {
   matchups?: WinterdomeMatchup[];
   champion?: string;
   notes?: string;
+  bracket?: BracketData;
 }
 
 export const winterdomes: Winterdome[] = [
@@ -31,6 +55,17 @@ export const winterdomes: Winterdome[] = [
     year: 2025,
     champion: "Murray Mice",
     notes: "Round robin qualifying with the top two teams advancing to the final.",
+    bracket: {
+      note: "Top 2 teams from round robin qualifying advanced to the final.",
+      rounds: [
+        {
+          name: "Final",
+          matches: [
+            { top: { name: "Murray Mice", seed: 1 }, bottom: { name: "Bowling Bobblers", seed: 2 }, winner: "Murray Mice" },
+          ],
+        },
+      ],
+    },
     matchups: [
       { round: "Round Robin", teamA: "Murray Mice", teamB: "Reno Reapers", winner: "Murray Mice", score: "3–1" },
       { round: "Round Robin", teamA: "Murray Mice", teamB: "Jolly Jackrackers", winner: "Murray Mice", score: "31–2" },
@@ -85,6 +120,32 @@ export const winterdomes: Winterdome[] = [
     year: 2024,
     champion: "Owen Buckwalter",
     notes: "Single-elimination 1v1 bracket tournament with 8 players seeded 1–4 per half.",
+    bracket: {
+      rounds: [
+        {
+          name: "Round of 8",
+          matches: [
+            { top: { name: "Owen Buckwalter", seed: 1 }, bottom: { name: "Liam Cook", seed: 4 }, winner: "Owen Buckwalter" },
+            { top: { name: "Eli Huntsman", seed: 3 }, bottom: { name: "Zach Armijo", seed: 2 }, winner: "Eli Huntsman" },
+            { top: { name: "Daniel McCullough", seed: 1 }, bottom: { name: "Mason Pay", seed: 4, note: "DQ" }, winner: "Mason Pay" },
+            { top: { name: "Grant Bowers", seed: 3 }, bottom: { name: "Jack Baker", seed: 2 }, winner: "Grant Bowers" },
+          ],
+        },
+        {
+          name: "Semifinal",
+          matches: [
+            { top: { name: "Owen Buckwalter" }, bottom: { name: "Eli Huntsman" }, winner: "Owen Buckwalter" },
+            { top: { name: "Max Mitchell", note: "sub" }, bottom: { name: "Grant Bowers" }, winner: "Max Mitchell" },
+          ],
+        },
+        {
+          name: "Final",
+          matches: [
+            { top: { name: "Owen Buckwalter" }, bottom: { name: "Max Mitchell" }, winner: "Owen Buckwalter", score: "2–1" },
+          ],
+        },
+      ],
+    },
     matchups: [
       { round: "Round of 8", teamA: "Owen Buckwalter", teamB: "Liam Cook", winner: "Owen Buckwalter" },
       { round: "Round of 8", teamA: "Eli Huntsman", teamB: "Zach Armijo", winner: "Eli Huntsman" },
