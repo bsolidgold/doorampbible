@@ -69,8 +69,9 @@ export function upsetBonus(winnerStrength: number, loserStrength: number): numbe
 export function opponentCountMult(loserRoster: DraftRound[]): number {
   const lp = loserRoster.length;
   if (lp <= 2) return 1.0;
-  // Players beyond the first 2 — their avg strength shifts reward up or down
-  const extraPlayers = loserRoster.slice(2);
+  // Sort strongest first so extras are always the weakest picks, not click-order dependent
+  const sorted = [...loserRoster].sort((a, b) => STRENGTH[b] - STRENGTH[a]);
+  const extraPlayers = sorted.slice(2);
   const extraAvgStrength = extraPlayers.reduce((s, r) => s + STRENGTH[r], 0) / extraPlayers.length;
   // extraAvgStrength ranges 1–4. At 2.5 (midpoint) = no change.
   // Above 2.5 (stronger) = slight bonus; below 2.5 (weaker) = slight penalty.
