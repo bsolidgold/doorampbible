@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { winterdomes, type Winterdome } from "@/data/winterdomes";
 import { players } from "@/data/players";
-import { SectionHeader } from "@/components/ndl/SectionHeader";
+import { CollapsibleSection } from "@/components/ndl/CollapsibleSection";
 
 function getPlayerPhoto(playerId?: string) {
   if (!playerId) return "/logos/dooSilhouette.png";
@@ -44,70 +42,52 @@ function TeamCard({ team }: { team: Winterdome["teams"][number] }) {
 }
 
 function WinterdomeCard({ dome }: { dome: Winterdome }) {
-  const [open, setOpen] = useState(false);
   const hasContent = dome.teams.length > 0;
+  const subtitle = dome.champion
+    ? `Champion: ${dome.champion}`
+    : hasContent
+    ? `${dome.teams.length}-team tournament`
+    : "Details coming soon.";
 
-  return (
-    <section className="mb-12">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-full text-left flex items-center justify-between"
-        disabled={!hasContent}
-      >
-        <SectionHeader
-          title={`${dome.year} Winterdome`}
-          subtitle={
-            dome.champion
-              ? `Champion: ${dome.champion}`
-              : hasContent
-              ? `${dome.teams.length}-team tournament`
-              : "Details coming soon."
-          }
-        />
-        {hasContent && (
-          <span className="text-ndl-muted mb-6 ml-2 flex-shrink-0">
-            {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-          </span>
-        )}
-      </button>
-
-      {!hasContent && (
+  if (!hasContent) {
+    return (
+      <CollapsibleSection title={`${dome.year} Winterdome`} subtitle={subtitle}>
         <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-5">
           <p className="text-ndl-muted text-sm">Details coming soon.</p>
         </div>
-      )}
+      </CollapsibleSection>
+    );
+  }
 
-      {hasContent && open && (
-        <div className="space-y-4">
-          {dome.notes && (
-            <p className="text-ndl-muted text-sm italic">{dome.notes}</p>
-          )}
+  return (
+    <CollapsibleSection title={`${dome.year} Winterdome`} subtitle={subtitle}>
+      <div className="space-y-4">
+        {dome.notes && <p className="text-ndl-muted text-sm italic">{dome.notes}</p>}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {dome.teams.map((team) => (
-              <TeamCard key={team.name} team={team} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {dome.teams.map((team) => (
+            <TeamCard key={team.name} team={team} />
+          ))}
+        </div>
+
+        {dome.matchups && dome.matchups.length > 0 && (
+          <div className="mt-4 space-y-2">
+            <div className="text-[11px] font-bold text-ndl-muted uppercase tracking-widest mb-2">Results</div>
+            {dome.matchups.map((m, i) => (
+              <div key={i} className="bg-ndl-secondary border border-ndl-surface rounded-lg px-4 py-3 flex items-center gap-3 flex-wrap">
+                <span className="text-[10px] font-bold text-ndl-muted uppercase tracking-wider w-16 flex-shrink-0">{m.round}</span>
+                <span className={`text-sm font-semibold ${m.winner === m.teamA ? "text-ndl-text" : "text-ndl-muted"}`}>{m.teamA}</span>
+                <span className="text-ndl-muted text-xs">vs</span>
+                <span className={`text-sm font-semibold ${m.winner === m.teamB ? "text-ndl-text" : "text-ndl-muted"}`}>{m.teamB}</span>
+                {m.score && <span className="text-ndl-accent font-heading font-bold text-sm ml-auto">{m.score}</span>}
+                {m.winner && !m.score && <span className="text-ndl-accent text-xs font-bold ml-auto">{m.winner} WIN</span>}
+                {m.notes && <p className="w-full text-[11px] text-ndl-muted italic mt-1">{m.notes}</p>}
+              </div>
             ))}
           </div>
-
-          {dome.matchups && dome.matchups.length > 0 && (
-            <div className="mt-4 space-y-2">
-              <div className="text-[11px] font-bold text-ndl-muted uppercase tracking-widest mb-2">Results</div>
-              {dome.matchups.map((m, i) => (
-                <div key={i} className="bg-ndl-secondary border border-ndl-surface rounded-lg px-4 py-3 flex items-center gap-3 flex-wrap">
-                  <span className="text-[10px] font-bold text-ndl-muted uppercase tracking-wider w-16 flex-shrink-0">{m.round}</span>
-                  <span className={`text-sm font-semibold ${m.winner === m.teamA ? "text-ndl-text" : "text-ndl-muted"}`}>{m.teamA}</span>
-                  <span className="text-ndl-muted text-xs">vs</span>
-                  <span className={`text-sm font-semibold ${m.winner === m.teamB ? "text-ndl-text" : "text-ndl-muted"}`}>{m.teamB}</span>
-                  {m.score && <span className="text-ndl-accent font-heading font-bold text-sm ml-auto">{m.score}</span>}
-                  {m.winner && !m.score && <span className="text-ndl-accent text-xs font-bold ml-auto">{m.winner} WIN</span>}
-                  {m.notes && <p className="w-full text-[11px] text-ndl-muted italic mt-1">{m.notes}</p>}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </section>
+        )}
+      </div>
+    </CollapsibleSection>
   );
 }
 
