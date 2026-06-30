@@ -61,7 +61,7 @@ export const players: Player[] = [
     allTimeGamesPlayed: 1,
     nicknames: "---",
     description: "---",
-    accolades: "---",
+    accolades: "2025 Winterdome Champion, 2025 Winterdome Finals MVP",
     team: "Murray Mice",
     isCaptain: true,
   },
@@ -164,7 +164,7 @@ export const players: Player[] = [
     allTimeGamesPlayed: 0,
     nicknames: "---",
     description: "---",
-    accolades: "---",
+    accolades: "2025 Winterdome Champion",
     team: "Murray Mice",
   },
   {
@@ -192,7 +192,7 @@ export const players: Player[] = [
     allTimeGamesPlayed: 0,
     nicknames: "---",
     description: "---",
-    accolades: "---",
+    accolades: "2025 Winterdome Champion",
     team: "Freaky Fredholers",
   },
   {
@@ -332,7 +332,7 @@ export const players: Player[] = [
     allTimeGamesPlayed: 0,
     nicknames: "---",
     description: "---",
-    accolades: "---",
+    accolades: "2025 Winterdome Champion",
     team: "BDT's",
   },
 ];
