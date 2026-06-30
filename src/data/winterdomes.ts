@@ -83,6 +83,7 @@ export const winterdomes: Winterdome[] = [
   },
   {
     year: 2024,
+    champion: "Owen Buckwalter",
     notes: "Single-elimination 1v1 bracket tournament with 8 players seeded 1–4 per half.",
     matchups: [
       { round: "Round of 8", teamA: "Owen Buckwalter", teamB: "Liam Cook", winner: "Owen Buckwalter" },
@@ -91,7 +92,7 @@ export const winterdomes: Winterdome[] = [
       { round: "Round of 8", teamA: "Grant Bowers", teamB: "Jack Baker", winner: "Grant Bowers" },
       { round: "Semifinal", teamA: "Owen Buckwalter", teamB: "Eli Huntsman", winner: "Owen Buckwalter" },
       { round: "Semifinal", teamA: "Max Mitchell", teamB: "Grant Bowers", winner: "Max Mitchell" },
-      { round: "Final", teamA: "Owen Buckwalter", teamB: "Max Mitchell" },
+      { round: "Final", teamA: "Owen Buckwalter", teamB: "Max Mitchell", winner: "Owen Buckwalter", score: "2–1" },
     ],
     teams: [
       {

@@ -346,7 +346,7 @@ export const players: Player[] = [
     allTimeGamesPlayed: 0,
     nicknames: "---",
     description: "---",
-    accolades: "---",
+    accolades: "2024 Winterdome Champion, 2024 Winterdome Finals MVP",
   },
   {
     id: "orion-anderegg",
