@@ -29,6 +29,17 @@ export interface Winterdome {
 export const winterdomes: Winterdome[] = [
   {
     year: 2025,
+    champion: "Murray Mice",
+    notes: "Round robin qualifying with the top two teams advancing to the final.",
+    matchups: [
+      { round: "Round Robin", teamA: "Murray Mice", teamB: "Reno Reapers", winner: "Murray Mice", score: "3–1" },
+      { round: "Round Robin", teamA: "Murray Mice", teamB: "Jolly Jackrackers", winner: "Murray Mice", score: "31–2" },
+      { round: "Round Robin", teamA: "Murray Mice", teamB: "Bowling Bobblers", winner: "Murray Mice" },
+      { round: "Round Robin", teamA: "Reno Reapers", teamB: "Jolly Jackrackers", winner: "Reno Reapers" },
+      { round: "Round Robin", teamA: "Bowling Bobblers", teamB: "Reno Reapers", winner: "Bowling Bobblers", score: "7–6" },
+      { round: "Round Robin", teamA: "Bowling Bobblers", teamB: "Jolly Jackrackers", winner: "Bowling Bobblers", score: "11–1" },
+      { round: "Final", teamA: "Murray Mice", teamB: "Bowling Bobblers", winner: "Murray Mice" },
+    ],
     teams: [
       {
         name: "Murray Mice",
