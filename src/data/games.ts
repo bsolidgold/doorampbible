@@ -98,7 +98,7 @@ export const games: Game[] = [
             onePtMade: 9, onePtAtt: 26,
             twoPtMade: 0, twoPtAtt: 1,
             threePtMade: 0, threePtAtt: 0,
-            assists: 0, blocks: 8, rebounds: 0,
+            assists: 0, blocks: 8, rebounds: 3,
           },
         ],
       },
@@ -111,7 +111,7 @@ export const games: Game[] = [
             onePtMade: 4, onePtAtt: 8,
             twoPtMade: 0, twoPtAtt: 1,
             threePtMade: 1, threePtAtt: 3,
-            assists: 0, blocks: 5, rebounds: 0,
+            assists: 0, blocks: 5, rebounds: 2,
           },
           {
             playerId: "jack-baker",
