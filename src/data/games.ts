@@ -30,6 +30,55 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "game-3-2026",
+    date: "July 16, 2026",
+    season: "2026",
+    gameNumber: 3,
+    winner: "River Kings",
+    teams: [
+      {
+        name: "River Kings",
+        score: 8,
+        players: [
+          {
+            playerId: "ashton-anderegg",
+            onePtMade: 2, onePtAtt: 2,
+            twoPtMade: 2, twoPtAtt: 3,
+            threePtMade: 0, threePtAtt: 5,
+            assists: 0, blocks: 3, rebounds: 0,
+          },
+          {
+            playerId: "eli-huntsman",
+            onePtMade: 2, onePtAtt: 3,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            assists: 0, blocks: 4, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "Trampoline Titans",
+        score: 4,
+        players: [
+          {
+            playerId: "finn-anderegg",
+            onePtMade: 3, onePtAtt: 16,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            assists: 1, blocks: 3, rebounds: 0,
+          },
+          {
+            playerId: "ben-hoag",
+            onePtMade: 1, onePtAtt: 3,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            assists: 0, blocks: 2, rebounds: 1,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "game-2-2026",
     date: "June 27, 2026",
     season: "2026",
