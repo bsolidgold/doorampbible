@@ -35,6 +35,8 @@ export const games: Game[] = [
     season: "2026",
     gameNumber: 3,
     winner: "River Kings",
+    notes: "A heated altercation broke out between captains Finn Anderegg and Ashton Anderegg after Finn illegally slapped the ball from Ashton's hands.",
+    newsSlug: "captains-clash-game3",
     teams: [
       {
         name: "River Kings",

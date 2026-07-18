@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "captains-clash-game3",
+    title: "Captains Clash — Finn and Ashton Nearly Come to Blows in Game 3",
+    date: "July 16, 2026",
+    excerpt:
+      "The River Kings held off the Trampoline Titans 8–4, but the game was overshadowed by a heated altercation between captains Finn Anderegg and Ashton Anderegg after an illegal slap of the ball.",
+  },
+  {
     slug: "bdts-beat-river-kings",
     title: "Dave's Game-Winner — BDT's Edge River Kings in Thriller",
     date: "June 27, 2026",
