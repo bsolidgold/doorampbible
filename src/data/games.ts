@@ -30,6 +30,57 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "game-4-2026",
+    date: "July 18, 2026",
+    season: "2026",
+    gameNumber: 4,
+    winner: "Murray Mice",
+    notes: "Adam Swarzfager and Ben Martinsen combined to shoot a perfect 23-for-23 from the field as the Murray Mice shut out the River Kings 40-0, the most lopsided result in NDL history.",
+    newsSlug: "murray-mice-historic-rout",
+    teams: [
+      {
+        name: "Murray Mice",
+        score: 40,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 13, onePtAtt: 13,
+            twoPtMade: 4, twoPtAtt: 4,
+            threePtMade: 3, threePtAtt: 3,
+            assists: 9, blocks: 10, rebounds: 12,
+          },
+          {
+            playerId: "ben-martinsen",
+            onePtMade: 10, onePtAtt: 10,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            assists: 0, blocks: 22, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "River Kings",
+        score: 0,
+        players: [
+          {
+            playerId: "ashton-anderegg",
+            onePtMade: 0, onePtAtt: 0,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            assists: 0, blocks: 0, rebounds: 0,
+          },
+          {
+            playerId: "eli-huntsman",
+            onePtMade: 0, onePtAtt: 0,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            assists: 0, blocks: 0, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "game-3-2026",
     date: "July 16, 2026",
     season: "2026",
