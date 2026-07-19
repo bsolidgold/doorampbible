@@ -36,6 +36,7 @@ function StatBox({ label, value, detail }: StatBoxProps) {
         onClick={() => clickable && setOpen(true)}
       >
         <p className="text-ndl-text font-heading font-black text-sm leading-none">{value}</p>
+        {detail && <p className="text-ndl-muted/70 font-heading font-black text-[10px] leading-none mt-1">{detail.pct}</p>}
       </div>
       <div className="bg-ndl-primary rounded-md px-2 py-1 text-center">
         <p className="text-ndl-muted text-[10px] font-heading font-semibold uppercase tracking-wider leading-none">{label}</p>
