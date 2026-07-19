@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { Player, PlayerStats } from "@/data/players";
 
 function pct(made: string, att: string): string {
@@ -20,15 +21,30 @@ function avg(made: string, games: number): string {
 interface StatBoxProps {
   label: string;
   value: string;
-  sub?: string;
+  detail?: { made: string; att: string; pct: string };
 }
 
-function StatBox({ label, value, sub }: StatBoxProps) {
+function StatBox({ label, value, detail }: StatBoxProps) {
+  const [open, setOpen] = useState(false);
+  const clickable = !!detail;
+
   return (
-    <div className="bg-ndl-primary rounded-md px-2 py-2 text-center">
-      <p className="text-ndl-text font-heading font-black text-sm leading-none">{value}</p>
-      {sub && <p className="text-ndl-muted/70 text-[10px] font-heading leading-none mt-0.5">{sub}</p>}
-      <p className="text-ndl-muted text-[10px] font-heading font-semibold uppercase tracking-wider mt-1">{label}</p>
+    <div className="flex flex-col gap-1">
+      <div
+        className={`relative bg-ndl-primary rounded-md px-2 py-2 text-center ${clickable ? "cursor-pointer hover:bg-ndl-surface transition-colors" : ""}`}
+        onClick={() => clickable && setOpen((o) => !o)}
+      >
+        <p className="text-ndl-text font-heading font-black text-sm leading-none">{value}</p>
+        {open && detail && (
+          <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 z-50 bg-ndl-bg border border-ndl-accent/40 rounded px-3 py-2 text-center whitespace-nowrap shadow-lg">
+            <p className="text-ndl-text text-xs font-heading font-bold">{detail.made}/{detail.att}</p>
+            <p className="text-ndl-muted text-[10px] font-heading">{detail.pct}</p>
+          </div>
+        )}
+      </div>
+      <div className="bg-ndl-primary rounded-md px-2 py-1 text-center">
+        <p className="text-ndl-muted text-[10px] font-heading font-semibold uppercase tracking-wider leading-none">{label}</p>
+      </div>
     </div>
   );
 }
@@ -89,11 +105,11 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
         {/* Stats */}
         {showAverages ? (
           hasAverages ? (
-            <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2">
+            <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2 items-start">
               <StatBox label="PTS" value={avg(String(Number(s.onePtMade) + Number(s.twoPtMade) * 2 + Number(s.threePtMade) * 3), gamesPlayed)} />
-              <StatBox label="1PT" value={s.onePtAtt !== "---" ? `${s.onePtMade}/${s.onePtAtt}` : "---"} sub={pct(s.onePtMade, s.onePtAtt)} />
-              <StatBox label="2PT" value={s.twoPtAtt !== "---" ? `${s.twoPtMade}/${s.twoPtAtt}` : "---"} sub={pct(s.twoPtMade, s.twoPtAtt)} />
-              <StatBox label="3PT" value={s.threePtAtt !== "---" ? `${s.threePtMade}/${s.threePtAtt}` : "---"} sub={pct(s.threePtMade, s.threePtAtt)} />
+              <StatBox label="1PT" value={s.onePtAtt !== "---" ? s.onePtMade : "---"} detail={s.onePtAtt !== "---" ? { made: s.onePtMade, att: s.onePtAtt, pct: pct(s.onePtMade, s.onePtAtt) } : undefined} />
+              <StatBox label="2PT" value={s.twoPtAtt !== "---" ? s.twoPtMade : "---"} detail={s.twoPtAtt !== "---" ? { made: s.twoPtMade, att: s.twoPtAtt, pct: pct(s.twoPtMade, s.twoPtAtt) } : undefined} />
+              <StatBox label="3PT" value={s.threePtAtt !== "---" ? s.threePtMade : "---"} detail={s.threePtAtt !== "---" ? { made: s.threePtMade, att: s.threePtAtt, pct: pct(s.threePtMade, s.threePtAtt) } : undefined} />
               <StatBox label="AST" value={avg(s.assists, gamesPlayed)} />
               <StatBox label="BLK/STL" value={avg(s.blocks, gamesPlayed)} />
               <StatBox label="REB" value={avg(s.rebounds, gamesPlayed)} />
@@ -104,11 +120,11 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
             </div>
           )
         ) : hasStats ? (
-          <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2">
+          <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2 items-start">
             <StatBox label="PTS" value={String(Number(s.onePtMade) + Number(s.twoPtMade) * 2 + Number(s.threePtMade) * 3)} />
-            <StatBox label="1PT" value={s.onePtMade} />
-            <StatBox label="2PT" value={s.twoPtMade} />
-            <StatBox label="3PT" value={s.threePtMade} />
+            <StatBox label="1PT" value={s.onePtMade} detail={s.onePtAtt !== "---" ? { made: s.onePtMade, att: s.onePtAtt, pct: pct(s.onePtMade, s.onePtAtt) } : undefined} />
+            <StatBox label="2PT" value={s.twoPtMade} detail={s.twoPtAtt !== "---" ? { made: s.twoPtMade, att: s.twoPtAtt, pct: pct(s.twoPtMade, s.twoPtAtt) } : undefined} />
+            <StatBox label="3PT" value={s.threePtMade} detail={s.threePtAtt !== "---" ? { made: s.threePtMade, att: s.threePtAtt, pct: pct(s.threePtMade, s.threePtAtt) } : undefined} />
             <StatBox label="AST" value={s.assists} />
             <StatBox label="BLK/STL" value={s.blocks} />
             <StatBox label="REB" value={s.rebounds} />
