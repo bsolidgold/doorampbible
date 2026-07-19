@@ -68,7 +68,7 @@ export function PlayerList({ players }: PlayerListProps) {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+      <div className="sticky top-16 z-40 bg-ndl-bg py-3 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as TabKey)}>
           <TabsList className="bg-ndl-secondary border border-ndl-surface">
             {(Object.keys(tabLabels) as TabKey[]).map((key) => (
