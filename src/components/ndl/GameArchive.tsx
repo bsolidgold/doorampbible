@@ -88,52 +88,32 @@ function GameCard({ game }: { game: Game }) {
   const hasScore = home.score !== null || away.score !== null;
 
   return (
-    <div className="bg-ndl-secondary border border-ndl-surface rounded-lg overflow-hidden">
+    <div className="border-b border-ndl-surface last:border-0 overflow-hidden">
       {/* Header row — always visible */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full text-left px-4 py-4 flex items-center gap-3 hover:bg-ndl-surface/30 transition-colors"
+        className="w-full text-left px-2 py-2.5 flex items-center gap-4 hover:bg-ndl-surface/20 transition-colors"
       >
-        {/* Game number + date */}
-        <div className="flex-shrink-0 text-center w-10">
-          <div className="text-[10px] text-ndl-muted uppercase tracking-wider">Game</div>
-          <div className="font-heading font-black text-lg text-ndl-accent leading-none">{game.gameNumber}</div>
+        {/* Team A */}
+        <div className={`flex items-center gap-1.5 flex-1 min-w-0 ${game.winner === home.name ? "text-ndl-text" : "text-ndl-muted"}`}>
+          <span className="font-semibold text-sm truncate">{home.name}</span>
+          {hasScore && <span className="font-heading font-black text-sm">{home.score ?? "?"}</span>}
+          {game.winner === home.name && <span className="text-[10px] font-bold text-ndl-accent uppercase tracking-wider">W</span>}
         </div>
 
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            {/* Team A */}
-            <div className={`flex items-center gap-1.5 ${game.winner === home.name ? "text-ndl-text" : "text-ndl-muted"}`}>
-              {getTeamLogo(home.name) && (
-                <Image src={getTeamLogo(home.name)!} alt={home.name} width={18} height={18} className="object-contain" />
-              )}
-              <span className="font-semibold text-sm truncate">{home.name}</span>
-              {hasScore && <span className="font-heading font-black text-base">{home.score ?? "?"}</span>}
-              {game.winner === home.name && (
-                <span className="text-[10px] font-bold text-ndl-accent uppercase tracking-wider">W</span>
-              )}
-            </div>
+        <span className="text-ndl-muted text-xs font-bold flex-shrink-0">vs</span>
 
-            <span className="text-ndl-muted text-xs font-bold">vs</span>
-
-            {/* Team B */}
-            <div className={`flex items-center gap-1.5 ${game.winner === away.name ? "text-ndl-text" : "text-ndl-muted"}`}>
-              {getTeamLogo(away.name) && (
-                <Image src={getTeamLogo(away.name)!} alt={away.name} width={18} height={18} className="object-contain" />
-              )}
-              <span className="font-semibold text-sm truncate">{away.name}</span>
-              {hasScore && <span className="font-heading font-black text-base">{away.score ?? "?"}</span>}
-              {game.winner === away.name && (
-                <span className="text-[10px] font-bold text-ndl-accent uppercase tracking-wider">W</span>
-              )}
-            </div>
-          </div>
-
-          <div className="text-[11px] text-ndl-muted mt-0.5">{game.date}</div>
+        {/* Team B */}
+        <div className={`flex items-center gap-1.5 flex-1 min-w-0 ${game.winner === away.name ? "text-ndl-text" : "text-ndl-muted"}`}>
+          <span className="font-semibold text-sm truncate">{away.name}</span>
+          {hasScore && <span className="font-heading font-black text-sm">{away.score ?? "?"}</span>}
+          {game.winner === away.name && <span className="text-[10px] font-bold text-ndl-accent uppercase tracking-wider">W</span>}
         </div>
+
+        <span className="text-[11px] text-ndl-muted flex-shrink-0">{game.date}</span>
 
         <div className="flex-shrink-0 text-ndl-muted">
-          {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
         </div>
       </button>
 
@@ -146,13 +126,9 @@ function GameCard({ game }: { game: Game }) {
 
           {game.teams.map((team) => (
             <div key={team.name}>
-              <div className="flex items-center gap-2 mb-2">
-                {getTeamLogo(team.name) && (
-                  <Image src={getTeamLogo(team.name)!} alt={team.name} width={20} height={20} className="object-contain" />
-                )}
+              <div className="mb-2">
                 <span className={`font-heading font-bold text-sm uppercase tracking-wider ${game.winner === team.name ? "text-ndl-accent" : "text-ndl-muted"}`}>
-                  {team.name}
-                  {game.winner === team.name && " — WIN"}
+                  {team.name}{game.winner === team.name && " — WIN"}
                 </span>
               </div>
               <StatTable playerStats={team.players} />
@@ -187,7 +163,7 @@ export function GameArchive() {
             <div className="text-[11px] font-bold text-ndl-muted uppercase tracking-widest mb-3">
               {season} Season — {seasonGames.length} game{seasonGames.length !== 1 ? "s" : ""}
             </div>
-            <div className="space-y-2">
+            <div className="bg-ndl-secondary border border-ndl-surface rounded-lg">
               {seasonGames.map((game) => (
                 <GameCard key={game.id} game={game} />
               ))}
