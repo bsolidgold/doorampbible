@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Player, PlayerStats } from "@/data/players";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 function pct(made: string, att: string): string {
   const m = Number(made);
@@ -31,20 +32,36 @@ function StatBox({ label, value, detail }: StatBoxProps) {
   return (
     <div className="flex flex-col gap-1">
       <div
-        className={`relative bg-ndl-primary rounded-md px-2 py-2 text-center ${clickable ? "cursor-pointer hover:bg-ndl-surface transition-colors" : ""}`}
-        onClick={() => clickable && setOpen((o) => !o)}
+        className={`bg-ndl-primary rounded-md px-2 py-2 text-center ${clickable ? "cursor-pointer hover:bg-ndl-surface transition-colors" : ""}`}
+        onClick={() => clickable && setOpen(true)}
       >
         <p className="text-ndl-text font-heading font-black text-sm leading-none">{value}</p>
-        {open && detail && (
-          <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 z-50 bg-ndl-bg border border-ndl-accent/40 rounded px-3 py-2 text-center whitespace-nowrap shadow-lg">
-            <p className="text-ndl-text text-xs font-heading font-bold">{detail.made}/{detail.att}</p>
-            <p className="text-ndl-muted text-[10px] font-heading">{detail.pct}</p>
-          </div>
-        )}
       </div>
       <div className="bg-ndl-primary rounded-md px-2 py-1 text-center">
         <p className="text-ndl-muted text-[10px] font-heading font-semibold uppercase tracking-wider leading-none">{label}</p>
       </div>
+
+      {detail && (
+        <Dialog open={open} onOpenChange={(o) => !o && setOpen(false)}>
+          <DialogContent className="bg-ndl-secondary border-ndl-surface text-ndl-text max-w-xs">
+            <DialogHeader>
+              <DialogTitle className="font-heading font-black text-xl uppercase tracking-wide text-ndl-text">
+                {label}
+              </DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4 mt-2">
+              <div>
+                <h3 className="text-xs font-heading font-bold uppercase tracking-widest text-ndl-accent mb-1">Made / Attempted</h3>
+                <p className="text-2xl font-heading font-black text-ndl-text">{detail.made}/{detail.att}</p>
+              </div>
+              <div>
+                <h3 className="text-xs font-heading font-bold uppercase tracking-widest text-ndl-accent mb-1">Percentage</h3>
+                <p className="text-2xl font-heading font-black text-ndl-text">{detail.pct}</p>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 }
