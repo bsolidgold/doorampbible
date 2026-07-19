@@ -124,9 +124,9 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
           hasAverages ? (
             <div className="flex-1 grid grid-cols-4 sm:grid-cols-8 gap-2 items-start">
               <StatBox label="PTS" value={avg(String(Number(s.onePtMade) + Number(s.twoPtMade) * 2 + Number(s.threePtMade) * 3), gamesPlayed)} />
-              <StatBox label="1PT" value={s.onePtAtt !== "---" ? s.onePtMade : "---"} detail={s.onePtAtt !== "---" ? { made: s.onePtMade, att: s.onePtAtt, pct: pct(s.onePtMade, s.onePtAtt) } : undefined} />
-              <StatBox label="2PT" value={s.twoPtAtt !== "---" ? s.twoPtMade : "---"} detail={s.twoPtAtt !== "---" ? { made: s.twoPtMade, att: s.twoPtAtt, pct: pct(s.twoPtMade, s.twoPtAtt) } : undefined} />
-              <StatBox label="3PT" value={s.threePtAtt !== "---" ? s.threePtMade : "---"} detail={s.threePtAtt !== "---" ? { made: s.threePtMade, att: s.threePtAtt, pct: pct(s.threePtMade, s.threePtAtt) } : undefined} />
+              <StatBox label="1PT" value={s.onePtAtt !== "---" ? avg(s.onePtMade, gamesPlayed) : "---"} detail={s.onePtAtt !== "---" ? { made: s.onePtMade, att: s.onePtAtt, pct: pct(s.onePtMade, s.onePtAtt) } : undefined} />
+              <StatBox label="2PT" value={s.twoPtAtt !== "---" ? avg(s.twoPtMade, gamesPlayed) : "---"} detail={s.twoPtAtt !== "---" ? { made: s.twoPtMade, att: s.twoPtAtt, pct: pct(s.twoPtMade, s.twoPtAtt) } : undefined} />
+              <StatBox label="3PT" value={s.threePtAtt !== "---" ? avg(s.threePtMade, gamesPlayed) : "---"} detail={s.threePtAtt !== "---" ? { made: s.threePtMade, att: s.threePtAtt, pct: pct(s.threePtMade, s.threePtAtt) } : undefined} />
               <StatBox label="AST" value={avg(s.assists, gamesPlayed)} />
               <StatBox label="BLK/STL" value={avg(s.blocks, gamesPlayed)} />
               <StatBox label="REB" value={avg(s.rebounds, gamesPlayed)} />
