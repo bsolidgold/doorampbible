@@ -165,7 +165,7 @@ export const players: Player[] = [
     nicknames: "Benny Buckets",
     description: "---",
     accolades: "2025 Winterdome Champion",
-    team: "River Kings",
+    team: "Murray Mice",
   },
   {
     id: "atlee-gallagher",
