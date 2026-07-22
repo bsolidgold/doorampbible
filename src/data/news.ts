@@ -11,6 +11,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "benny-signed-river-kings",
+    title: "It's Official — Benny Buckets Signs With the River Kings",
+    date: "July 22, 2026",
+    excerpt:
+      "River Kings captain Ashton Anderegg has signed free agent Benny Buckets, ending one of the most dramatic roster sagas in NDL history. The two sealed the deal with a handshake outside the dome.",
+    image: "/images/news/benny-river-kings-signing.jpg",
+    imageAlt: "Ashton Anderegg and Benny Buckets shake hands to seal the deal",
+  },
+  {
     slug: "benny-buckets-free-agency",
     title: "Benny Buckets Enters Free Agency Following Fallout With Adam Swarzfager",
     date: "July 22, 2026",
