@@ -11,6 +11,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "benny-buckets-free-agency",
+    title: "Benny Buckets Enters Free Agency Following Fallout With Adam Swarzfager",
+    date: "July 22, 2026",
+    excerpt:
+      "Star Murray Mice player Benny Buckets has officially entered free agency after a public falling out with captain Adam Swarzfager, marking one of the biggest roster shakeups in NDL history.",
+    image: "/images/players/benny-buckets.jpg",
+    imageAlt: "Benny Buckets",
+  },
+  {
     slug: "captains-clash-game3",
     title: "Captains Clash — Finn and Ashton Nearly Come to Blows in Game 3",
     date: "July 16, 2026",
