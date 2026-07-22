@@ -18,13 +18,6 @@ export const newsArticles: NewsArticle[] = [
       "Just days after a historic 22 block-and-steal performance, first-round pick Ben Martinsen has been released by the Murray Mice and is now a free agent, with the team citing inactivity and a lack of effort between games.",
   },
   {
-    slug: "murray-mice-historic-rout",
-    title: "Perfect Night — Murray Mice Shut Out River Kings 40-0 in Most Lopsided Game in NDL History",
-    date: "July 18, 2026",
-    excerpt:
-      "Adam Swarzfager went a perfect 20-for-20 from the field and Ben Martinsen racked up 22 blocks and steals as the Murray Mice blanked the River Kings 40-0, the first shutout and most lopsided margin in NDL history.",
-  },
-  {
     slug: "captains-clash-game3",
     title: "Captains Clash — Finn and Ashton Nearly Come to Blows in Game 3",
     date: "July 16, 2026",
