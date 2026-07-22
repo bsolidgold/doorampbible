@@ -17,7 +17,6 @@ export default function StandingsPage() {
 
       <SectionHeader title="Team Standings" />
       <StandingsTable teams={standings} />
-      <p className="mt-4 text-ndl-muted text-xs">Full standings coming soon.</p>
     </div>
   );
 }
