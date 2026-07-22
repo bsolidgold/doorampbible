@@ -156,15 +156,16 @@ export const players: Player[] = [
   {
     id: "ben-martinsen",
     name: "Ben Martinsen",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/ben-martinsen.jpg",
     status: "active",
     seasonTotals: blank,
     allTimeTotals: blank,
     seasonGamesPlayed: 0,
     allTimeGamesPlayed: 0,
-    nicknames: "---",
+    nicknames: "Benny Buckets",
     description: "---",
     accolades: "2025 Winterdome Champion",
+    team: "River Kings",
   },
   {
     id: "atlee-gallagher",
