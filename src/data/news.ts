@@ -11,13 +11,6 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
-    slug: "ben-martinsen-cut",
-    title: "Released — Murray Mice Cut First-Round Pick Ben Martinsen",
-    date: "July 21, 2026",
-    excerpt:
-      "Just days after a historic 22 block-and-steal performance, first-round pick Ben Martinsen has been released by the Murray Mice and is now a free agent, with the team citing inactivity and a lack of effort between games.",
-  },
-  {
     slug: "captains-clash-game3",
     title: "Captains Clash — Finn and Ashton Nearly Come to Blows in Game 3",
     date: "July 16, 2026",
