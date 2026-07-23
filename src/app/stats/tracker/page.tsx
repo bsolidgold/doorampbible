@@ -172,35 +172,41 @@ function PlayerStatCard({
         {player.name}
       </p>
 
-      <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-        {/* Left column — shooting */}
-        <div className="space-y-4">
-          {/* 1PT / 2PT / 3PT bordered in red */}
-          <div className="space-y-4 border-t-2 border-b-2 border-ndl-accent pt-3 pb-3">
-            <StatRow
-              label="1pt"
-              made={s.onePtMade}
-              att={s.onePtAtt}
-              onMade={(v) => updateStat(id, "onePtMade", v)}
-              onAtt={(v) => updateStat(id, "onePtAtt", v)}
-            />
-            <StatRow
-              label="2pt"
-              made={s.twoPtMade}
-              att={s.twoPtAtt}
-              onMade={(v) => updateStat(id, "twoPtMade", v)}
-              onAtt={(v) => updateStat(id, "twoPtAtt", v)}
-            />
-            <StatRow
-              label="3pt"
-              made={s.threePtMade}
-              att={s.threePtAtt}
-              onMade={(v) => updateStat(id, "threePtMade", v)}
-              onAtt={(v) => updateStat(id, "threePtAtt", v)}
-            />
-          </div>
-          {/* FT separated by a line */}
-          <div className="border-t border-ndl-surface pt-3">
+      <div className="flex gap-0">
+        {/* Left column — 1PT / 2PT / 3PT */}
+        <div className="flex-1 space-y-4 pr-4">
+          <StatRow
+            label="1pt"
+            made={s.onePtMade}
+            att={s.onePtAtt}
+            onMade={(v) => updateStat(id, "onePtMade", v)}
+            onAtt={(v) => updateStat(id, "onePtAtt", v)}
+          />
+          <StatRow
+            label="2pt"
+            made={s.twoPtMade}
+            att={s.twoPtAtt}
+            onMade={(v) => updateStat(id, "twoPtMade", v)}
+            onAtt={(v) => updateStat(id, "twoPtAtt", v)}
+          />
+          <StatRow
+            label="3pt"
+            made={s.threePtMade}
+            att={s.threePtAtt}
+            onMade={(v) => updateStat(id, "threePtMade", v)}
+            onAtt={(v) => updateStat(id, "threePtAtt", v)}
+          />
+        </div>
+
+        {/* Vertical divider */}
+        <div className="w-px bg-ndl-surface self-stretch mx-1" />
+
+        {/* Right column — AST / BLK / REB, then red line, then FT */}
+        <div className="flex-1 space-y-4 pl-4">
+          <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
+          <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
+          <Counter label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} color="accent" />
+          <div className="border-t-2 border-ndl-accent pt-3">
             <StatRow
               label="FT"
               made={s.ftMade}
@@ -209,13 +215,6 @@ function PlayerStatCard({
               onAtt={(v) => updateStat(id, "ftAtt", v)}
             />
           </div>
-        </div>
-
-        {/* Right column — other stats */}
-        <div className="space-y-4 pt-6">
-          <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
-          <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
-          <Counter label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} color="accent" />
         </div>
       </div>
     </div>
