@@ -175,34 +175,40 @@ function PlayerStatCard({
       <div className="grid grid-cols-2 gap-x-6 gap-y-4">
         {/* Left column — shooting */}
         <div className="space-y-4">
-          <StatRow
-            label="1pt"
-            made={s.onePtMade}
-            att={s.onePtAtt}
-            onMade={(v) => updateStat(id, "onePtMade", v)}
-            onAtt={(v) => updateStat(id, "onePtAtt", v)}
-          />
-          <StatRow
-            label="2pt"
-            made={s.twoPtMade}
-            att={s.twoPtAtt}
-            onMade={(v) => updateStat(id, "twoPtMade", v)}
-            onAtt={(v) => updateStat(id, "twoPtAtt", v)}
-          />
-          <StatRow
-            label="3pt"
-            made={s.threePtMade}
-            att={s.threePtAtt}
-            onMade={(v) => updateStat(id, "threePtMade", v)}
-            onAtt={(v) => updateStat(id, "threePtAtt", v)}
-          />
-          <StatRow
-            label="FT"
-            made={s.ftMade}
-            att={s.ftAtt}
-            onMade={(v) => updateStat(id, "ftMade", v)}
-            onAtt={(v) => updateStat(id, "ftAtt", v)}
-          />
+          {/* 1PT / 2PT / 3PT bordered in red */}
+          <div className="space-y-4 border-t-2 border-b-2 border-ndl-accent pt-3 pb-3">
+            <StatRow
+              label="1pt"
+              made={s.onePtMade}
+              att={s.onePtAtt}
+              onMade={(v) => updateStat(id, "onePtMade", v)}
+              onAtt={(v) => updateStat(id, "onePtAtt", v)}
+            />
+            <StatRow
+              label="2pt"
+              made={s.twoPtMade}
+              att={s.twoPtAtt}
+              onMade={(v) => updateStat(id, "twoPtMade", v)}
+              onAtt={(v) => updateStat(id, "twoPtAtt", v)}
+            />
+            <StatRow
+              label="3pt"
+              made={s.threePtMade}
+              att={s.threePtAtt}
+              onMade={(v) => updateStat(id, "threePtMade", v)}
+              onAtt={(v) => updateStat(id, "threePtAtt", v)}
+            />
+          </div>
+          {/* FT separated by a line */}
+          <div className="border-t border-ndl-surface pt-3">
+            <StatRow
+              label="FT"
+              made={s.ftMade}
+              att={s.ftAtt}
+              onMade={(v) => updateStat(id, "ftMade", v)}
+              onAtt={(v) => updateStat(id, "ftAtt", v)}
+            />
+          </div>
         </div>
 
         {/* Right column — other stats */}
