@@ -174,38 +174,50 @@ function PlayerStatCard({
 
       <div className="flex gap-0">
         {/* Left column — 1PT / 2PT / 3PT */}
-        <div className="flex-1 space-y-4 pr-4">
-          <StatRow
-            label="1pt"
-            made={s.onePtMade}
-            att={s.onePtAtt}
-            onMade={(v) => updateStat(id, "onePtMade", v)}
-            onAtt={(v) => updateStat(id, "onePtAtt", v)}
-          />
-          <StatRow
-            label="2pt"
-            made={s.twoPtMade}
-            att={s.twoPtAtt}
-            onMade={(v) => updateStat(id, "twoPtMade", v)}
-            onAtt={(v) => updateStat(id, "twoPtAtt", v)}
-          />
-          <StatRow
-            label="3pt"
-            made={s.threePtMade}
-            att={s.threePtAtt}
-            onMade={(v) => updateStat(id, "threePtMade", v)}
-            onAtt={(v) => updateStat(id, "threePtAtt", v)}
-          />
+        <div className="flex-1 pr-4 divide-y divide-ndl-surface">
+          <div className="pb-3">
+            <StatRow
+              label="1pt"
+              made={s.onePtMade}
+              att={s.onePtAtt}
+              onMade={(v) => updateStat(id, "onePtMade", v)}
+              onAtt={(v) => updateStat(id, "onePtAtt", v)}
+            />
+          </div>
+          <div className="py-3">
+            <StatRow
+              label="2pt"
+              made={s.twoPtMade}
+              att={s.twoPtAtt}
+              onMade={(v) => updateStat(id, "twoPtMade", v)}
+              onAtt={(v) => updateStat(id, "twoPtAtt", v)}
+            />
+          </div>
+          <div className="pt-3">
+            <StatRow
+              label="3pt"
+              made={s.threePtMade}
+              att={s.threePtAtt}
+              onMade={(v) => updateStat(id, "threePtMade", v)}
+              onAtt={(v) => updateStat(id, "threePtAtt", v)}
+            />
+          </div>
         </div>
 
         {/* Vertical divider */}
-        <div className="w-px bg-ndl-surface self-stretch mx-1" />
+        <div className="w-px bg-ndl-accent self-stretch mx-1" />
 
         {/* Right column — AST / BLK / REB, then red line, then FT */}
-        <div className="flex-1 space-y-4 pl-4">
-          <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
-          <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
-          <Counter label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} color="accent" />
+        <div className="flex-1 pl-4 divide-y divide-ndl-surface">
+          <div className="pb-3">
+            <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
+          </div>
+          <div className="py-3">
+            <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
+          </div>
+          <div className="py-3">
+            <Counter label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} color="accent" />
+          </div>
           <div className="border-t-2 border-ndl-accent pt-3">
             <StatRow
               label="FT"
