@@ -11,6 +11,8 @@ interface PlayerStats {
   twoPtAtt: number;
   threePtMade: number;
   threePtAtt: number;
+  ftMade: number;
+  ftAtt: number;
   assists: number;
   blocks: number;
   rebounds: number;
@@ -23,6 +25,8 @@ const blankStats = (): PlayerStats => ({
   twoPtAtt: 0,
   threePtMade: 0,
   threePtAtt: 0,
+  ftMade: 0,
+  ftAtt: 0,
   assists: 0,
   blocks: 0,
   rebounds: 0,
@@ -57,6 +61,7 @@ function formatSummary(
       lines.push(`1pt:  ${s.onePtMade}/${s.onePtAtt} (${pct(s.onePtMade, s.onePtAtt)})`);
       lines.push(`2pt:  ${s.twoPtMade}/${s.twoPtAtt} (${pct(s.twoPtMade, s.twoPtAtt)})`);
       lines.push(`3pt:  ${s.threePtMade}/${s.threePtAtt} (${pct(s.threePtMade, s.threePtAtt)})`);
+      lines.push(`FT:   ${s.ftMade}/${s.ftAtt} (${pct(s.ftMade, s.ftAtt)})`);
       lines.push(`AST:  ${s.assists}  |  BLK/STL: ${s.blocks}  |  REB: ${s.rebounds}`);
       lines.push("");
     }
@@ -162,37 +167,50 @@ function PlayerStatCard({
   const s = stats[id] ?? blankStats();
 
   return (
-    <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4 space-y-4">
-      <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-sm">
+    <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4">
+      <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-sm mb-4">
         {player.name}
       </p>
 
-      <StatRow
-        label="1pt"
-        made={s.onePtMade}
-        att={s.onePtAtt}
-        onMade={(v) => updateStat(id, "onePtMade", v)}
-        onAtt={(v) => updateStat(id, "onePtAtt", v)}
-      />
-      <StatRow
-        label="2pt"
-        made={s.twoPtMade}
-        att={s.twoPtAtt}
-        onMade={(v) => updateStat(id, "twoPtMade", v)}
-        onAtt={(v) => updateStat(id, "twoPtAtt", v)}
-      />
-      <StatRow
-        label="3pt"
-        made={s.threePtMade}
-        att={s.threePtAtt}
-        onMade={(v) => updateStat(id, "threePtMade", v)}
-        onAtt={(v) => updateStat(id, "threePtAtt", v)}
-      />
+      <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+        {/* Left column — shooting */}
+        <div className="space-y-4">
+          <StatRow
+            label="1pt"
+            made={s.onePtMade}
+            att={s.onePtAtt}
+            onMade={(v) => updateStat(id, "onePtMade", v)}
+            onAtt={(v) => updateStat(id, "onePtAtt", v)}
+          />
+          <StatRow
+            label="2pt"
+            made={s.twoPtMade}
+            att={s.twoPtAtt}
+            onMade={(v) => updateStat(id, "twoPtMade", v)}
+            onAtt={(v) => updateStat(id, "twoPtAtt", v)}
+          />
+          <StatRow
+            label="3pt"
+            made={s.threePtMade}
+            att={s.threePtAtt}
+            onMade={(v) => updateStat(id, "threePtMade", v)}
+            onAtt={(v) => updateStat(id, "threePtAtt", v)}
+          />
+          <StatRow
+            label="FT"
+            made={s.ftMade}
+            att={s.ftAtt}
+            onMade={(v) => updateStat(id, "ftMade", v)}
+            onAtt={(v) => updateStat(id, "ftAtt", v)}
+          />
+        </div>
 
-      <div className="grid grid-cols-2 gap-3 pt-1">
-        <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
-        <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
-        <Counter label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} color="accent" />
+        {/* Right column — other stats */}
+        <div className="space-y-4 pt-6">
+          <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
+          <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
+          <Counter label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} color="accent" />
+        </div>
       </div>
     </div>
   );
