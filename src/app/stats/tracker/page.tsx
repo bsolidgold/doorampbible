@@ -125,8 +125,9 @@ function StatRow({
   onAtt: (v: number) => void;
 }) {
   function handleMade(v: number) {
+    const delta = v - made;
     onMade(v);
-    if (v > att) onAtt(v);
+    onAtt(Math.max(0, att + delta));
   }
 
   function handleAtt(v: number) {
