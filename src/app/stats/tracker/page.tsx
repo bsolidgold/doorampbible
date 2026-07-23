@@ -253,6 +253,15 @@ export default function TrackerPage() {
     selected.some((id) => players.find((p) => p.id === id)?.team === team)
   );
 
+  function teamScore(team: string): number {
+    return selected
+      .filter((id) => players.find((p) => p.id === id)?.team === team)
+      .reduce((sum, id) => {
+        const s = stats[id] ?? blankStats();
+        return sum + s.onePtMade + s.twoPtMade * 2 + s.threePtMade * 3;
+      }, 0);
+  }
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
       {toast && (
@@ -269,6 +278,24 @@ export default function TrackerPage() {
           Select players, enter post-game stats, then export.
         </p>
       </div>
+
+      {activeTeams.length >= 2 && (
+        <div className="sticky top-16 z-40 mb-8">
+          <div className="bg-ndl-bg border border-ndl-accent/40 rounded-lg px-6 py-4 flex items-center justify-center gap-8 shadow-lg">
+            {activeTeams.slice(0, 2).map((team, i) => (
+              <>
+                {i === 1 && (
+                  <span key="sep" className="text-ndl-muted text-2xl font-heading font-black">—</span>
+                )}
+                <div key={team} className="text-center">
+                  <p className="text-[10px] font-heading font-semibold uppercase tracking-widest text-ndl-muted mb-0.5">{team}</p>
+                  <p className="text-5xl font-heading font-black text-ndl-text leading-none">{teamScore(team)}</p>
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="space-y-10">
         {/* Game info */}
