@@ -30,6 +30,57 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "game-4-2026",
+    date: "July 22, 2026",
+    season: "2026",
+    gameNumber: 4,
+    winner: "Murray Mice",
+    notes: "Ben Martinsen made his season debut alongside captain Adam Swarzfager as the Murray Mice held off the BDT's 8-6.",
+    newsSlug: "murray-mice-edge-bdts-game4",
+    teams: [
+      {
+        name: "Murray Mice",
+        score: 8,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 8, onePtAtt: 14,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 8,
+            assists: 0, blocks: 4, rebounds: 2,
+          },
+          {
+            playerId: "ben-martinsen",
+            onePtMade: 0, onePtAtt: 0,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            assists: 0, blocks: 1, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "BDT's",
+        score: 6,
+        players: [
+          {
+            playerId: "david-anderegg",
+            onePtMade: 6, onePtAtt: 9,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 2,
+            assists: 0, blocks: 4, rebounds: 3,
+          },
+          {
+            playerId: "atlee-gallagher",
+            onePtMade: 0, onePtAtt: 4,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 2,
+            assists: 1, blocks: 0, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "game-3-2026",
     date: "July 16, 2026",
     season: "2026",

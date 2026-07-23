@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "murray-mice-edge-bdts-game4",
+    title: "Martinsen Makes His Debut as Murray Mice Edge BDT's 8-6",
+    date: "July 22, 2026",
+    excerpt:
+      "Adam Swarzfager and first-round pick Ben Martinsen, playing in his first game of the season, teamed up to hold off David Anderegg and the BDT's 8-6, keeping the Murray Mice unbeaten.",
+  },
+  {
     slug: "captains-clash-game3",
     title: "Captains Clash — Finn and Ashton Nearly Come to Blows in Game 3",
     date: "July 16, 2026",
