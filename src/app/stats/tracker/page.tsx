@@ -3,6 +3,22 @@
 import { useState } from "react";
 import { players, teamOrder } from "@/data/players";
 import { SectionHeader } from "@/components/ndl/SectionHeader";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  useSortable,
+  arrayMove,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface PlayerStats {
   onePtMade: number;
@@ -162,15 +178,26 @@ function PlayerStatCard({
   stats: Record<string, PlayerStats>;
   updateStat: (id: string, field: keyof PlayerStats, value: number) => void;
 }) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
+  const style = { transform: CSS.Transform.toString(transform), transition, opacity: isDragging ? 0.5 : 1 };
+
   const player = players.find((p) => p.id === id);
   if (!player) return null;
   const s = stats[id] ?? blankStats();
 
   return (
-    <div className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4">
-      <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-sm mb-4">
-        {player.name}
-      </p>
+    <div ref={setNodeRef} style={style} className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4">
+      <div className="flex items-center justify-between mb-4">
+        <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-sm">{player.name}</p>
+        <button
+          {...attributes}
+          {...listeners}
+          className="touch-none cursor-grab active:cursor-grabbing text-ndl-muted hover:text-ndl-text px-1"
+          aria-label="Drag to reorder"
+        >
+          ⠿
+        </button>
+      </div>
 
       <div className="flex gap-0">
         {/* Left column — 1PT / 2PT / 3PT */}
@@ -235,18 +262,38 @@ function PlayerStatCard({
 
 export default function TrackerPage() {
   const [selected, setSelected] = useState<string[]>([]);
+  const [order, setOrder] = useState<string[]>([]);
   const [stats, setStats] = useState<Record<string, PlayerStats>>({});
   const [gameDate, setGameDate] = useState("");
   const [gameNotes, setGameNotes] = useState("");
   const [emailAddr, setEmailAddr] = useState("");
   const [toast, setToast] = useState("");
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 5 } })
+  );
+
   function togglePlayer(id: string) {
     setSelected((prev) =>
       prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
     );
+    setOrder((prev) =>
+      prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
+    );
     if (!stats[id]) {
       setStats((prev) => ({ ...prev, [id]: blankStats() }));
+    }
+  }
+
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      setOrder((prev) => {
+        const oldIndex = prev.indexOf(String(active.id));
+        const newIndex = prev.indexOf(String(over.id));
+        return arrayMove(prev, oldIndex, newIndex);
+      });
     }
   }
 
@@ -399,23 +446,28 @@ export default function TrackerPage() {
         {selected.length > 0 && (
           <div className="space-y-4">
             <SectionHeader title="Enter Stats" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {activeTeams.map((team) => {
-                const teamSelected = selected.filter(
-                  (id) => players.find((p) => p.id === id)?.team === team
-                );
-                return (
-                  <div key={team} className="space-y-3">
-                    <p className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-accent">
-                      {team}
-                    </p>
-                    {teamSelected.map((id) => (
-                      <PlayerStatCard key={id} id={id} stats={stats} updateStat={updateStat} />
-                    ))}
-                  </div>
-                );
-              })}
-            </div>
+            <p className="text-xs text-ndl-muted -mt-2">Drag ⠿ to reorder players.</p>
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+              <SortableContext items={order} strategy={verticalListSortingStrategy}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {activeTeams.map((team) => {
+                    const teamSelected = order.filter(
+                      (id) => selected.includes(id) && players.find((p) => p.id === id)?.team === team
+                    );
+                    return (
+                      <div key={team} className="space-y-3">
+                        <p className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-accent">
+                          {team}
+                        </p>
+                        {teamSelected.map((id) => (
+                          <PlayerStatCard key={id} id={id} stats={stats} updateStat={updateStat} />
+                        ))}
+                      </div>
+                    );
+                  })}
+                </div>
+              </SortableContext>
+            </DndContext>
           </div>
         )}
 
