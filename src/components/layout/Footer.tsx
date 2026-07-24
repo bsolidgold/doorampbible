@@ -22,6 +22,18 @@ export function Footer() {
             YouTube
           </Link>
         </div>
+        <div className="flex items-center gap-3 border-t border-ndl-surface pt-4 mt-2">
+          <Image
+            src="/images/bret-gold.jpg"
+            alt="Bret Gold"
+            width={36}
+            height={36}
+            className="rounded-full object-cover border border-ndl-surface"
+          />
+          <p className="text-xs text-ndl-muted tracking-wide">
+            Funded by <span className="text-ndl-text font-semibold">Bret Gold</span>
+          </p>
+        </div>
         <p className="text-xs text-ndl-muted tracking-wide">
           &copy; NDL &mdash; National Dooramp League
         </p>
