@@ -52,16 +52,16 @@ export function StandingsTable({ teams }: StandingsTableProps) {
       <Table>
         <TableHeader>
           <TableRow className="bg-ndl-surface border-b border-ndl-surface hover:bg-ndl-surface">
-            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest w-full py-5">
+            <TableHead className="text-ndl-muted text-xs sm:text-sm md:text-lg font-heading font-semibold uppercase tracking-widest w-full py-2 sm:py-3 md:py-5">
               Team
             </TableHead>
-            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest text-center py-5">
+            <TableHead className="text-ndl-muted text-xs sm:text-sm md:text-lg font-heading font-semibold uppercase tracking-widest text-center py-2 sm:py-3 md:py-5">
               W
             </TableHead>
-            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest text-center py-5">
+            <TableHead className="text-ndl-muted text-xs sm:text-sm md:text-lg font-heading font-semibold uppercase tracking-widest text-center py-2 sm:py-3 md:py-5">
               L
             </TableHead>
-            <TableHead className="text-ndl-muted text-lg font-heading font-semibold uppercase tracking-widest text-center py-5">
+            <TableHead className="text-ndl-muted text-xs sm:text-sm md:text-lg font-heading font-semibold uppercase tracking-widest text-center py-2 sm:py-3 md:py-5">
               ELO
             </TableHead>
           </TableRow>
@@ -76,8 +76,8 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                   i === teams.length - 1 ? "border-b-0" : ""
                 }`}
               >
-                <TableCell className="font-heading font-semibold text-2xl text-ndl-text py-5 px-6">
-                  <div className="flex items-center gap-5">
+                <TableCell className="font-heading font-semibold text-sm sm:text-lg md:text-2xl text-ndl-text py-2 px-2 sm:py-3 sm:px-4 md:py-5 md:px-6">
+                  <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
                     {team.logo && (
                       <div className="flex-shrink-0">
                         <Image
@@ -85,20 +85,20 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                           alt={`${team.name} logo`}
                           width={240}
                           height={240}
-                          className="object-contain rounded"
+                          className="w-8 h-8 sm:w-16 sm:h-16 md:w-[240px] md:h-[240px] object-contain rounded"
                         />
                       </div>
                     )}
-                    <span className="whitespace-nowrap">{team.name}</span>
+                    <span className="whitespace-normal sm:whitespace-nowrap leading-tight">{team.name}</span>
                   </div>
                 </TableCell>
-                <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
+                <TableCell className="text-center text-sm sm:text-lg md:text-2xl text-ndl-muted py-2 px-2 sm:py-3 sm:px-4 md:py-5 md:px-6">
                   {team.wins}
                 </TableCell>
-                <TableCell className="text-center text-2xl text-ndl-muted py-5 px-6">
+                <TableCell className="text-center text-sm sm:text-lg md:text-2xl text-ndl-muted py-2 px-2 sm:py-3 sm:px-4 md:py-5 md:px-6">
                   {team.losses}
                 </TableCell>
-                <TableCell className="text-center text-2xl py-5 px-6">
+                <TableCell className="text-center text-sm sm:text-lg md:text-2xl py-2 px-2 sm:py-3 sm:px-4 md:py-5 md:px-6">
                   <span
                     className="font-heading font-black"
                     style={medal ? eloStyle[medal] : { color: "white" }}
