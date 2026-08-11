@@ -199,9 +199,9 @@ function PlayerStatCard({
         </button>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
+      <div className="flex flex-col xl:flex-row gap-4 xl:gap-0">
         {/* Left column — 1PT / 2PT / 3PT */}
-        <div className="flex-1 sm:pr-4 divide-y divide-ndl-surface">
+        <div className="flex-1 xl:pr-4 divide-y divide-ndl-surface">
           <div className="pb-3">
             <StatRow
               label="1pt"
@@ -231,12 +231,12 @@ function PlayerStatCard({
           </div>
         </div>
 
-        {/* Divider — horizontal on mobile (stacked), vertical at sm+ (side by side) */}
-        <div className="h-px w-full bg-ndl-accent sm:hidden" />
-        <div className="hidden sm:block w-px bg-ndl-accent self-stretch mx-1" />
+        {/* Divider — horizontal when stacked, vertical at xl+ (side by side) */}
+        <div className="h-px w-full bg-ndl-accent xl:hidden" />
+        <div className="hidden xl:block w-px bg-ndl-accent self-stretch mx-1" />
 
         {/* Right column — AST / BLK / REB, then red line, then FT */}
-        <div className="flex-1 sm:pl-4 divide-y divide-ndl-surface">
+        <div className="flex-1 xl:pl-4 divide-y divide-ndl-surface">
           <div className="pb-3">
             <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
           </div>
@@ -450,7 +450,7 @@ export default function TrackerPage() {
             <p className="text-xs text-ndl-muted -mt-2">Drag ⠿ to reorder players.</p>
             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
               <SortableContext items={order} strategy={verticalListSortingStrategy}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {activeTeams.map((team) => {
                     const teamSelected = order.filter(
                       (id) => selected.includes(id) && players.find((p) => p.id === id)?.team === team
