@@ -332,7 +332,7 @@ export default function TrackerPage() {
       .filter((id) => players.find((p) => p.id === id)?.team === team)
       .reduce((sum, id) => {
         const s = stats[id] ?? blankStats();
-        return sum + s.onePtMade + s.twoPtMade * 2 + s.threePtMade * 3;
+        return sum + s.onePtMade + s.twoPtMade * 2 + s.threePtMade * 3 + s.ftMade;
       }, 0);
   }
 
