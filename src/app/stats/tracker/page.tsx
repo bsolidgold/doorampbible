@@ -199,9 +199,9 @@ function PlayerStatCard({
         </button>
       </div>
 
-      <div className="flex gap-0">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
         {/* Left column — 1PT / 2PT / 3PT */}
-        <div className="flex-1 pr-4 divide-y divide-ndl-surface">
+        <div className="flex-1 sm:pr-4 divide-y divide-ndl-surface">
           <div className="pb-3">
             <StatRow
               label="1pt"
@@ -231,11 +231,12 @@ function PlayerStatCard({
           </div>
         </div>
 
-        {/* Vertical divider */}
-        <div className="w-px bg-ndl-accent self-stretch mx-1" />
+        {/* Divider — horizontal on mobile (stacked), vertical at sm+ (side by side) */}
+        <div className="h-px w-full bg-ndl-accent sm:hidden" />
+        <div className="hidden sm:block w-px bg-ndl-accent self-stretch mx-1" />
 
         {/* Right column — AST / BLK / REB, then red line, then FT */}
-        <div className="flex-1 pl-4 divide-y divide-ndl-surface">
+        <div className="flex-1 sm:pl-4 divide-y divide-ndl-surface">
           <div className="pb-3">
             <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
           </div>
