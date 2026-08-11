@@ -105,19 +105,19 @@ function Counter({
   onChange: (v: number) => void;
 }) {
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-0.5 sm:gap-1">
       <button
         onClick={() => onChange(Math.max(0, value - 1))}
-        className="w-6 h-6 shrink-0 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 text-xs font-bold flex items-center justify-center leading-none active:bg-red-500/40 transition-colors"
+        className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 text-[9px] sm:text-xs font-bold flex items-center justify-center leading-none active:bg-red-500/40 transition-colors"
       >
         −
       </button>
-      <span className="w-5 text-center font-heading font-bold text-ndl-text text-sm">
+      <span className="w-4 sm:w-5 text-center font-heading font-bold text-ndl-text text-xs sm:text-sm">
         {value}
       </span>
       <button
         onClick={() => onChange(value + 1)}
-        className="w-6 h-6 shrink-0 rounded-full bg-green-500/20 border border-green-500/50 text-green-400 text-xs font-bold flex items-center justify-center leading-none active:bg-green-500/40 transition-colors"
+        className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 rounded-full bg-green-500/20 border border-green-500/50 text-green-400 text-[9px] sm:text-xs font-bold flex items-center justify-center leading-none active:bg-green-500/40 transition-colors"
       >
         +
       </button>
@@ -149,17 +149,17 @@ function StatRow({
   }
 
   return (
-    <div className="flex items-center gap-2 py-1">
-      <span className="text-[10px] font-heading uppercase tracking-wide text-ndl-accent font-semibold w-8 shrink-0">
+    <div className="flex items-center gap-1 sm:gap-2 py-0.5 sm:py-1">
+      <span className="text-[8px] sm:text-[10px] font-heading uppercase tracking-wide text-ndl-accent font-semibold w-5 sm:w-8 shrink-0">
         {label}
       </span>
-      <span className="text-[9px] text-ndl-muted w-7 shrink-0">{pct(made, att)}</span>
-      <div className="flex items-center gap-1">
-        <span className="text-[9px] text-ndl-muted">M</span>
+      <span className="hidden sm:inline text-[9px] text-ndl-muted w-7 shrink-0">{pct(made, att)}</span>
+      <div className="flex items-center gap-0.5 sm:gap-1">
+        <span className="text-[7px] sm:text-[9px] text-ndl-muted">M</span>
         <Counter value={made} onChange={handleMade} />
       </div>
-      <div className="flex items-center gap-1">
-        <span className="text-[9px] text-ndl-muted">A</span>
+      <div className="flex items-center gap-0.5 sm:gap-1">
+        <span className="text-[7px] sm:text-[9px] text-ndl-muted">A</span>
         <Counter value={att} onChange={handleAtt} />
       </div>
     </div>
@@ -176,8 +176,8 @@ function SingleCounterRow({
   onChange: (v: number) => void;
 }) {
   return (
-    <div className="flex items-center gap-2 py-1">
-      <span className="text-[10px] font-heading uppercase tracking-wide text-ndl-accent font-semibold w-16 shrink-0">
+    <div className="flex items-center gap-1 sm:gap-2 py-0.5 sm:py-1">
+      <span className="text-[8px] sm:text-[10px] font-heading uppercase tracking-wide text-ndl-accent font-semibold w-10 sm:w-16 shrink-0">
         {label}
       </span>
       <Counter value={value} onChange={onChange} />
@@ -202,13 +202,13 @@ function PlayerStatCard({
   const s = stats[id] ?? blankStats();
 
   return (
-    <div ref={setNodeRef} style={style} className="bg-ndl-secondary border border-ndl-surface rounded-lg p-2">
-      <div className="flex items-center justify-between mb-1">
-        <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-xs">{player.name}</p>
+    <div ref={setNodeRef} style={style} className="bg-ndl-secondary border border-ndl-surface rounded-lg p-1.5 sm:p-2">
+      <div className="flex items-center justify-between gap-1 mb-0.5 sm:mb-1">
+        <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-[10px] sm:text-xs truncate">{player.name}</p>
         <button
           {...attributes}
           {...listeners}
-          className="touch-none cursor-grab active:cursor-grabbing text-ndl-muted hover:text-ndl-text px-1"
+          className="touch-none cursor-grab active:cursor-grabbing text-ndl-muted hover:text-ndl-text px-1 shrink-0"
           aria-label="Drag to reorder"
         >
           ⠿
@@ -441,14 +441,14 @@ export default function TrackerPage() {
             <p className="text-xs text-ndl-muted -mt-2">Drag ⠿ to reorder players.</p>
             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
               <SortableContext items={order} strategy={verticalListSortingStrategy}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-1.5 sm:gap-3">
                   {activeTeams.map((team) => {
                     const teamSelected = order.filter(
                       (id) => selected.includes(id) && players.find((p) => p.id === id)?.team === team
                     );
                     return (
-                      <div key={team} className="space-y-2">
-                        <p className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-accent">
+                      <div key={team} className="space-y-1 sm:space-y-2 min-w-0">
+                        <p className="text-[10px] sm:text-xs font-heading font-semibold uppercase tracking-widest text-ndl-accent truncate">
                           {team}
                         </p>
                         {teamSelected.map((id) => (
