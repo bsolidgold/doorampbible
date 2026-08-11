@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SectionHeader } from "@/components/ndl/SectionHeader";
 import { RuleItem } from "@/components/ndl/RuleItem";
+import { RulesBrowser } from "@/components/ndl/RulesBrowser";
 import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = { title: "Rules — NDL Dooramp" };
@@ -17,9 +18,9 @@ export default function RulesPage() {
         </p>
       </div>
 
-      {/* Current Rules */}
+      {/* Current Rules + Rule History (searchable) */}
       <section className="mb-12">
-        <SectionHeader title="Current Rules" subtitle="Full ruleset coming soon." />
+        <RulesBrowser />
       </section>
 
       {/* Coming into 2026 */}
@@ -42,11 +43,6 @@ export default function RulesPage() {
             badge={<Badge variant="outline" className="text-ndl-gold border-ndl-gold text-[10px] font-heading uppercase tracking-widest">Temporary</Badge>}
           />
         </div>
-      </section>
-
-      {/* Rule History */}
-      <section>
-        <SectionHeader title="Rule History" subtitle="Historical ruleset archive coming soon." />
       </section>
     </div>
   );
