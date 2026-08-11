@@ -13,19 +13,33 @@ interface StandingsTableProps {
   teams: Team[];
 }
 
-// Only teams with actual ELO numbers count toward medal positions
-function eloRank(sorted: Team[], index: number): "gold" | "silver" | "bronze" | null {
-  const teamsWithElo = sorted.filter((t) => t.elo !== "---");
+function hasPlayed(team: Team): boolean {
+  return team.wins + team.losses > 0;
+}
+
+function points(team: Team): number {
+  return team.wins - team.losses;
+}
+
+function formatPoints(team: Team): string {
+  if (!hasPlayed(team)) return "---";
+  const p = points(team);
+  return p > 0 ? `+${p}` : `${p}`;
+}
+
+// Only teams that have played a game count toward medal positions
+function pointsRank(sorted: Team[], index: number): "gold" | "silver" | "bronze" | null {
+  const teamsWithGames = sorted.filter(hasPlayed);
   const team = sorted[index];
-  if (team.elo === "---") return null;
-  const rank = teamsWithElo.indexOf(team);
+  if (!hasPlayed(team)) return null;
+  const rank = teamsWithGames.indexOf(team);
   if (rank === 0) return "gold";
   if (rank === 1) return "silver";
   if (rank === 2) return "bronze";
   return null;
 }
 
-const eloStyle: Record<"gold" | "silver" | "bronze", React.CSSProperties> = {
+const pointsStyle: Record<"gold" | "silver" | "bronze", React.CSSProperties> = {
   gold: {
     color: "#FFD700",
     textShadow: "0 0 8px #FFD700, 0 0 20px #FFB800, 0 0 35px #FF8C00",
@@ -42,9 +56,9 @@ const eloStyle: Record<"gold" | "silver" | "bronze", React.CSSProperties> = {
 
 export function StandingsTable({ teams }: StandingsTableProps) {
   const sorted = [...teams].sort((a, b) => {
-    const aElo = a.elo === "---" ? -1 : Number(a.elo);
-    const bElo = b.elo === "---" ? -1 : Number(b.elo);
-    return bElo - aElo;
+    const aVal = hasPlayed(a) ? points(a) : -Infinity;
+    const bVal = hasPlayed(b) ? points(b) : -Infinity;
+    return bVal - aVal;
   });
 
   return (
@@ -62,13 +76,13 @@ export function StandingsTable({ teams }: StandingsTableProps) {
               L
             </TableHead>
             <TableHead className="text-ndl-muted text-xs sm:text-sm md:text-lg font-heading font-semibold uppercase tracking-widest text-center py-2 sm:py-3 md:py-5">
-              ELO
+              PTS
             </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {sorted.map((team, i) => {
-            const medal = eloRank(sorted, i);
+            const medal = pointsRank(sorted, i);
             return (
               <TableRow
                 key={team.name}
@@ -101,9 +115,9 @@ export function StandingsTable({ teams }: StandingsTableProps) {
                 <TableCell className="text-center text-sm sm:text-lg md:text-2xl py-2 px-2 sm:py-3 sm:px-4 md:py-5 md:px-6">
                   <span
                     className="font-heading font-black"
-                    style={medal ? eloStyle[medal] : { color: "white" }}
+                    style={medal ? pointsStyle[medal] : { color: "white" }}
                   >
-                    {team.elo}
+                    {formatPoints(team)}
                   </span>
                 </TableCell>
               </TableRow>
