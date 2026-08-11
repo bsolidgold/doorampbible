@@ -98,33 +98,26 @@ function encodeShareUrl(
 }
 
 function Counter({
-  label,
   value,
   onChange,
-  color = "default",
 }: {
-  label: string;
   value: number;
   onChange: (v: number) => void;
-  color?: "default" | "accent";
 }) {
   return (
-    <div className="flex items-center gap-2">
-      <span className={`text-xs font-heading uppercase tracking-widest w-16 ${color === "accent" ? "text-ndl-accent" : "text-ndl-muted"}`}>
-        {label}
-      </span>
+    <div className="flex items-center gap-1">
       <button
         onClick={() => onChange(Math.max(0, value - 1))}
-        className="w-10 h-10 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 text-lg font-bold flex items-center justify-center active:bg-red-500/40 transition-colors"
+        className="w-6 h-6 shrink-0 rounded-full bg-red-500/20 border border-red-500/50 text-red-400 text-xs font-bold flex items-center justify-center leading-none active:bg-red-500/40 transition-colors"
       >
         −
       </button>
-      <span className="w-8 text-center font-heading font-bold text-ndl-text text-lg">
+      <span className="w-5 text-center font-heading font-bold text-ndl-text text-sm">
         {value}
       </span>
       <button
         onClick={() => onChange(value + 1)}
-        className="w-10 h-10 rounded-full bg-green-500/20 border border-green-500/50 text-green-400 text-lg font-bold flex items-center justify-center active:bg-green-500/40 transition-colors"
+        className="w-6 h-6 shrink-0 rounded-full bg-green-500/20 border border-green-500/50 text-green-400 text-xs font-bold flex items-center justify-center leading-none active:bg-green-500/40 transition-colors"
       >
         +
       </button>
@@ -156,15 +149,38 @@ function StatRow({
   }
 
   return (
-    <div className="space-y-1">
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-heading uppercase tracking-widest text-ndl-accent font-semibold">
-          {label}
-        </span>
-        <span className="text-xs text-ndl-muted">{pct(made, att)}</span>
+    <div className="flex items-center gap-2 py-1">
+      <span className="text-[10px] font-heading uppercase tracking-wide text-ndl-accent font-semibold w-8 shrink-0">
+        {label}
+      </span>
+      <span className="text-[9px] text-ndl-muted w-7 shrink-0">{pct(made, att)}</span>
+      <div className="flex items-center gap-1">
+        <span className="text-[9px] text-ndl-muted">M</span>
+        <Counter value={made} onChange={handleMade} />
       </div>
-      <Counter label="Made" value={made} onChange={handleMade} />
-      <Counter label="Attempts" value={att} onChange={handleAtt} />
+      <div className="flex items-center gap-1">
+        <span className="text-[9px] text-ndl-muted">A</span>
+        <Counter value={att} onChange={handleAtt} />
+      </div>
+    </div>
+  );
+}
+
+function SingleCounterRow({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+}) {
+  return (
+    <div className="flex items-center gap-2 py-1">
+      <span className="text-[10px] font-heading uppercase tracking-wide text-ndl-accent font-semibold w-16 shrink-0">
+        {label}
+      </span>
+      <Counter value={value} onChange={onChange} />
     </div>
   );
 }
@@ -186,9 +202,9 @@ function PlayerStatCard({
   const s = stats[id] ?? blankStats();
 
   return (
-    <div ref={setNodeRef} style={style} className="bg-ndl-secondary border border-ndl-surface rounded-lg p-4">
-      <div className="flex items-center justify-between mb-4">
-        <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-sm">{player.name}</p>
+    <div ref={setNodeRef} style={style} className="bg-ndl-secondary border border-ndl-surface rounded-lg p-2">
+      <div className="flex items-center justify-between mb-1">
+        <p className="font-heading font-bold uppercase tracking-wide text-ndl-text text-xs">{player.name}</p>
         <button
           {...attributes}
           {...listeners}
@@ -199,63 +215,38 @@ function PlayerStatCard({
         </button>
       </div>
 
-      <div className="flex flex-col xl:flex-row gap-4 xl:gap-0">
-        {/* Left column — 1PT / 2PT / 3PT */}
-        <div className="flex-1 xl:pr-4 divide-y divide-ndl-surface">
-          <div className="pb-3">
-            <StatRow
-              label="1pt"
-              made={s.onePtMade}
-              att={s.onePtAtt}
-              onMade={(v) => updateStat(id, "onePtMade", v)}
-              onAtt={(v) => updateStat(id, "onePtAtt", v)}
-            />
-          </div>
-          <div className="py-3">
-            <StatRow
-              label="2pt"
-              made={s.twoPtMade}
-              att={s.twoPtAtt}
-              onMade={(v) => updateStat(id, "twoPtMade", v)}
-              onAtt={(v) => updateStat(id, "twoPtAtt", v)}
-            />
-          </div>
-          <div className="pt-3">
-            <StatRow
-              label="3pt"
-              made={s.threePtMade}
-              att={s.threePtAtt}
-              onMade={(v) => updateStat(id, "threePtMade", v)}
-              onAtt={(v) => updateStat(id, "threePtAtt", v)}
-            />
-          </div>
-        </div>
-
-        {/* Divider — horizontal when stacked, vertical at xl+ (side by side) */}
-        <div className="h-px w-full bg-ndl-accent xl:hidden" />
-        <div className="hidden xl:block w-px bg-ndl-accent self-stretch mx-1" />
-
-        {/* Right column — AST / BLK / REB, then red line, then FT */}
-        <div className="flex-1 xl:pl-4 divide-y divide-ndl-surface">
-          <div className="pb-3">
-            <Counter label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} color="accent" />
-          </div>
-          <div className="py-3">
-            <Counter label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} color="accent" />
-          </div>
-          <div className="py-3">
-            <Counter label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} color="accent" />
-          </div>
-          <div className="border-t-2 border-ndl-accent pt-3">
-            <StatRow
-              label="FT"
-              made={s.ftMade}
-              att={s.ftAtt}
-              onMade={(v) => updateStat(id, "ftMade", v)}
-              onAtt={(v) => updateStat(id, "ftAtt", v)}
-            />
-          </div>
-        </div>
+      <div className="divide-y divide-ndl-surface/60">
+        <StatRow
+          label="1pt"
+          made={s.onePtMade}
+          att={s.onePtAtt}
+          onMade={(v) => updateStat(id, "onePtMade", v)}
+          onAtt={(v) => updateStat(id, "onePtAtt", v)}
+        />
+        <StatRow
+          label="2pt"
+          made={s.twoPtMade}
+          att={s.twoPtAtt}
+          onMade={(v) => updateStat(id, "twoPtMade", v)}
+          onAtt={(v) => updateStat(id, "twoPtAtt", v)}
+        />
+        <StatRow
+          label="3pt"
+          made={s.threePtMade}
+          att={s.threePtAtt}
+          onMade={(v) => updateStat(id, "threePtMade", v)}
+          onAtt={(v) => updateStat(id, "threePtAtt", v)}
+        />
+        <StatRow
+          label="FT"
+          made={s.ftMade}
+          att={s.ftAtt}
+          onMade={(v) => updateStat(id, "ftMade", v)}
+          onAtt={(v) => updateStat(id, "ftAtt", v)}
+        />
+        <SingleCounterRow label="Assists" value={s.assists} onChange={(v) => updateStat(id, "assists", v)} />
+        <SingleCounterRow label="Blk/Stl" value={s.blocks} onChange={(v) => updateStat(id, "blocks", v)} />
+        <SingleCounterRow label="Rebounds" value={s.rebounds} onChange={(v) => updateStat(id, "rebounds", v)} />
       </div>
     </div>
   );
@@ -450,13 +441,13 @@ export default function TrackerPage() {
             <p className="text-xs text-ndl-muted -mt-2">Drag ⠿ to reorder players.</p>
             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
               <SortableContext items={order} strategy={verticalListSortingStrategy}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {activeTeams.map((team) => {
                     const teamSelected = order.filter(
                       (id) => selected.includes(id) && players.find((p) => p.id === id)?.team === team
                     );
                     return (
-                      <div key={team} className="space-y-3">
+                      <div key={team} className="space-y-2">
                         <p className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-accent">
                           {team}
                         </p>
