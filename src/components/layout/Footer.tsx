@@ -21,6 +21,14 @@ export function Footer() {
           >
             YouTube
           </Link>
+          <Link
+            href="https://discord.gg/YNectrQTT"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-muted hover:text-ndl-accent transition-colors"
+          >
+            Discord
+          </Link>
         </div>
         <div className="flex items-center gap-3 border-t border-ndl-surface pt-4 mt-2">
           <Image

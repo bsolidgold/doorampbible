@@ -14,6 +14,7 @@ const navLinks = [
   { href: "/standings", label: "Standings" },
   { href: "/feedback", label: "Feedback" },
   { href: "https://youtube.com/@Doorampball", label: "YouTube", external: true },
+  { href: "https://discord.gg/YNectrQTT", label: "Discord", external: true },
 ];
 
 export function Navbar() {
