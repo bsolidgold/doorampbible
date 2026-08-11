@@ -11,6 +11,20 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "murray-mice-rout-fredholers-game6",
+    title: "Murray Mice Bounce Back, Rout Freaky Fredholers 12-2",
+    date: "August 8, 2026",
+    excerpt:
+      "Hours after falling to the River Kings, Adam Swarzfager and Ben Martinsen regrouped to blow past Grant Bowers and Isaac Cameron in the Freaky Fredholers' season debut, 12-2.",
+  },
+  {
+    slug: "river-kings-upset-murray-mice-game5",
+    title: "River Kings Stun Undefeated Murray Mice 9-6",
+    date: "August 8, 2026",
+    excerpt:
+      "Ashton Anderegg was perfect inside the arc, going 7-for-7 on ones and twos, as the River Kings snapped the Murray Mice's unbeaten streak, winning 9-6.",
+  },
+  {
     slug: "murray-mice-edge-bdts-game4",
     title: "Martinsen Makes His Debut as Murray Mice Edge BDT's 8-6",
     date: "July 22, 2026",

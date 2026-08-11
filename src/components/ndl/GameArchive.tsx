@@ -21,7 +21,8 @@ function calcPts(s: GamePlayerStats): string {
   return String(
     (s.onePtMade ?? 0) * 1 +
     (s.twoPtMade ?? 0) * 2 +
-    (s.threePtMade ?? 0) * 3
+    (s.threePtMade ?? 0) * 3 +
+    (s.ftMade ?? 0) * 1
   );
 }
 
@@ -42,6 +43,7 @@ function StatTable({ playerStats }: { playerStats: GamePlayerStats[] }) {
             <th className="text-center py-2 px-2 font-semibold">1PT</th>
             <th className="text-center py-2 px-2 font-semibold">2PT</th>
             <th className="text-center py-2 px-2 font-semibold">3PT</th>
+            <th className="text-center py-2 px-2 font-semibold">FT</th>
             <th className="text-center py-2 px-2 font-semibold">AST</th>
             <th className="text-center py-2 px-2 font-semibold">BLK</th>
             <th className="text-center py-2 px-2 font-semibold">REB</th>
@@ -70,6 +72,7 @@ function StatTable({ playerStats }: { playerStats: GamePlayerStats[] }) {
                 <td className="text-center py-2 px-2 text-ndl-muted">{fmt(s.onePtMade, s.onePtAtt)}</td>
                 <td className="text-center py-2 px-2 text-ndl-muted">{fmt(s.twoPtMade, s.twoPtAtt)}</td>
                 <td className="text-center py-2 px-2 text-ndl-muted">{fmt(s.threePtMade, s.threePtAtt)}</td>
+                <td className="text-center py-2 px-2 text-ndl-muted">{fmt(s.ftMade ?? null, s.ftAtt ?? null)}</td>
                 <td className="text-center py-2 px-2 text-ndl-muted">{fmt(s.assists)}</td>
                 <td className="text-center py-2 px-2 text-ndl-muted">{fmt(s.blocks)}</td>
                 <td className="text-center py-2 px-2 text-ndl-muted">{fmt(s.rebounds)}</td>

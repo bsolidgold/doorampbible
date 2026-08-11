@@ -6,6 +6,8 @@ export interface GamePlayerStats {
   twoPtAtt: number | null;
   threePtMade: number | null;
   threePtAtt: number | null;
+  ftMade?: number | null;
+  ftAtt?: number | null;
   assists: number | null;
   blocks: number | null;
   rebounds: number | null;
@@ -29,6 +31,116 @@ export interface Game {
 }
 
 export const games: Game[] = [
+  {
+    id: "game-6-2026",
+    date: "August 8, 2026",
+    season: "2026",
+    gameNumber: 6,
+    winner: "Murray Mice",
+    notes: "Murray Mice bounced back from an earlier loss the same day to rout the Freaky Fredholers 12-2 in the debut for both Grant Bowers and Isaac Cameron.",
+    newsSlug: "murray-mice-rout-fredholers-game6",
+    teams: [
+      {
+        name: "Murray Mice",
+        score: 12,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 5, onePtAtt: 7,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 2, threePtAtt: 13,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 2, rebounds: 0,
+          },
+          {
+            playerId: "ben-martinsen",
+            onePtMade: 1, onePtAtt: 7,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 3, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "Freaky Fredholers",
+        score: 2,
+        players: [
+          {
+            playerId: "grant-bowers",
+            onePtMade: 2, onePtAtt: 5,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 1,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 2, rebounds: 0,
+          },
+          {
+            playerId: "isaac-cameron",
+            onePtMade: 0, onePtAtt: 1,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 5,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 2, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "game-5-2026",
+    date: "August 8, 2026",
+    season: "2026",
+    gameNumber: 5,
+    winner: "River Kings",
+    notes: "The River Kings stunned the previously undefeated Murray Mice 9-6, led by a perfect shooting night from captain Ashton Anderegg.",
+    newsSlug: "river-kings-upset-murray-mice-game5",
+    teams: [
+      {
+        name: "River Kings",
+        score: 9,
+        players: [
+          {
+            playerId: "ashton-anderegg",
+            onePtMade: 6, onePtAtt: 6,
+            twoPtMade: 1, twoPtAtt: 1,
+            threePtMade: 0, threePtAtt: 2,
+            ftMade: 1, ftAtt: 1,
+            assists: 0, blocks: 1, rebounds: 1,
+          },
+          {
+            playerId: "eli-huntsman",
+            onePtMade: 0, onePtAtt: 4,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 1,
+            ftMade: 0, ftAtt: 1,
+            assists: 1, blocks: 0, rebounds: 2,
+          },
+        ],
+      },
+      {
+        name: "Murray Mice",
+        score: 6,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 3, onePtAtt: 17,
+            twoPtMade: 0, twoPtAtt: 1,
+            threePtMade: 1, threePtAtt: 9,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 4, rebounds: 6,
+          },
+          {
+            playerId: "ben-martinsen",
+            onePtMade: 0, onePtAtt: 2,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 1, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  },
   {
     id: "game-4-2026",
     date: "July 22, 2026",
