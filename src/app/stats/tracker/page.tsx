@@ -450,7 +450,7 @@ export default function TrackerPage() {
             <p className="text-xs text-ndl-muted -mt-2">Drag ⠿ to reorder players.</p>
             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
               <SortableContext items={order} strategy={verticalListSortingStrategy}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {activeTeams.map((team) => {
                     const teamSelected = order.filter(
                       (id) => selected.includes(id) && players.find((p) => p.id === id)?.team === team
