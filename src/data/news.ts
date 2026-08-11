@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "adam-swarzfager-back-to-back-threes",
+    title: "Adam Swarzfager Hits Back-to-Back Threes — A Dooramp First",
+    date: "August 8, 2026",
+    excerpt:
+      "Adam Swarzfager drilled two three-pointers in a row in the 4th quarter of Game 6, the first time it's ever been done in dooramp, capping a 3-make day from deep across two games.",
+  },
+  {
     slug: "murray-mice-rout-fredholers-game6",
     title: "Murray Mice Bounce Back, Rout Freaky Fredholers 12-2",
     date: "August 8, 2026",

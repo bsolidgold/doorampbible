@@ -30,8 +30,11 @@ export default function RiverKingsUpsetMurrayMiceGame5Page() {
       </h2>
       <p>
         Adam Swarzfager struggled with his shot all night, going just 3-for-17 (18%) from the one-point line
-        and 1-for-9 from three, though he stayed busy elsewhere with 4 blocks/steals and 6 rebounds. Ben
-        Martinsen was held scoreless in a limited offensive role but added a block/steal. The loss ends the
+        and 1-for-9 from three, though he stayed busy elsewhere with 4 blocks/steals and 6 rebounds. His lone
+        triple came at the perfect time, though — a 4th-quarter three that cut into the River Kings&apos; lead
+        and briefly had the Murray Mice within striking distance. It wasn&apos;t enough to complete the
+        comeback, but it forced the River Kings to play out the final minutes rather than coast to the finish.
+        Ben Martinsen was held scoreless in a limited offensive role but added a block/steal. The loss ends the
         Murray Mice&apos;s undefeated start to the season.
       </p>
 
