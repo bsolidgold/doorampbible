@@ -221,6 +221,7 @@ export const currentRules: RuleSection[] = [
           { text: "During free throws, non-shooting players must stand outside the apex of the tramp (the furthest points left and right away from the court)" },
           { text: "Free throws are awarded through a 3, 2, 1 system where 3 penalties awards a free throw, then 2 penalties after that, then every penalty awards another free throw." },
           { text: "Fouls, NP's, & Technical Fouls all count towards the free throw system" },
+          { text: "For fouls, the player who is fouled 3 times shoots the free throw. In the case of 3 techs or NPs the shooting team gets to pick who takes the shot on their team" },
         ],
       },
     ],
