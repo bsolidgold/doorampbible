@@ -36,7 +36,30 @@ function marker(index: number, depth: number): string {
   return `${index + 1})`;
 }
 
-export function RuleTree({ items, depth = 0 }: { items: RuleNode[]; depth?: number }) {
+function Highlighted({ text, query }: { text: string; query?: string }) {
+  if (!query || !query.trim()) return <>{text}</>;
+  const idx = text.toLowerCase().indexOf(query.toLowerCase());
+  if (idx === -1) return <>{text}</>;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <mark className="bg-ndl-accent/30 text-ndl-text rounded px-0.5">
+        {text.slice(idx, idx + query.length)}
+      </mark>
+      {text.slice(idx + query.length)}
+    </>
+  );
+}
+
+export function RuleTree({
+  items,
+  depth = 0,
+  query,
+}: {
+  items: RuleNode[];
+  depth?: number;
+  query?: string;
+}) {
   return (
     <ol className={depth === 0 ? "space-y-2" : "mt-1.5 space-y-1.5"}>
       {items.map((item, i) => (
@@ -45,9 +68,11 @@ export function RuleTree({ items, depth = 0 }: { items: RuleNode[]; depth?: numb
             {marker(i, depth)}
           </span>
           <span className="flex-1">
-            <span className={depth === 0 ? "text-ndl-text" : ""}>{item.text}</span>
+            <span className={depth === 0 ? "text-ndl-text" : ""}>
+              <Highlighted text={item.text} query={query} />
+            </span>
             {item.children && item.children.length > 0 && (
-              <RuleTree items={item.children} depth={depth + 1} />
+              <RuleTree items={item.children} depth={depth + 1} query={query} />
             )}
           </span>
         </li>
