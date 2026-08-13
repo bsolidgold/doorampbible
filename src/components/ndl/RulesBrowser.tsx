@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X } from "lucide-react";
+import { Search, X, ChevronDown, ChevronUp } from "lucide-react";
 import { CollapsibleSection } from "@/components/ndl/CollapsibleSection";
 import { RuleTree } from "@/components/ndl/RuleTree";
 import { RuleSection, RuleSubsection, RuleNode, currentRules, ruleHistory } from "@/data/rules";
@@ -87,6 +87,7 @@ function RuleSectionBlock({
 
 export function RulesBrowser() {
   const [query, setQuery] = useState("");
+  const [historyOpen, setHistoryOpen] = useState(false);
   const isSearching = query.trim().length > 0;
   const q = query.trim().toLowerCase();
 
@@ -176,15 +177,26 @@ export function RulesBrowser() {
           </section>
 
           <section>
-            <p className="text-[11px] font-heading font-semibold uppercase tracking-widest text-ndl-muted mb-4">
-              Rule History
-            </p>
-            <p className="text-ndl-muted text-sm mb-6">
-              An earlier, simpler version of the ruleset, preserved for reference.
-            </p>
-            {ruleHistory.map((section) => (
-              <RuleSectionBlock key={section.id} section={section} />
-            ))}
+            <button
+              onClick={() => setHistoryOpen((v) => !v)}
+              className="w-full text-left flex items-center justify-between mb-4"
+            >
+              <div>
+                <p className="text-[11px] font-heading font-semibold uppercase tracking-widest text-ndl-muted">
+                  Rule History
+                </p>
+                <p className="text-ndl-muted text-sm mt-2">
+                  An earlier, simpler version of the ruleset, preserved for reference.
+                </p>
+              </div>
+              <span className="text-ndl-muted flex-shrink-0 ml-2">
+                {historyOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              </span>
+            </button>
+            {historyOpen &&
+              ruleHistory.map((section) => (
+                <RuleSectionBlock key={section.id} section={section} />
+              ))}
           </section>
         </>
       )}
