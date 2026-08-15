@@ -424,7 +424,7 @@ export const currentRules: RuleSection[] = [
                   { text: "If possession of a blocked 3 pointer occurs and drops the ball into the goal, it is not 3 points because possession was already gained." },
                 ],
               },
-              { text: "If a shot hits a goaltending defensive player, but the shot's trajectory is not towards the dome (the ball would hit the dome if it was a straight line) there is no goaltending." },
+              { text: "If a shot hits a goaltending defensive player, but the shot's trajectory is not towards the dome (the ball would NOT hit the dome if it was a straight line) there is no goaltending." },
               { text: "Offensive players cannot goaltend." },
             ],
           },
