@@ -415,19 +415,19 @@ export const currentRules: RuleSection[] = [
             text: "For a legal block the defense has to have both feet on the black if blocking on the ground. If you block a shot mid-air you must have both feet start on the black and end on the black on your jump",
             children: [
               { text: "You are allowed to fall out of bounds after blocking as long as both feet landed on the black" },
-              { text: "The defense is allowed to jump off the tramp and intercept or block for passes or non-shots in the goaltending zone, but it has to be deemed a non-shot." },
-              { text: "There is no goaltending on 3 pointers or the butt in" },
-              {
-                text: "If a player is attempting to block a 3 pointer whilst in the goaltending zone or red area and the ball still goes in, it's 3 points for the shooting team even if the defense is out of bounds and even if the defense hits the ball with their hands, unless the ball is intentionally redirected into the dome by the defense",
-                children: [
-                  { text: "If the defense intentionally redirects the ball into the goal it is not 3 points, and is out of bounds/grounding on the defense." },
-                  { text: "If possession of a blocked 3 pointer occurs and drops the ball into the goal, it is not 3 points because possession was already gained." },
-                ],
-              },
-              { text: "If a shot hits a goaltending defensive player, but the shot's trajectory is not towards the dome (the ball would NOT hit the dome if it was a straight line) there is no goaltending." },
-              { text: "Offensive players cannot goaltend." },
             ],
           },
+          { text: "The defense is allowed to jump off the tramp and intercept or block for passes or non-shots in the goaltending zone, but it has to be deemed a non-shot." },
+          { text: "There is no goaltending on 3 pointers or the butt in" },
+          {
+            text: "If a player is attempting to block a 3 pointer whilst in the goaltending zone or red area and the ball still goes in, it's 3 points for the shooting team even if the defense is out of bounds and even if the defense hits the ball with their hands, unless the ball is intentionally redirected into the dome by the defense",
+            children: [
+              { text: "If the defense intentionally redirects the ball into the goal it is not 3 points, and is out of bounds/grounding on the defense." },
+              { text: "If possession of a blocked 3 pointer occurs and drops the ball into the goal, it is not 3 points because possession was already gained." },
+            ],
+          },
+          { text: "If a shot hits a goaltending defensive player, but the shot's trajectory is not towards the dome (the ball would not hit the dome if it was a straight line horizontal wise — vertical does not matter) there is no goaltending." },
+          { text: "Offensive players cannot goaltend." },
         ],
       },
       {
