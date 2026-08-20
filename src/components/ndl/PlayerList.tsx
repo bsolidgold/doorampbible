@@ -95,27 +95,54 @@ export function PlayerList({ players }: PlayerListProps) {
         <p className="text-ndl-muted text-sm py-6 text-center">No players found.</p>
       ) : (
         <div className="space-y-8">
-          {groups.map((group) => (
-            <div key={group.team} className="space-y-3">
-              <h3 className="font-heading font-bold text-lg uppercase tracking-widest text-ndl-text border-b border-ndl-surface pb-2">
-                {group.team}
-              </h3>
-              <div className="space-y-3">
-                {group.players.map((player) => (
-                  <PlayerCard
-                    key={player.id}
-                    player={player}
-                    activeStats={getStats(player, activeTab)}
-                    gamesPlayed={getGamesPlayed(player, activeTab)}
-                    showAverages={activeTab === "averages"}
-                    onPhotoClick={() => setSelectedPlayer(player)}
-                  />
-                ))}
+          {groups
+            .filter((g) => g.team !== UNASSIGNED)
+            .map((group) => (
+              <div key={group.team} className="space-y-3">
+                <h3 className="font-heading font-bold text-lg uppercase tracking-widest text-ndl-text border-b border-ndl-surface pb-2">
+                  {group.team}
+                </h3>
+                <div className="space-y-3">
+                  {group.players.map((player) => (
+                    <PlayerCard
+                      key={player.id}
+                      player={player}
+                      activeStats={getStats(player, activeTab)}
+                      gamesPlayed={getGamesPlayed(player, activeTab)}
+                      showAverages={activeTab === "averages"}
+                      onPhotoClick={() => setSelectedPlayer(player)}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       )}
+
+      <div className="space-y-3 pt-4">
+        <h3 className="font-heading font-bold text-lg uppercase tracking-widest text-ndl-accent border-b-2 border-ndl-accent pb-2">
+          Free Agents
+        </h3>
+        {(() => {
+          const fa = groups.find((g) => g.team === UNASSIGNED);
+          return fa && fa.players.length > 0 ? (
+            <div className="space-y-3">
+              {fa.players.map((player) => (
+                <PlayerCard
+                  key={player.id}
+                  player={player}
+                  activeStats={getStats(player, activeTab)}
+                  gamesPlayed={getGamesPlayed(player, activeTab)}
+                  showAverages={activeTab === "averages"}
+                  onPhotoClick={() => setSelectedPlayer(player)}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-ndl-muted text-sm py-4 italic">No free agents at this time.</p>
+          );
+        })()}
+      </div>
 
       <PlayerProfileModal
         player={selectedPlayer}
