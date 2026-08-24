@@ -340,7 +340,10 @@ export const currentRules: RuleSection[] = [
             text: "A player is in a down position on the tramp (laying or kneeling) and makes contact with the ball",
             children: [{ text: "When saving a ball that's out of bounds players can be in down positions while saving it until the ball enters the plane of the tramp." }],
           },
-          { text: "A player possesses a ball whilst out of bounds and on the ground" },
+          {
+            text: "A player possesses a ball whilst out of bounds and on the ground",
+            children: [{ text: "The grass is not considered the ground (ex: if a player's toes touch grass blades while releasing a shot, but get the shot off before hitting the ground, there is no grounding)." }],
+          },
           { text: "If 2 players on other teams are in a fight for possession of the ball there is no grounding, and bobbling only has to start once one of them has clear possession." },
           { text: "A player possesses the ball on the tramp with their hands and does not attempt to jump." },
           { text: "If a player's bounce is being stolen whilst bobbling they are allowed to touch the tramp and possess the ball with their hands at the same time, but they must make an attempt to jump." },

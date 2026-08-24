@@ -6,6 +6,12 @@ export interface RuleChangeEntry {
 
 export const ruleChangelog: RuleChangeEntry[] = [
   {
+    date: "August 24, 2026",
+    title: "Rule 8.1.c.i Added — Grass Clarification",
+    description:
+      "Added rule 8.1.c.i clarifying that grass is not considered the ground for grounding purposes. A player whose toes touch grass blades while releasing a shot is not grounded, provided they get the shot off before hitting the ground.",
+  },
+  {
     date: "August 13, 2026",
     title: "Free Throw Shooter Designation Added",
     description:
