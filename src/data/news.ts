@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "frank-patrone-traded-to-murray-mice",
+    title: "Deadline Deal — Frank Patrone Traded to Murray Mice for 2027 First-Rounder",
+    date: "August 24, 2026",
+    excerpt:
+      "In a stunning move right before their game with the River Kings, the Murray Mice acquired Frank Patrone from the BDT's in exchange for a 2027 first-round draft pick.",
+  },
+  {
     slug: "adam-swarzfager-back-to-back-threes",
     title: "Adam Swarzfager Hits Back-to-Back Threes — A Dooramp First",
     date: "August 8, 2026",

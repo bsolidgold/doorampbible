@@ -333,7 +333,7 @@ export const players: Player[] = [
     nicknames: "---",
     description: "---",
     accolades: "2025 Winterdome Champion",
-    team: "BDT's",
+    team: "Murray Mice",
   },
   {
     id: "owen-buckwalter",
