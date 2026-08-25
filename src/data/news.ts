@@ -11,9 +11,16 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "murray-mice-avenge-river-kings-game7",
+    title: "Five Overtimes — Murray Mice Outlast River Kings 8-7",
+    date: "August 23, 2026",
+    excerpt:
+      "The longest game in dooramp history took five overtimes to settle. Adam Swarzfager scored all 8 Murray Mice points and Frank Patrone debuted minutes after being traded, as the Mice avenged their Game 5 upset by a single point.",
+  },
+  {
     slug: "frank-patrone-traded-to-murray-mice",
     title: "Deadline Deal — Frank Patrone Traded to Murray Mice for 2027 First-Rounder",
-    date: "August 24, 2026",
+    date: "August 23, 2026",
     excerpt:
       "In a stunning move right before their game with the River Kings, the Murray Mice acquired Frank Patrone from the BDT's in exchange for a 2027 first-round draft pick.",
   },
