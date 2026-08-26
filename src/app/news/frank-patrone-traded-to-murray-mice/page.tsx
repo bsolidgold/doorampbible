@@ -7,7 +7,7 @@ export default function FrankPatroneTradedPage() {
   return (
     <ArticleLayout
       title="Deadline Deal — Frank Patrone Traded to Murray Mice for 2027 First-Rounder"
-      date="August 24, 2026"
+      date="August 23, 2026"
     >
       <p>
         In a move that sent shockwaves through the league just hours before their matchup with the River Kings,

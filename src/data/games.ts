@@ -32,6 +32,69 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "game-7-2026",
+    date: "August 23, 2026",
+    season: "2026",
+    gameNumber: 7,
+    winner: "Murray Mice",
+    notes: "The longest game in dooramp history went five overtimes before the Murray Mice edged the River Kings 8-7. Adam Swarzfager scored all 8 points, Frank Patrone debuted minutes after being traded from the BDT's, and Ashton Anderegg piled up 8 blocks/steals in defeat.",
+    newsSlug: "murray-mice-avenge-river-kings-game7",
+    teams: [
+      {
+        name: "Murray Mice",
+        score: 8,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 8, onePtAtt: 16,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 3,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 4, rebounds: 0,
+          },
+          {
+            playerId: "jaxon-gladhart",
+            onePtMade: 0, onePtAtt: 3,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 1, blocks: 1, rebounds: 0,
+          },
+          {
+            playerId: "frank-patrone",
+            onePtMade: 0, onePtAtt: 4,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 1, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "River Kings",
+        score: 7,
+        players: [
+          {
+            playerId: "ashton-anderegg",
+            onePtMade: 5, onePtAtt: 12,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 1,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 8, rebounds: 0,
+          },
+          {
+            playerId: "jack-baker",
+            onePtMade: 2, onePtAtt: 4,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 1,
+            ftMade: 0, ftAtt: 0,
+            assists: 2, blocks: 1, rebounds: 1,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "game-6-2026",
     date: "August 8, 2026",
     season: "2026",

@@ -18,7 +18,7 @@ function hasPlayed(team: Team): boolean {
 }
 
 function points(team: Team): number {
-  return team.wins - team.losses;
+  return team.wins * 2 - team.losses;
 }
 
 function formatPoints(team: Team): string {
