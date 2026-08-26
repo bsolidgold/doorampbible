@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "ndl-all-star-vote",
+    title: "NDL All-Star Vote Is Live — Cast Your Ballot Now",
+    date: "August 25, 2026",
+    excerpt:
+      "The first-ever NDL All-Star vote is open. The top 4 fan picks will earn a spot in the game, with David Anderegg and Adam Swarzfager drafting the rest of the rosters as All-Star captains.",
+  },
+  {
     slug: "frank-patrone-traded-to-murray-mice",
     title: "Deadline Deal — Frank Patrone Traded to Murray Mice for 2027 First-Rounder",
     date: "August 24, 2026",

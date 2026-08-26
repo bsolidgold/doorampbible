@@ -17,6 +17,8 @@ const navLinks = [
   { href: "https://discord.gg/YNectrQTT", label: "Discord", external: true },
 ];
 
+const ALL_STAR_VOTE_HREF = "https://forms.gle/8CcXc4ZsLApspkEZ7";
+
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -84,6 +86,16 @@ export function Navbar() {
               </li>
             );
           })}
+          <li>
+            <Link
+              href={ALL_STAR_VOTE_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 px-3 py-1.5 text-xs font-heading font-bold uppercase tracking-widest rounded bg-ndl-accent text-white hover:opacity-90 transition-opacity animate-pulse"
+            >
+              ★ All-Star Vote
+            </Link>
+          </li>
         </ul>
 
         {/* Mobile hamburger */}
@@ -125,6 +137,16 @@ export function Navbar() {
                 </li>
               );
             })}
+            <li>
+              <Link
+                href={ALL_STAR_VOTE_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-6 py-3 text-sm font-heading font-bold uppercase tracking-widest text-ndl-accent border-b border-ndl-surface/50"
+              >
+                ★ All-Star Vote
+              </Link>
+            </li>
           </motion.ul>
         )}
       </AnimatePresence>
