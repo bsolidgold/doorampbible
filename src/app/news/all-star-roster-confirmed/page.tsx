@@ -1,6 +1,36 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArticleLayout } from "@/components/ndl/ArticleLayout";
+import { players } from "@/data/players";
+
+const FAN_VOTED = ["jaxon-gladhart", "ben-martinsen", "frank-patrone", "ben-hoag"];
+const CAPTAINS = ["david-anderegg", "ashton-anderegg", "adam-swarzfager", "grant-bowers"];
+
+function RosterGrid({ ids }: { ids: string[] }) {
+  const roster = ids
+    .map((id) => players.find((p) => p.id === id))
+    .filter((p): p is (typeof players)[number] => Boolean(p));
+
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-6 not-prose">
+      {roster.map((player) => (
+        <div key={player.id} className="flex flex-col items-center text-center gap-2">
+          <Image
+            src={player.photo}
+            alt={player.name}
+            width={140}
+            height={140}
+            className="rounded-lg border-2 border-ndl-surface object-cover w-full aspect-square bg-ndl-primary"
+          />
+          <p className="font-heading font-bold text-xs uppercase tracking-wide text-ndl-text">
+            {player.name}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export const metadata: Metadata = {
   title: "All-Star Roster Confirmed — Draft and Tip-Off Saturday at 11:30",
@@ -22,12 +52,7 @@ export default function AllStarRosterConfirmedPage() {
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
         The Fan-Voted Four
       </h2>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Jaxon Gladhart</li>
-        <li>Ben &ldquo;Benny Buckets&rdquo; Martinsen</li>
-        <li>Frank Patrone</li>
-        <li>Ben Hoag</li>
-      </ul>
+      <RosterGrid ids={FAN_VOTED} />
       <p>
         Four names, four very different games. Patrone arrives fresh off the deadline deal that sent him to
         the Murray Mice, and Benny Buckets brings the only nickname in the league that doubles as a rule in
@@ -41,6 +66,8 @@ export default function AllStarRosterConfirmedPage() {
         David Anderegg, Ashton Anderegg, Adam Swarzfager and Grant Bowers are all playing. That puts every
         captain in the league on the floor at the same time — something the regular season never allows.
       </p>
+
+      <RosterGrid ids={CAPTAINS} />
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
         Injury List: Huntsman and Anderegg Out
