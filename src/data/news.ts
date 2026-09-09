@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "all-star-roster-confirmed",
+    title: "All-Star Roster Confirmed — Draft and Tip-Off Saturday at 11:30",
+    date: "September 9, 2026",
+    excerpt:
+      "Jaxon Gladhart, Ben \"Benny Buckets\" Martinsen, Frank Patrone and Ben Hoag are in as the fan-voted All-Stars, joining all four captains. Eli Huntsman missed out from the IL, and Finn Anderegg is sidelined too. The top two captains draft Saturday morning, then the game begins.",
+  },
+  {
     slug: "all-star-game-moved-to-saturday",
     title: "All-Star Game Moved to Saturday, September 12",
     date: "September 9, 2026",
