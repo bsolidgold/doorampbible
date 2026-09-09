@@ -107,6 +107,14 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
                   Captain
                 </span>
               )}
+              {player.injured && (
+                <span
+                  title={player.injuryNote ?? "Injured"}
+                  className="text-[10px] font-heading font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-ndl-gold/20 text-ndl-gold"
+                >
+                  ✚ Injured
+                </span>
+              )}
             </div>
             <span
               className={`text-xs font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${

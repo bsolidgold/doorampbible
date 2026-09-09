@@ -26,6 +26,10 @@ export interface Player {
   accolades: string;
   team?: string;
   isCaptain?: boolean;
+  /** Currently sidelined — shows an "Injured" marker on the stats page. */
+  injured?: boolean;
+  /** Optional detail shown on hover, e.g. "Torn UCL". */
+  injuryNote?: string;
 }
 
 /** Team roster order for grouping on the stats page. */
@@ -94,6 +98,8 @@ export const players: Player[] = [
     accolades: "---",
     team: "Trampoline Titans",
     isCaptain: true,
+    injured: true,
+    injuryNote: "Torn UCL",
   },
   {
     id: "grant-bowers",
@@ -152,6 +158,7 @@ export const players: Player[] = [
     description: "---",
     accolades: "---",
     team: "River Kings",
+    injured: true,
   },
   {
     id: "ben-martinsen",

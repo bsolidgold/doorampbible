@@ -43,6 +43,11 @@ export function PlayerProfileModal({ player, open, onClose }: PlayerProfileModal
               >
                 {player.status}
               </span>
+              {player.injured && (
+                <span className="ml-2 text-xs font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-ndl-gold/20 text-ndl-gold">
+                  ✚ Injured{player.injuryNote ? ` — ${player.injuryNote}` : ""}
+                </span>
+              )}
             </div>
           </div>
         </DialogHeader>
