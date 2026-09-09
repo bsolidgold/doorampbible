@@ -14,7 +14,7 @@ export function Footer() {
         />
         <div className="flex gap-4">
           <Link
-            href="https://youtube.com/@Doorampball"
+            href="https://www.youtube.com/@NationalDoorampLeague"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-heading font-semibold uppercase tracking-widest text-ndl-muted hover:text-ndl-accent transition-colors"

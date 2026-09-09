@@ -14,7 +14,7 @@ const navLinks = [
   { href: "/standings", label: "Standings" },
   { href: "/schedule", label: "Schedule" },
   { href: "/feedback", label: "Feedback" },
-  { href: "https://youtube.com/@Doorampball", label: "YouTube", external: true },
+  { href: "https://www.youtube.com/@NationalDoorampLeague", label: "YouTube", external: true },
   { href: "https://discord.gg/YNectrQTT", label: "Discord", external: true },
 ];
 
