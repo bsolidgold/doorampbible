@@ -107,14 +107,6 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
                   Captain
                 </span>
               )}
-              {player.injured && (
-                <span
-                  title={player.injuryNote ?? "Injured"}
-                  className="text-xs sm:text-sm font-heading font-black uppercase tracking-wider px-3 py-1 rounded-full bg-ndl-accent/25 text-ndl-accent border border-ndl-accent/60"
-                >
-                  ✚ Injured
-                </span>
-              )}
             </div>
             <span
               className={`text-xs font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${
@@ -159,6 +151,15 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
           <div className="flex-1">
             <p className="text-ndl-muted text-xs font-heading uppercase tracking-widest">No stats yet</p>
           </div>
+        )}
+
+        {player.injured && (
+          <span
+            title={player.injuryNote ?? "Injured"}
+            className="flex-shrink-0 self-center text-xs sm:text-sm font-heading font-black uppercase tracking-wider px-3 py-1 rounded-full bg-ndl-accent/25 text-ndl-accent border border-ndl-accent/60"
+          >
+            ✚ Injured
+          </span>
         )}
       </div>
     </div>
