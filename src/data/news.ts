@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "all-star-game-moved-to-saturday",
+    title: "All-Star Game Moved to Saturday, September 12",
+    date: "September 9, 2026",
+    excerpt:
+      "The first NDL All-Star Game has been pushed from Wednesday to Saturday, September 12, giving the league its best shot at a full roster and a full crowd. Rosters, captains and format are unchanged.",
+  },
+  {
     slug: "ndl-all-star-vote",
     title: "NDL All-Star Vote Is Live — Cast Your Ballot Now",
     date: "August 25, 2026",
