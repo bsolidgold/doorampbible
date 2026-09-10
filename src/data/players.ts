@@ -317,7 +317,7 @@ export const players: Player[] = [
   {
     id: "jaxon-gladhart",
     name: "Jaxon Gladhart",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/jaxon-gladhart.jpg",
     status: "active",
     seasonTotals: { onePtMade: "0", onePtAtt: "3", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "1", blocks: "1", rebounds: "0" },
     allTimeTotals: { onePtMade: "0", onePtAtt: "3", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "1", blocks: "1", rebounds: "0" },
