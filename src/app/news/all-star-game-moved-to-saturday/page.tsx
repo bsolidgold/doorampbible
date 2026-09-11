@@ -33,7 +33,7 @@ export default function AllStarGameMovedPage() {
       </h2>
       <p>
         The rosters are unaffected. The top 4 vote-getters from the fan ballot still earn automatic spots,
-        with captains David Anderegg and Adam Swarzfager drafting the rest of their squads from the
+        with captains David Anderegg and Adam Swartzfager drafting the rest of their squads from the
         remaining pool. Grant Bowers and Ashton Anderegg remain confirmed participants regardless of the
         vote. The draft order and format are untouched by the date change.
       </p>

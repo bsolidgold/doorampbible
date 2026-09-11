@@ -11,7 +11,7 @@ export default function MurrayMiceEdgeBdtsGame4Page() {
     >
       <p>
         The Murray Mice moved to 2-0 on the season with an 8-6 win over the BDT's in Game 4, as first-round
-        pick Ben Martinsen suited up for the first time this year alongside captain Adam Swarzfager.
+        pick Ben Martinsen suited up for the first time this year alongside captain Adam Swartzfager.
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
@@ -20,15 +20,15 @@ export default function MurrayMiceEdgeBdtsGame4Page() {
       <p>
         After sitting out the Murray Mice&apos;s first three games, Ben Martinsen finally took the court and
         made his presence felt on defense, coming up with a block/steal in his return. He didn&apos;t need to
-        put the ball in the hoop — Adam Swarzfager carried the offensive load, and Martinsen&apos;s length off
+        put the ball in the hoop — Adam Swartzfager carried the offensive load, and Martinsen&apos;s length off
         the bench was enough to help close out the win.
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        Swarzfager Leads the Way
+        Swartzfager Leads the Way
       </h2>
       <p>
-        Adam Swarzfager did the heavy lifting for the Murray Mice, going 8-for-14 (57%) from the one-point line
+        Adam Swartzfager did the heavy lifting for the Murray Mice, going 8-for-14 (57%) from the one-point line
         to account for all 8 of the team&apos;s points. He struggled from deep, missing all 8 of his three-point
         attempts, but still finished with 4 blocks/steals and 2 rebounds to go with the win.
       </p>

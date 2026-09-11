@@ -12,17 +12,17 @@ export default function FrankPatroneTradedPage() {
       <p>
         In a move that sent shockwaves through the league just hours before their matchup with the River Kings,
         the Murray Mice acquired Frank Patrone from the BDT&apos;s in exchange for the Murray Mice&apos;s
-        2027 first-round draft pick. The deal was finalized right before tip-off, giving Adam Swarzfager&apos;s
+        2027 first-round draft pick. The deal was finalized right before tip-off, giving Adam Swartzfager&apos;s
         squad an immediate roster boost heading into one of the season&apos;s most anticipated games.
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        A Bold Move by Swarzfager
+        A Bold Move by Swartzfager
       </h2>
       <p>
-        Murray Mice captain Adam Swarzfager made clear he is not waiting to build — he&apos;s going for it now.
+        Murray Mice captain Adam Swartzfager made clear he is not waiting to build — he&apos;s going for it now.
         Surrendering a first-round pick in the upcoming 2027 draft is a steep price, but with the Mice sitting
-        near the top of the standings, Swarzfager is betting on winning this season rather than stockpiling
+        near the top of the standings, Swartzfager is betting on winning this season rather than stockpiling
         future assets. Patrone, a 2025 Winterdome Champion, brings proven experience and athleticism that
         immediately upgrades the Mice&apos;s depth.
       </p>

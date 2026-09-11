@@ -37,7 +37,7 @@ export const games: Game[] = [
     season: "2026",
     gameNumber: 7,
     winner: "Murray Mice",
-    notes: "The longest game in dooramp history went five overtimes before the Murray Mice edged the River Kings 8-7. Adam Swarzfager scored all 8 points, Frank Patrone debuted minutes after being traded from the BDT's, and Ashton Anderegg piled up 8 blocks/steals in defeat.",
+    notes: "The longest game in dooramp history went five overtimes before the Murray Mice edged the River Kings 8-7. Adam Swartzfager scored all 8 points, Frank Patrone debuted minutes after being traded from the BDT's, and Ashton Anderegg piled up 8 blocks/steals in defeat.",
     newsSlug: "murray-mice-avenge-river-kings-game7",
     teams: [
       {
@@ -210,7 +210,7 @@ export const games: Game[] = [
     season: "2026",
     gameNumber: 4,
     winner: "Murray Mice",
-    notes: "Ben Martinsen made his season debut alongside captain Adam Swarzfager as the Murray Mice held off the BDT's 8-6.",
+    notes: "Ben Martinsen made his season debut alongside captain Adam Swartzfager as the Murray Mice held off the BDT's 8-6.",
     newsSlug: "murray-mice-edge-bdts-game4",
     teams: [
       {
@@ -363,7 +363,7 @@ export const games: Game[] = [
     season: "2026",
     gameNumber: 1,
     winner: "Murray Mice",
-    notes: "Adam Swarzfager played solo as captain and defeated the River Kings in the 2026 season opener.",
+    notes: "Adam Swartzfager played solo as captain and defeated the River Kings in the 2026 season opener.",
     newsSlug: "game1-adam-victory",
     teams: [
       {

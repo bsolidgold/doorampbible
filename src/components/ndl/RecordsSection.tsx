@@ -1,10 +1,10 @@
 import { CollapsibleSection } from "@/components/ndl/CollapsibleSection";
 
 const records = [
-  { category: "Points", value: "30", holder: "Adam Swarzfager" },
+  { category: "Points", value: "30", holder: "Adam Swartzfager" },
   { category: "Assists", value: "2", holder: "Jack Baker" },
-  { category: "Rebounds", value: "6", holder: "Adam Swarzfager" },
-  { category: "Blocks / Steals", value: "8", holder: "Adam Swarzfager" },
+  { category: "Rebounds", value: "6", holder: "Adam Swartzfager" },
+  { category: "Blocks / Steals", value: "8", holder: "Adam Swartzfager" },
 ];
 
 export function RecordsSection() {

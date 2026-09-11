@@ -32,7 +32,7 @@ export default function NdlAllStarVotePage() {
       </h2>
       <p>
         The top 4 players selected by the fans will automatically qualify for the All-Star Game. From there,
-        the two All-Star captains — David Anderegg and Adam Swarzfager — will hold a live draft to build
+        the two All-Star captains — David Anderegg and Adam Swartzfager — will hold a live draft to build
         out their rosters from the remaining pool of eligible players. Both captains are seasoned leaders
         who know how to put together a winning team, so expect the draft to be every bit as competitive as
         the game itself.
@@ -42,7 +42,7 @@ export default function NdlAllStarVotePage() {
         Captains Already Set
       </h2>
       <p>
-        David Anderegg and Adam Swarzfager have been named the All-Star Game captains. David has been one
+        David Anderegg and Adam Swartzfager have been named the All-Star Game captains. David has been one
         of the most clutch performers in the league all season, while Adam brings the Murray Mice&apos;s
         championship mentality to the All-Star stage. Both will draft their squads from whoever the fans
         send their way.

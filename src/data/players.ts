@@ -56,7 +56,7 @@ const blank: PlayerStats = {
 export const players: Player[] = [
   {
     id: "adam-swarzfager",
-    name: "Adam Swarzfager",
+    name: "Adam Swartzfager",
     photo: "/images/players/adam-swarzfager.png",
     status: "active",
     seasonTotals: { onePtMade: "33", onePtAtt: "80", twoPtMade: "0", twoPtAtt: "2", threePtMade: "3", threePtAtt: "33", assists: "0", blocks: "22", rebounds: "11" },
