@@ -331,7 +331,7 @@ export const players: Player[] = [
   {
     id: "frank-patrone",
     name: "Frank Patrone",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/frank-patrone.png",
     status: "active",
     seasonTotals: { onePtMade: "0", onePtAtt: "4", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "1", rebounds: "0" },
     allTimeTotals: { onePtMade: "0", onePtAtt: "4", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "1", rebounds: "0" },
