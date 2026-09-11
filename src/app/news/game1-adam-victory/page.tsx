@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ArticleLayout } from "@/components/ndl/ArticleLayout";
 
-export const metadata: Metadata = { title: "Adam Swarzfager Wins Season Opener — NDL Dooramp" };
+export const metadata: Metadata = { title: "Adam Swartzfager Wins Season Opener — NDL Dooramp" };
 
 export default function Game1AdamVictoryPage() {
   return (
@@ -13,7 +13,7 @@ export default function Game1AdamVictoryPage() {
     >
       <p>
         The 2026 NDL season is officially underway. In the first competitive game of the year, Murray Mice captain
-        Adam Swarzfager stepped up alone — no teammates, no help — and took down a two-man River Kings squad
+        Adam Swartzfager stepped up alone — no teammates, no help — and took down a two-man River Kings squad
         of Ashton Anderegg and Jack Baker.
       </p>
 

@@ -26,10 +26,10 @@ export default function MurrayMiceAvengeRiverKingsGame7Page() {
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        Swarzfager Carries Every Point
+        Swartzfager Carries Every Point
       </h2>
       <p>
-        Adam Swarzfager scored all 8 Murray Mice points. Not most of them — all of them. He went 8-for-16 from
+        Adam Swartzfager scored all 8 Murray Mice points. Not most of them — all of them. He went 8-for-16 from
         the one-point line across regulation and five overtimes, missed all 3 of his attempts from deep, and
         still had enough left to record 4 blocks/steals. No other Mouse found the bottom of the hoop. Across a
         game this long, that is a staggering share of the load to shoulder alone.

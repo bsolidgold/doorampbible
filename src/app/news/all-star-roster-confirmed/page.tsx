@@ -63,7 +63,7 @@ export default function AllStarRosterConfirmedPage() {
         All Four Captains In
       </h2>
       <p>
-        David Anderegg, Ashton Anderegg, Adam Swarzfager and Grant Bowers are all playing. That puts every
+        David Anderegg, Ashton Anderegg, Adam Swartzfager and Grant Bowers are all playing. That puts every
         captain in the league on the floor at the same time — something the regular season never allows.
       </p>
 

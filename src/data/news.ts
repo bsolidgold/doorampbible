@@ -29,14 +29,14 @@ export const newsArticles: NewsArticle[] = [
     title: "NDL All-Star Vote Is Live — Cast Your Ballot Now",
     date: "August 25, 2026",
     excerpt:
-      "The first-ever NDL All-Star vote is open. The top 4 fan picks will earn a spot in the game, with David Anderegg and Adam Swarzfager drafting the rest of the rosters as All-Star captains.",
+      "The first-ever NDL All-Star vote is open. The top 4 fan picks will earn a spot in the game, with David Anderegg and Adam Swartzfager drafting the rest of the rosters as All-Star captains.",
   },
   {
     slug: "murray-mice-avenge-river-kings-game7",
     title: "Five Overtimes — Murray Mice Outlast River Kings 8-7",
     date: "August 23, 2026",
     excerpt:
-      "The longest game in dooramp history took five overtimes to settle. Adam Swarzfager scored all 8 Murray Mice points and Frank Patrone debuted minutes after being traded, as the Mice avenged their Game 5 upset by a single point.",
+      "The longest game in dooramp history took five overtimes to settle. Adam Swartzfager scored all 8 Murray Mice points and Frank Patrone debuted minutes after being traded, as the Mice avenged their Game 5 upset by a single point.",
   },
   {
     slug: "frank-patrone-traded-to-murray-mice",
@@ -47,17 +47,17 @@ export const newsArticles: NewsArticle[] = [
   },
   {
     slug: "adam-swarzfager-back-to-back-threes",
-    title: "Adam Swarzfager Hits Back-to-Back Threes — A Dooramp First",
+    title: "Adam Swartzfager Hits Back-to-Back Threes — A Dooramp First",
     date: "August 8, 2026",
     excerpt:
-      "Adam Swarzfager drilled two three-pointers in a row in the 4th quarter of Game 6, the first time it's ever been done in dooramp, capping a 3-make day from deep across two games.",
+      "Adam Swartzfager drilled two three-pointers in a row in the 4th quarter of Game 6, the first time it's ever been done in dooramp, capping a 3-make day from deep across two games.",
   },
   {
     slug: "murray-mice-rout-fredholers-game6",
     title: "Murray Mice Bounce Back, Rout Freaky Fredholers 12-2",
     date: "August 8, 2026",
     excerpt:
-      "Hours after falling to the River Kings, Adam Swarzfager and Ben Martinsen regrouped to blow past Grant Bowers and Isaac Cameron in the Freaky Fredholers' season debut, 12-2.",
+      "Hours after falling to the River Kings, Adam Swartzfager and Ben Martinsen regrouped to blow past Grant Bowers and Isaac Cameron in the Freaky Fredholers' season debut, 12-2.",
   },
   {
     slug: "river-kings-upset-murray-mice-game5",
@@ -71,7 +71,7 @@ export const newsArticles: NewsArticle[] = [
     title: "Martinsen Makes His Debut as Murray Mice Edge BDT's 8-6",
     date: "July 22, 2026",
     excerpt:
-      "Adam Swarzfager and first-round pick Ben Martinsen, playing in his first game of the season, teamed up to hold off David Anderegg and the BDT's 8-6, keeping the Murray Mice unbeaten.",
+      "Adam Swartzfager and first-round pick Ben Martinsen, playing in his first game of the season, teamed up to hold off David Anderegg and the BDT's 8-6, keeping the Murray Mice unbeaten.",
   },
   {
     slug: "captains-clash-game3",
@@ -103,7 +103,7 @@ export const newsArticles: NewsArticle[] = [
     title: "Adam Goes Solo — Murray Mice Captain Wins the Season Opener",
     date: "June 9, 2026",
     excerpt:
-      "Adam Swarzfager stepped up alone as a solo captain and took down Ashton Anderegg and Jack Baker of the River Kings in the first game of the 2026 NDL season.",
+      "Adam Swartzfager stepped up alone as a solo captain and took down Ashton Anderegg and Jack Baker of the River Kings in the first game of the 2026 NDL season.",
     image: "/images/news/game1-adam-victory.jpg",
     imageAlt: "Players gathered around the dooramp before Game 1",
   },

@@ -15,10 +15,10 @@ export default function MurrayMiceRoutFredholersGame6Page() {
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        Swarzfager Bounces Back
+        Swartzfager Bounces Back
       </h2>
       <p>
-        After a rough shooting night in the earlier game, Adam Swarzfager found his form, going 5-for-7 on
+        After a rough shooting night in the earlier game, Adam Swartzfager found his form, going 5-for-7 on
         one-pointers and 2-for-13 from three for 11 of the Murray Mice&apos;s 12 points. Ben Martinsen added
         a one-pointer and 3 blocks/steals off the bench.
       </p>

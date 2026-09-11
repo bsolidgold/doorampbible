@@ -79,7 +79,7 @@ export const winterdomes: Winterdome[] = [
       {
         name: "Murray Mice",
         players: [
-          { name: "Adam Swarzfager", playerId: "adam-swarzfager" },
+          { name: "Adam Swartzfager", playerId: "adam-swarzfager" },
           { name: "Ben Martinsen", playerId: "ben-martinsen" },
           { name: "Orion Anderegg" },
           { name: "Isaac Cameron", playerId: "isaac-cameron" },

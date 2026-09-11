@@ -26,10 +26,10 @@ export default function RiverKingsUpsetMurrayMiceGame5Page() {
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        Swarzfager Can&apos;t Find His Rhythm
+        Swartzfager Can&apos;t Find His Rhythm
       </h2>
       <p>
-        Adam Swarzfager struggled with his shot all night, going just 3-for-17 (18%) from the one-point line
+        Adam Swartzfager struggled with his shot all night, going just 3-for-17 (18%) from the one-point line
         and 1-for-9 from three, though he stayed busy elsewhere with 4 blocks/steals and 6 rebounds. His lone
         triple came at the perfect time, though — a 4th-quarter three that cut into the River Kings&apos; lead
         and briefly had the Murray Mice within striking distance. It wasn&apos;t enough to complete the
