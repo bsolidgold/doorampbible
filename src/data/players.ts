@@ -219,7 +219,7 @@ export const players: Player[] = [
   {
     id: "ben-hoag",
     name: "Ben Hoag",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/ben-hoag.jpg",
     status: "active",
     seasonTotals: { onePtMade: "1", onePtAtt: "3", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "2", rebounds: "1" },
     allTimeTotals: { onePtMade: "1", onePtAtt: "3", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "0", assists: "0", blocks: "2", rebounds: "1" },
