@@ -10,12 +10,4 @@ export interface UpcomingGame {
   location?: string;
 }
 
-export const upcomingGames: UpcomingGame[] = [
-  {
-    id: "all-star-game-2026",
-    date: "2026-09-12",
-    title: "NDL All-Star Game",
-    time: "11:30 AM",
-    location: "Dooramp",
-  },
-];
+export const upcomingGames: UpcomingGame[] = [];

@@ -32,6 +32,93 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "all-star-game-2026",
+    date: "September 12, 2026",
+    season: "2026",
+    gameNumber: 8,
+    winner: "Adam's Team",
+    notes: "The first NDL All-Star Game went to Adam's Team 8-7. Adam Swartzfager led all scorers with 5 points and hit the only three-pointer of the game, adding 3 assists and 6 blocks/steals. Jaxon Gladhart played a quarter for each side as the float and scored one point for each team — his full line across both was 2/7 from one, 0/5 from three, 1 assist, 2 blocks/steals and 2 rebounds. Exhibition game: these stats are not included in season or all-time totals.",
+    newsSlug: "all-star-game-adams-team-wins",
+    teams: [
+      {
+        name: "Adam's Team",
+        score: 8,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 2, onePtAtt: 8,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 1, threePtAtt: 2,
+            ftMade: 0, ftAtt: 0,
+            assists: 3, blocks: 6, rebounds: 1,
+          },
+          {
+            playerId: "frank-patrone",
+            onePtMade: 1, onePtAtt: 4,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 0, rebounds: 1,
+          },
+          {
+            playerId: "grant-bowers",
+            onePtMade: 1, onePtAtt: 3,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 1, rebounds: 0,
+          },
+          {
+            playerId: "jaxon-gladhart",
+            onePtMade: 1, onePtAtt: null,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: null,
+            ftMade: 0, ftAtt: 0,
+            assists: null, blocks: null, rebounds: null,
+          },
+        ],
+      },
+      {
+        name: "Dave's Team",
+        score: 7,
+        players: [
+          {
+            playerId: "david-anderegg",
+            onePtMade: 3, onePtAtt: 12,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 3,
+            ftMade: 0, ftAtt: 0,
+            assists: 2, blocks: 6, rebounds: 1,
+          },
+          {
+            playerId: "ashton-anderegg",
+            onePtMade: 1, onePtAtt: 3,
+            twoPtMade: 1, twoPtAtt: 1,
+            threePtMade: 0, threePtAtt: 3,
+            ftMade: 0, ftAtt: 0,
+            assists: 1, blocks: 3, rebounds: 0,
+          },
+          {
+            playerId: "ben-martinsen",
+            onePtMade: 0, onePtAtt: 0,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 0, rebounds: 0,
+          },
+          {
+            playerId: "jaxon-gladhart",
+            onePtMade: 1, onePtAtt: null,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: null,
+            ftMade: 0, ftAtt: 0,
+            assists: null, blocks: null, rebounds: null,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "game-7-2026",
     date: "August 23, 2026",
     season: "2026",
