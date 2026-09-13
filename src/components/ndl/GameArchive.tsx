@@ -113,6 +113,12 @@ function GameCard({ game }: { game: Game }) {
           {game.winner === away.name && <span className="text-[10px] font-bold text-ndl-accent uppercase tracking-wider">W</span>}
         </div>
 
+        {game.isAllStar && (
+          <span className="text-[10px] font-bold text-ndl-accent uppercase tracking-wider flex-shrink-0 border border-ndl-accent/50 rounded px-1.5 py-0.5">
+            All-Star
+          </span>
+        )}
+
         <span className="text-[11px] text-ndl-muted flex-shrink-0">{game.date}</span>
 
         <div className="flex-shrink-0 text-ndl-muted">
@@ -138,6 +144,20 @@ function GameCard({ game }: { game: Game }) {
             </div>
           ))}
 
+          {game.sharedPlayers && (
+            <div className="border-t border-dashed border-ndl-surface pt-4">
+              <div className="mb-2">
+                <span className="font-heading font-bold text-sm uppercase tracking-wider text-ndl-muted">
+                  {game.sharedPlayers.label}
+                </span>
+              </div>
+              {game.sharedPlayers.note && (
+                <p className="text-ndl-muted text-xs italic mb-2">{game.sharedPlayers.note}</p>
+              )}
+              <StatTable playerStats={game.sharedPlayers.players} />
+            </div>
+          )}
+
           {game.newsSlug && (
             <div className="pt-1">
               <Link
@@ -161,10 +181,13 @@ export function GameArchive() {
     <div className="space-y-3">
       {seasons.map((season) => {
         const seasonGames = games.filter((g) => g.season === season);
+        const regularGames = seasonGames.filter((g) => !g.isAllStar);
+        const hasAllStar = regularGames.length !== seasonGames.length;
         return (
           <div key={season}>
             <div className="text-[11px] font-bold text-ndl-muted uppercase tracking-widest mb-3">
-              {season} Season — {seasonGames.length} game{seasonGames.length !== 1 ? "s" : ""}
+              {season} Season — {regularGames.length} game{regularGames.length !== 1 ? "s" : ""}
+              {hasAllStar && " + All-Star Game"}
             </div>
             <div className="bg-ndl-secondary border border-ndl-surface rounded-lg">
               {seasonGames.map((game) => (

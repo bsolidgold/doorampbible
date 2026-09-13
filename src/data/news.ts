@@ -11,6 +11,20 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "jaxon-gladhart-all-star-mvp",
+    title: "The Most Controversial MVP in Dooramp History",
+    date: "September 12, 2026",
+    excerpt:
+      "Jaxon Gladhart played a quarter for each team after Ben Hoag's no-show, went 0-for-5 from deep, and walked off with the 2026 All-Star MVP over Adam Swartzfager — on a broken toe.",
+  },
+  {
+    slug: "ndl-all-star-game-2026",
+    title: "Adam's Team Edges David's Team 8-7 in the 2026 All-Star Game",
+    date: "September 12, 2026",
+    excerpt:
+      "A buzzer-beating Adam Swartzfager three, a no-show that left the league a player short, and an All-Star who scored for both sides. Adam's Team took the 2026 All-Star Game by a single point.",
+  },
+  {
     slug: "all-star-roster-confirmed",
     title: "All-Star Roster Confirmed — Draft and Tip-Off Saturday at 11:30",
     date: "September 9, 2026",

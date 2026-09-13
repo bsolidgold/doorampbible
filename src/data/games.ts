@@ -28,9 +28,104 @@ export interface Game {
   winner: string; // team name
   notes?: string;
   newsSlug?: string;
+  /** Exhibition games (e.g. the All-Star Game) — shown on the site but excluded from standings and totals. */
+  isAllStar?: boolean;
+  /** Players who appeared for both teams; listed once in their own section rather than under either roster. */
+  sharedPlayers?: {
+    label: string;
+    note?: string;
+    players: GamePlayerStats[];
+  };
 }
 
 export const games: Game[] = [
+  {
+    id: "all-star-2026",
+    date: "September 12, 2026",
+    season: "2026",
+    gameNumber: 0,
+    isAllStar: true,
+    winner: "Adam's Team",
+    notes: "The 2026 All-Star Game. Fan-voted All-Star Ben Hoag did not show up, leaving seven players, so Jaxon Gladhart played one quarter for each side rather than let either team go a man short. Adam Swartzfager hit a buzzer-beating three to end the second quarter. Gladhart, playing on a broken toe, was named MVP. Exhibition game — does not count toward standings, season totals, or games played.",
+    newsSlug: "ndl-all-star-game-2026",
+    teams: [
+      {
+        name: "Adam's Team",
+        score: 8,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 2, onePtAtt: 8,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 1, threePtAtt: 2,
+            ftMade: 0, ftAtt: 0,
+            assists: 3, blocks: 6, rebounds: 1,
+          },
+          {
+            playerId: "grant-bowers",
+            onePtMade: 1, onePtAtt: 3,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 1, rebounds: 0,
+          },
+          {
+            playerId: "frank-patrone",
+            onePtMade: 1, onePtAtt: 4,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 0, rebounds: 1,
+          },
+        ],
+      },
+      {
+        name: "David's Team",
+        score: 7,
+        players: [
+          {
+            playerId: "david-anderegg",
+            onePtMade: 3, onePtAtt: 12,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 3,
+            ftMade: 0, ftAtt: 0,
+            assists: 2, blocks: 6, rebounds: 1,
+          },
+          {
+            playerId: "ashton-anderegg",
+            onePtMade: 1, onePtAtt: 3,
+            twoPtMade: 1, twoPtAtt: 1,
+            threePtMade: 0, threePtAtt: 3,
+            ftMade: 0, ftAtt: 0,
+            assists: 1, blocks: 3, rebounds: 0,
+          },
+          {
+            playerId: "ben-martinsen",
+            onePtMade: 0, onePtAtt: 0,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 0, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  
+    sharedPlayers: {
+      label: "Played for Both Teams",
+      note: "Jaxon Gladhart played one quarter for each side after Ben Hoag failed to show, keeping both teams at full strength. The line below is his combined total across both; his 2 points were split one for Adam's Team and one for David's Team, and are already included in each team's score.",
+      players: [
+        {
+          playerId: "jaxon-gladhart",
+          onePtMade: 2, onePtAtt: 7,
+          twoPtMade: 0, twoPtAtt: 0,
+          threePtMade: 0, threePtAtt: 5,
+          ftMade: 0, ftAtt: 0,
+          assists: 1, blocks: 2, rebounds: 2,
+        },
+      ],
+    },
+  },
   {
     id: "game-7-2026",
     date: "August 23, 2026",
