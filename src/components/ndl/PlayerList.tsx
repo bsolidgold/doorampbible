@@ -133,16 +133,19 @@ export function PlayerList({ players }: PlayerListProps) {
                 in early. To become a free agent, talk to a dooramper and have one of the captains notified
                 so they can add you to the list.
               </p>
-              {fa.players.map((player) => (
-                <PlayerCard
-                  key={player.id}
-                  player={player}
-                  activeStats={getStats(player, activeTab)}
-                  gamesPlayed={getGamesPlayed(player, activeTab)}
-                  showAverages={activeTab === "averages"}
-                  onPhotoClick={() => setSelectedPlayer(player)}
-                />
-              ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {fa.players.map((player) => (
+                  <PlayerCard
+                    key={player.id}
+                    player={player}
+                    activeStats={getStats(player, activeTab)}
+                    gamesPlayed={getGamesPlayed(player, activeTab)}
+                    showAverages={activeTab === "averages"}
+                    onPhotoClick={() => setSelectedPlayer(player)}
+                    hideStatus
+                  />
+                ))}
+              </div>
             </div>
           ) : (
             <p className="text-ndl-muted text-sm py-4 italic">No free agents at this time.</p>
