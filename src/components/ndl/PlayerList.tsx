@@ -127,6 +127,12 @@ export function PlayerList({ players }: PlayerListProps) {
           const fa = groups.find((g) => g.team === UNASSIGNED);
           return fa && fa.players.length > 0 ? (
             <div className="space-y-3">
+              <p className="text-ndl-muted text-sm leading-relaxed">
+                Free agents are players who have put their hand up to be drafted. The players listed here
+                are aiming for the 2027 draft, though they can join sooner if the league agrees to let them
+                in early. To become a free agent, talk to a dooramper and have one of the captains notified
+                so they can add you to the list.
+              </p>
               {fa.players.map((player) => (
                 <PlayerCard
                   key={player.id}
