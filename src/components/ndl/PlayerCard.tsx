@@ -73,9 +73,11 @@ interface PlayerCardProps {
   gamesPlayed: number;
   showAverages: boolean;
   onPhotoClick: () => void;
+  /** Free agents haven't joined a team yet, so the active/retired badge is noise. */
+  hideStatus?: boolean;
 }
 
-export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, onPhotoClick }: PlayerCardProps) {
+export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, onPhotoClick, hideStatus }: PlayerCardProps) {
   const hasStats = s.onePtAtt !== "---";
   const hasAverages = showAverages && gamesPlayed > 0;
 
@@ -108,15 +110,17 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
                 </span>
               )}
             </div>
-            <span
-              className={`text-xs font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${
-                player.status === "active"
-                  ? "bg-green-900/50 text-green-400"
-                  : "bg-red-900/50 text-ndl-accent"
-              }`}
-            >
-              {player.status}
-            </span>
+            {!hideStatus && (
+              <span
+                className={`text-xs font-heading font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                  player.status === "active"
+                    ? "bg-green-900/50 text-green-400"
+                    : "bg-red-900/50 text-ndl-accent"
+                }`}
+              >
+                {player.status}
+              </span>
+            )}
           </div>
         </div>
 
