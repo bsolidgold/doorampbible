@@ -475,7 +475,7 @@ export const players: Player[] = [
   {
     id: "aiden-shipp",
     name: "Aiden Shipp",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/aiden-shipp.jpg",
     status: "active",
     seasonTotals: blank,
     allTimeTotals: blank,
@@ -488,7 +488,7 @@ export const players: Player[] = [
   {
     id: "emmett-allphin",
     name: "Emmett Allphin",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/emmett-allphin.jpg",
     status: "active",
     seasonTotals: blank,
     allTimeTotals: blank,
