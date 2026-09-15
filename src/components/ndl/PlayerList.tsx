@@ -143,6 +143,7 @@ export function PlayerList({ players }: PlayerListProps) {
                     showAverages={activeTab === "averages"}
                     onPhotoClick={() => setSelectedPlayer(player)}
                     hideStatus
+                    hideEmptyStats
                   />
                 ))}
               </div>
