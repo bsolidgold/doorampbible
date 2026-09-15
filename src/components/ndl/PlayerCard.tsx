@@ -75,9 +75,11 @@ interface PlayerCardProps {
   onPhotoClick: () => void;
   /** Free agents haven't joined a team yet, so the active/retired badge is noise. */
   hideStatus?: boolean;
+  /** Skip the "no games played" placeholder for players who obviously haven't played. */
+  hideEmptyStats?: boolean;
 }
 
-export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, onPhotoClick, hideStatus }: PlayerCardProps) {
+export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, onPhotoClick, hideStatus, hideEmptyStats }: PlayerCardProps) {
   const hasStats = s.onePtAtt !== "---";
   const hasAverages = showAverages && gamesPlayed > 0;
 
@@ -136,7 +138,7 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
               <StatBox label="BLK/STL" value={avg(s.blocks, gamesPlayed)} />
               <StatBox label="REB" value={avg(s.rebounds, gamesPlayed)} />
             </div>
-          ) : (
+          ) : hideEmptyStats ? null : (
             <div className="flex-1">
               <p className="text-ndl-muted text-xs font-heading uppercase tracking-widest">No games played</p>
             </div>
@@ -151,7 +153,7 @@ export function PlayerCard({ player, activeStats: s, gamesPlayed, showAverages, 
             <StatBox label="BLK/STL" value={s.blocks} />
             <StatBox label="REB" value={s.rebounds} />
           </div>
-        ) : (
+        ) : hideEmptyStats ? null : (
           <div className="flex-1">
             <p className="text-ndl-muted text-xs font-heading uppercase tracking-widest">No stats yet</p>
           </div>
