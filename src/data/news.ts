@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "fredholers-sign-archer-rugh-cut-ben-shapiro",
+    title: "Fredholers Sign Free Agent Archer Rugh, Cut Ben Shapiro",
+    date: "September 15, 2026",
+    excerpt:
+      "Grant Bowers has gone to the open market. The Freaky Fredholers have signed free agent Archer Rugh — a 2025 Winterdome veteran of the Jolly Jackrackers — and released Ben Shapiro, reshaping their roster mid-season without touching a draft pick.",
+  },
+  {
     slug: "jaxon-gladhart-all-star-mvp",
     title: "The Most Controversial MVP in Dooramp History",
     date: "September 12, 2026",

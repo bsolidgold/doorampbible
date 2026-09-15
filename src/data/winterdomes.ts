@@ -101,7 +101,7 @@ export const winterdomes: Winterdome[] = [
           { name: "Jack Baker", playerId: "jack-baker" },
           { name: "Finn Anderegg", playerId: "finn-anderegg" },
           { name: "Cooper Armijo" },
-          { name: "Archer Rugh" },
+          { name: "Archer Rugh", playerId: "archer-rugh" },
         ],
       },
       {
