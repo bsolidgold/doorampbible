@@ -11,6 +11,20 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "finn-anderegg-returns-titans-beat-river-kings-game9",
+    title: "Finn Anderegg Returns From Injury With 14 Points as Titans Top River Kings",
+    date: "September 20, 2026",
+    excerpt:
+      "Back from a torn UCL, Trampoline Titans captain Finn Anderegg scored all 14 of his team's points in a 14-11 win over the River Kings. Jack Baker's career-high 8 points weren't enough to stop him.",
+  },
+  {
+    slug: "murray-mice-edge-river-kings-game8",
+    title: "Murray Mice Beat River Kings 11-10 in Double Overtime in Their Final Regular-Season Meeting",
+    date: "September 20, 2026",
+    excerpt:
+      "The rivalry got even hotter in the final regular-season meeting between the two teams. Adam Swartzfager scored 10 points and the Murray Mice beat the River Kings 11-10 in double overtime. Ashton Anderegg's 9 points for the River Kings weren't enough.",
+  },
+  {
     slug: "fredholers-sign-archer-rugh-cut-ben-shapiro",
     title: "Fredholers Sign Free Agent Archer Rugh, Cut Ben Shapiro",
     date: "September 15, 2026",

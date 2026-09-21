@@ -98,8 +98,6 @@ export const players: Player[] = [
     accolades: "---",
     team: "Trampoline Titans",
     isCaptain: true,
-    injured: true,
-    injuryNote: "Torn UCL",
   },
   {
     id: "grant-bowers",
