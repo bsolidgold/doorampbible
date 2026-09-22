@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "mice-beat-titans-jameson-bench-debut-game10",
+    title: "Swartzfager Scores All 10 as Mice Beat Titans in Rookie Jameson Bench's Debut",
+    date: "September 20, 2026",
+    excerpt:
+      "Adam Swartzfager scored every Murray Mice point in a 10-7 win over the Trampoline Titans to close out Sunday. Finn Anderegg scored all 7 for the Titans, and rookie Jameson Bench made his NDL debut.",
+  },
+  {
     slug: "finn-anderegg-returns-titans-beat-river-kings-game9",
     title: "Finn Anderegg Returns From Injury With 14 Points as Titans Top River Kings",
     date: "September 20, 2026",

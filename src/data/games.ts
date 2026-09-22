@@ -127,6 +127,61 @@ export const games: Game[] = [
     },
   },
   {
+    id: "game-10-2026",
+    date: "September 20, 2026",
+    season: "2026",
+    gameNumber: 10,
+    winner: "Murray Mice",
+    notes: "In the third game of the day, Adam Swartzfager scored all 10 Murray Mice points on 10-of-15 shooting as the Mice beat the Trampoline Titans 10-7. Finn Anderegg scored all 7 Titans points. Rookie Jameson Bench made his NDL debut for the Titans.",
+    newsSlug: "mice-beat-titans-jameson-bench-debut-game10",
+    teams: [
+      {
+        name: "Murray Mice",
+        score: 10,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 10, onePtAtt: 15,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 3,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 2, rebounds: 0,
+          },
+          {
+            playerId: "frank-patrone",
+            onePtMade: 0, onePtAtt: 2,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 1, blocks: 0, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "Trampoline Titans",
+        score: 7,
+        players: [
+          {
+            playerId: "finn-anderegg",
+            onePtMade: 6, onePtAtt: 11,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 1,
+            ftMade: 1, ftAtt: 2,
+            assists: 0, blocks: 2, rebounds: 0,
+          },
+          {
+            playerId: "jameson-bench",
+            onePtMade: 0, onePtAtt: 6,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 8,
+            ftMade: 0, ftAtt: 1,
+            assists: 0, blocks: 0, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "game-9-2026",
     date: "September 20, 2026",
     season: "2026",
