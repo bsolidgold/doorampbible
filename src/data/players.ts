@@ -348,7 +348,7 @@ export const players: Player[] = [
     allTimeTotals: { onePtMade: "1", onePtAtt: "13", twoPtMade: "0", twoPtAtt: "0", threePtMade: "0", threePtAtt: "1", assists: "1", blocks: "6", rebounds: "1" },
     seasonGamesPlayed: 3,
     allTimeGamesPlayed: 3,
-    nicknames: "Freaky Frank, Frank the Tank",
+    nicknames: "Freaky Frank, Frank the Tank, Murray Minor",
     description: "---",
     accolades: "2025 Winterdome Champion, 2026 All-Star",
     team: "Murray Mice",
