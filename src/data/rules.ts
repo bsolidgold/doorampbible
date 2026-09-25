@@ -232,32 +232,15 @@ export const currentRules: RuleSection[] = [
     subsections: [
       {
         id: "s6-1",
-        heading: "6.1 — Determining First Possession",
-        items: [
-          {
-            text: "At the beginning of a Dooramp game, first possession is determined by a designated free throw attempt. If the shot goes in, the shooting team gains the ball. If it is missed, the non-shooting team gets the ball",
-            children: [
-              { text: "This does not count for points and only determines the initial possession" },
-              { text: "Other players must allow for the shooter to attempt a rebound if they miss the shot, to then try to score as if it were a live ball in play (this also does not count for points and still only determines possession). Otherwise, it is interference and the shooting team gains the ball" },
-            ],
-          },
-          {
-            text: "If Benny Buckets is playing, the Ben rule applies and Ben gets the starting possession",
-            children: [{ text: "It's important that Ben is the one to start the play and not just his team" }],
-          },
-        ],
-      },
-      {
-        id: "s6-2",
-        heading: "6.2 — Possession Changes",
+        heading: "6.1 — Possession Changes",
         items: [
           { text: "When possession changes during a game, the team gaining possession begins with the ball off of the trampoline to then attempt an inbound for their team." },
           { text: "Possession changes if a team commits a penalty or a team scores, and the other team gains the ball to inbound." },
         ],
       },
       {
-        id: "s6-3",
-        heading: "6.3 — Inbounding Procedure",
+        id: "s6-2",
+        heading: "6.2 — Inbounding Procedure",
         intro: "During an inbound players can:",
         items: [
           { text: "Pass the ball to a teammate who is on the tramp" },
@@ -271,8 +254,8 @@ export const currentRules: RuleSection[] = [
         ],
       },
       {
-        id: "s6-4",
-        heading: "6.4 — Inbounding Specifics",
+        id: "s6-3",
+        heading: "6.3 — Inbounding Specifics",
         items: [
           { text: "If a pass to a teammate off the tramp crosses the plane of the tramp (any area above the trampoline) and the pass is dropped, the other team is awarded the ball" },
           { text: "If a ball is out of play while on the ground during an inbound, and is kicked to the tramp it is allowed to be grabbed by a player's hand as long as it does not touch the tramp. The same logic applies to a bounce pass inbound." },
@@ -282,8 +265,8 @@ export const currentRules: RuleSection[] = [
         ],
       },
       {
-        id: "s6-5",
-        heading: "6.5 — Legal Defensive Moves",
+        id: "s6-4",
+        heading: "6.4 — Legal Defensive Moves",
         items: [
           { text: "Defensive players are allowed to intercept inbound attempts as long as they come from the tramp and do so mid-air" },
           { text: "Passes that enter the tramp plane can be possessed by any player and intercepted by the defense" },
@@ -441,6 +424,7 @@ export const currentRules: RuleSection[] = [
           { text: "If the defense's line is not parallel or towards the offensive player and has you jump more towards the dome, blocking would be goaltending." },
           { text: "Blocks do not have to be done mid-air to negate goaltending in this circumstance as long as you follow the path of the offense" },
           { text: "If a defensive player happens to already be off the tramp when the offense jumps off, the jump path is determined by drawing a line from the closest point of the black to the dome to the position of the defensive player" },
+          { text: "If a player is pushed out of bounds by the other team and ends up in the goaltending zone and gets hit by the ball, there is no goaltending as long as the player out of bounds immediately attempts to get back in bounds or out of the way." },
         ],
       },
       {
@@ -450,6 +434,40 @@ export const currentRules: RuleSection[] = [
           { text: "Anytime the defense intercepts a ball from the offense in which the ball moved towards the dome, the defense must bobble once or pass before they are allowed to shoot." },
           { text: "For a full bobble/full jump to occur, the defense has to retouch the ground after blocking" },
           { text: "A player is allowed to negate a 1 bobble by shooting a 3 pointer to intercept a shot. The 1 bobble violation is absent because the defense never intercepted the ball with their hands." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "s10",
+    title: "Section 10 — Time Keeping/Starting",
+    subsections: [
+      {
+        id: "s10-1",
+        heading: "10.1 — Determining First Possession",
+        items: [
+          {
+            text: "At the beginning of a Dooramp game, first possession is determined by a designated free throw attempt. If the shot goes in, the shooting team gains the ball. If it is missed, the non-shooting team gets the ball",
+            children: [
+              { text: "This does not count for points and only determines the initial possession" },
+              { text: "Other players must allow for the shooter to attempt a rebound if they miss the shot, to then try to score as if it were a live ball in play (this also does not count for points and still only determines possession). Otherwise, it is interference and the shooting team gains the ball" },
+            ],
+          },
+          {
+            text: "If Benny Buckets is playing, the Ben rule applies and Ben gets the starting possession",
+            children: [
+              { text: "It's important that Ben is the one to start the play and not just his team. The ball has to be inbounded by Ben." },
+            ],
+          },
+        ],
+      },
+      {
+        id: "s10-2",
+        heading: "10.2 — Starting a Quarter/Overtime",
+        items: [
+          { text: "To determine possession at the start of a quarter, similar to the NBA, the team that didn't start the game starts the 2nd and 3rd, the team that started the game starts the 4th." },
+          { text: "To start overtime, each new period starts with another shot for the ball which either team can do." },
+          { text: "Ben gets to start every quarter, but does not get to start overtime periods." },
         ],
       },
     ],
