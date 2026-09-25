@@ -11,6 +11,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "mice-outlast-bdts-triple-overtime",
+    title: "Triple Overtime: Mice Outlast BDT's on a Bounce-In Winner",
+    date: "September 25, 2026",
+    excerpt:
+      "Ben Martinsen's only make of the night bounced in to end three overtimes and beat the BDT's 10-9. Adam Swartzfager went 9-for-13 from one and 0-for-18 from everywhere else, and Aiden Shipp debuted for the BDT's days after signing.",
+    image: "/images/news/mice-bdts-triple-ot.webp",
+    imageAlt: "Play at the dome during the Murray Mice and BDT's triple overtime game",
+  },
+  {
     slug: "bdts-sign-aiden-shipp",
     title: "Handshake at the Dome: BDT's Sign Free Agent Aiden Shipp",
     date: "September 25, 2026",

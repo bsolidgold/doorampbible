@@ -40,6 +40,61 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "game-11-2026",
+    date: "September 25, 2026",
+    season: "2026",
+    gameNumber: 11,
+    winner: "Murray Mice",
+    notes: "Three overtimes, and it ended on a bounce. Ben Martinsen's only make of the night bounced in to win it 10-9 for the Murray Mice. Adam Swartzfager went 9-for-13 from the one-point line but missed all 18 of his two and three-point attempts. David Anderegg answered with 7 on 64% shooting in defeat. Aiden Shipp played his first NDL game after signing with the BDT's.",
+    newsSlug: "mice-outlast-bdts-triple-overtime",
+    teams: [
+      {
+        name: "Murray Mice",
+        score: 10,
+        players: [
+          {
+            playerId: "adam-swarzfager",
+            onePtMade: 9, onePtAtt: 13,
+            twoPtMade: 0, twoPtAtt: 6,
+            threePtMade: 0, threePtAtt: 12,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 4, rebounds: 0,
+          },
+          {
+            playerId: "ben-martinsen",
+            onePtMade: 1, onePtAtt: 4,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 2, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "BDT's",
+        score: 9,
+        players: [
+          {
+            playerId: "david-anderegg",
+            onePtMade: 7, onePtAtt: 11,
+            twoPtMade: 0, twoPtAtt: 2,
+            threePtMade: 0, threePtAtt: 7,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 3, rebounds: 0,
+          },
+          {
+            playerId: "aiden-shipp",
+            onePtMade: 2, onePtAtt: 5,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 1,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 3, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "all-star-2026",
     date: "September 12, 2026",
     season: "2026",
