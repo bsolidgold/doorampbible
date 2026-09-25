@@ -11,6 +11,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "bdts-sign-aiden-shipp",
+    title: "Handshake at the Dome: BDT's Sign Free Agent Aiden Shipp",
+    date: "September 25, 2026",
+    excerpt:
+      "David Anderegg has gone to the open market. The BDT's have signed free agent Aiden Shipp, taking him off the 2027 draft board and onto the roster before any other captain made a move.",
+    image: "/images/news/aiden-shipp-signing.webp",
+    imageAlt: "David Anderegg shaking hands with Aiden Shipp in front of the dome",
+  },
+  {
     slug: "mice-beat-titans-jameson-bench-debut-game10",
     title: "Swartzfager Scores All 10 as Mice Beat Titans in Rookie Jameson Bench's Debut",
     date: "September 20, 2026",

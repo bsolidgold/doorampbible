@@ -495,6 +495,7 @@ export const players: Player[] = [
     nicknames: "---",
     description: "---",
     accolades: "---",
+    team: "BDT's",
   },
   {
     id: "emmett-allphin",
