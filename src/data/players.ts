@@ -204,7 +204,7 @@ export const players: Player[] = [
     id: "ben-shapiro",
     name: "Ben Shapiro",
     photo: "/logos/dooSilhouette.png",
-    status: "active",
+    status: "retired",
     seasonTotals: blank,
     allTimeTotals: blank,
     seasonGamesPlayed: 0,
