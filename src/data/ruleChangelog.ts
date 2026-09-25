@@ -6,6 +6,12 @@ export interface RuleChangeEntry {
 
 export const ruleChangelog: RuleChangeEntry[] = [
   {
+    date: "September 25, 2026",
+    title: "Section 10 Added — Time Keeping/Starting",
+    description:
+      "First possession moved out of Section 6 into a new Section 10 (Time Keeping/Starting), and Section 6 renumbered accordingly. Quarter possession now follows the NBA pattern — the team that didn't start the game starts the 2nd and 3rd, the starting team takes the 4th — and each overtime period begins with a fresh shot for the ball that either team may take. The Ben rule was extended: Ben must inbound the ball himself, not just his team, and he starts every quarter but no overtime period. Section 9.2 also gained a clarification that a player pushed out of bounds into the goaltending zone is not goaltending, provided they immediately try to get back in bounds or out of the way.",
+  },
+  {
     date: "August 24, 2026",
     title: "Rule 8.1.c.i Added — Grass Clarification",
     description:
