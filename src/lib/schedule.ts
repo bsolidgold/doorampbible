@@ -1,5 +1,5 @@
 import { games } from "@/data/games";
-import { upcomingGames } from "@/data/schedule";
+import { upcomingGames, type UpcomingGame } from "@/data/schedule";
 
 export interface CalendarEvent {
   id: string;
@@ -29,15 +29,15 @@ export function formatIsoDate(iso: string): string {
   return `${MONTHS[month - 1]} ${day}, ${year}`;
 }
 
-export function upcomingLabel(game: (typeof upcomingGames)[number]): string {
+export function upcomingLabel(game: UpcomingGame): string {
   return game.title ?? `${game.away} @ ${game.home}`;
 }
 
 /** Every game — scheduled and played — as calendar events. */
-export function getCalendarEvents(): CalendarEvent[] {
+export function getCalendarEvents(scheduled: UpcomingGame[] = upcomingGames): CalendarEvent[] {
   const events: CalendarEvent[] = [];
 
-  for (const game of upcomingGames) {
+  for (const game of scheduled) {
     events.push({
       id: game.id,
       date: game.date,

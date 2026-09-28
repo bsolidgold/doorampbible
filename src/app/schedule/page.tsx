@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SectionHeader } from "@/components/ndl/SectionHeader";
 import { ScheduleCalendar } from "@/components/ndl/ScheduleCalendar";
 import { upcomingGames } from "@/data/schedule";
+import { fetchCalendarGames } from "@/lib/ical";
 import { formatIsoDate, getCalendarEvents, upcomingLabel } from "@/lib/schedule";
 
 export const metadata: Metadata = { title: "Schedule — NDL Dooramp" };
@@ -9,14 +10,20 @@ export const metadata: Metadata = { title: "Schedule — NDL Dooramp" };
 // Re-render hourly so the highlighted "today" doesn't freeze at build time.
 export const revalidate = 3600;
 
-export default function SchedulePage() {
-  const events = getCalendarEvents();
+export default async function SchedulePage() {
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(
     now.getDate(),
   ).padStart(2, "0")}`;
 
-  const upcoming = [...upcomingGames].sort((a, b) => a.date.localeCompare(b.date));
+  // The league calendar is the source of truth for scheduled games; the static
+  // list stands in when no feed is configured or the fetch fails.
+  const scheduled = (await fetchCalendarGames()) ?? upcomingGames;
+  const upcoming = scheduled
+    .filter((game) => game.date >= today)
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  const events = getCalendarEvents(upcoming);
   const results = events
     .filter((event) => event.status === "final")
     .sort((a, b) => b.date.localeCompare(a.date));
