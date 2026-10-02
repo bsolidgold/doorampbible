@@ -216,7 +216,7 @@ export const players: Player[] = [
   {
     id: "archer-rugh",
     name: "Archer Rugh",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/archer-rugh.jpg",
     status: "active",
     seasonTotals: blank,
     allTimeTotals: blank,
