@@ -6,6 +6,12 @@ export interface RuleChangeEntry {
 
 export const ruleChangelog: RuleChangeEntry[] = [
   {
+    date: "October 3, 2026",
+    title: "Timeouts, Substitutions and Challenges Added to Section 10",
+    description:
+      "Section 10 renamed from Time Keeping/Starting to Order of the Game, and two subsections added. 10.3 covers timeouts and substitutions: one timeout per team per half, callable only with possession and only between plays, with referees able to stop the clock at any time. Injury timeouts may be called mid-play, but points scored during a false injury timeout still count, and substitutions happen during timeouts and free throws. 10.4 adds challenges: a call may be challenged as soon as a play ends, teams get two incorrect challenges before losing the right, and a failed computer challenge ends challenges for the game — though a computer challenge remains available after a normal challenge is lost. Once the next play begins, the previous play can no longer be challenged.",
+  },
+  {
     date: "September 25, 2026",
     title: "Section 10 Added — Time Keeping/Starting",
     description:

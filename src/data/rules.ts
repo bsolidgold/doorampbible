@@ -440,7 +440,7 @@ export const currentRules: RuleSection[] = [
   },
   {
     id: "s10",
-    title: "Section 10 — Time Keeping/Starting",
+    title: "Section 10 — Order of the Game",
     subsections: [
       {
         id: "s10-1",
@@ -468,6 +468,34 @@ export const currentRules: RuleSection[] = [
           { text: "To determine possession at the start of a quarter, similar to the NBA, the team that didn't start the game starts the 2nd and 3rd, the team that started the game starts the 4th." },
           { text: "To start overtime, each new period starts with another shot for the ball which either team can do." },
           { text: "Ben gets to start every quarter, but does not get to start overtime periods." },
+        ],
+      },
+      {
+        id: "s10-3",
+        heading: "10.3 — Timeouts/Substitutions",
+        items: [
+          { text: "Teams are given 1 timeout per half." },
+          { text: "To call a timeout a team must have possession of the ball" },
+          { text: "A timeout from a team can only be called while a play is not happening" },
+          { text: "Refs are allowed to call timeouts whenever to stop the clock" },
+          { text: "Injury timeouts can be called mid play." },
+          { text: "If the other team scores during a false injury timeout, the points count" },
+          { text: "Substitutions can be done during timeouts and free throws" },
+        ],
+      },
+      {
+        id: "s10-4",
+        heading: "10.4 — Challenging",
+        items: [
+          { text: "A team may challenge a call as soon as a play ends" },
+          { text: "Teams are given 2 incorrect challenges; after getting 2 wrong, the team may not challenge again" },
+          {
+            text: "A team may request a computer challenge, but getting this wrong means no more challenges for the rest of the game",
+            children: [
+              { text: "A team can still do a computer challenge even after getting a normal challenge wrong" },
+            ],
+          },
+          { text: "Once the next play starts you are not allowed to challenge the previous play" },
         ],
       },
     ],
