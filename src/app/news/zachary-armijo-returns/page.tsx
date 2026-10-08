@@ -11,6 +11,8 @@ export default function ZacharyArmijoReturnsPage() {
     <ArticleLayout
       title="Zachary Armijo Is Back, and He Wants the BDT's"
       date="October 5, 2026"
+      image="/images/news/zachary-armijo-returns.jpg"
+      imageAlt="Zachary Armijo"
     >
       <p>
         Zachary Armijo broke his kneecap early this year. He is back on his feet, back in the league, and
