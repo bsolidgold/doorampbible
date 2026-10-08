@@ -447,7 +447,7 @@ export const players: Player[] = [
   {
     id: "zachary-armijo",
     name: "Zachary Armijo",
-    photo: "/logos/dooSilhouette.png",
+    photo: "/images/players/zachary-armijo.jpg",
     status: "active",
     seasonTotals: blank,
     allTimeTotals: blank,

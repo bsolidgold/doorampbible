@@ -16,6 +16,8 @@ export const newsArticles: NewsArticle[] = [
     date: "October 5, 2026",
     excerpt:
       "A broken kneecap early this year cost Zachary Armijo his entire 2026 season. He has returned to the free agent pool and made his target clear — he wants David Anderegg to sign him to the BDT's.",
+    image: "/images/news/zachary-armijo-returns.jpg",
+    imageAlt: "Zachary Armijo",
   },
   {
     slug: "mice-outlast-bdts-triple-overtime",
