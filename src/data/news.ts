@@ -11,6 +11,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "bdts-sign-zachary-armijo",
+    title: "He Asked for the BDT's and Got Them — Zachary Armijo Signs",
+    date: "October 15, 2026",
+    excerpt:
+      "Ten days after returning from a broken kneecap and naming his target, Zachary Armijo signed with the BDT's — and debuted the same day in a 6-5 win over the River Kings. Jack Baker went 0-for-15 in defeat.",
+    image: "/images/news/zachary-armijo-returns.jpg",
+    imageAlt: "Zachary Armijo",
+  },
+  {
     slug: "zachary-armijo-returns",
     title: "Zachary Armijo Is Back, and He Wants the BDT's",
     date: "October 5, 2026",
