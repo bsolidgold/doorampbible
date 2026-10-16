@@ -10,4 +10,11 @@ export interface UpcomingGame {
   location?: string;
 }
 
-export const upcomingGames: UpcomingGame[] = [];
+export const upcomingGames: UpcomingGame[] = [
+  {
+    id: "halloween-tournament-2026",
+    date: "2026-10-31",
+    title: "NDL Halloween 1v1 Tournament",
+    location: "Dooramp",
+  },
+];
