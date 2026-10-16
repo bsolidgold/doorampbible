@@ -11,6 +11,15 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "halloween-1v1-tournament",
+    title: "Eight Men, One Dome: NDL Halloween 1v1 Tournament",
+    date: "October 16, 2026",
+    excerpt:
+      "The NDL is running a 1v1 tournament on Halloween, with a field of roughly the league's top eight. No teammates, no captains — every pop up, bobble and shot is yours.",
+    image: "/images/news/halloween-tournament.webp",
+    imageAlt: "NDL Halloween tournament poster",
+  },
+  {
     slug: "bdts-sign-zachary-armijo",
     title: "He Asked for the BDT's and Got Them — Zachary Armijo Signs",
     date: "October 15, 2026",
