@@ -40,6 +40,61 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "game-12-2026",
+    date: "October 15, 2026",
+    season: "2026",
+    gameNumber: 12,
+    winner: "BDT's",
+    notes: "Zachary Armijo's first NDL game ended in a win. The BDT's beat the River Kings 6-5, with Armijo scoring 2 in his debut after signing out of free agency. Jack Baker went 0-for-15 from the floor and did not score. Nobody on either team made a shot worth more than one point — the four players combined to go 0-for-10 from three.",
+    newsSlug: "bdts-sign-zachary-armijo",
+    teams: [
+      {
+        name: "BDT's",
+        score: 6,
+        players: [
+          {
+            playerId: "david-anderegg",
+            onePtMade: 4, onePtAtt: 9,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 5,
+            ftMade: 0, ftAtt: 0,
+            assists: 2, blocks: 5, rebounds: 1,
+          },
+          {
+            playerId: "zachary-armijo",
+            onePtMade: 2, onePtAtt: 11,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 1, blocks: 3, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "River Kings",
+        score: 5,
+        players: [
+          {
+            playerId: "ashton-anderegg",
+            onePtMade: 5, onePtAtt: 10,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 5,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 5, rebounds: 0,
+          },
+          {
+            playerId: "jack-baker",
+            onePtMade: 0, onePtAtt: 13,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 2,
+            ftMade: 0, ftAtt: 0,
+            assists: 2, blocks: 5, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "game-11-2026",
     date: "September 25, 2026",
     season: "2026",
