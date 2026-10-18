@@ -10,14 +10,14 @@ export default function BdtsSignZacharyArmijoPage() {
   return (
     <ArticleLayout
       title="He Asked for the BDT's and Got Them — Zachary Armijo Signs"
-      date="October 15, 2026"
+      date="October 14, 2026"
       image="/images/news/zachary-armijo-returns.jpg"
       imageAlt="Zachary Armijo"
     >
       <p>
-        Ten days ago Zachary Armijo came back from a broken kneecap, went into the free agent pool, and
-        said out loud that he wanted the BDT&apos;s. David Anderegg signed him. Then he put him straight on
-        the court, and the BDT&apos;s beat the River Kings <strong>6&ndash;5</strong>.
+        Nine days ago Zachary Armijo came back from a broken kneecap, went into the free agent pool, and
+        said out loud that he wanted the BDT&apos;s. On Wednesday, David Anderegg gave him exactly that.
+        Armijo is officially a BDT.
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
@@ -25,41 +25,27 @@ export default function BdtsSignZacharyArmijoPage() {
       </h2>
       <p>
         This is the second time in three weeks that Anderegg has solved a roster problem by signing a free
-        agent nobody had seen play. The first was Aiden Shipp in September, who debuted in a triple-overtime
-        loss and tied his captain in blocks/steals. The second is a player returning from the worst injury
-        you can take in a sport where you are never allowed to hold the ball on the ground.
-      </p>
-      <p>
-        The BDT&apos;s now run five deep: Anderegg, Atlee Gallagher, Devin Murray, Shipp and Armijo. At
-        2&ndash;2, they are back to even for the first time since the All-Star break.
+        agent nobody had seen play in the regular season. The first was Aiden Shipp in September, who
+        debuted in a triple-overtime loss and tied his captain in blocks/steals. The second is a player
+        returning from the worst injury you can take in a sport where you are never allowed to hold the
+        ball on the ground.
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        The Debut
+        A Winterdome Veteran
       </h2>
       <p>
-        Armijo scored 2 on 2-for-11 shooting, added an assist and 3 blocks/steals, and his two points were
-        a third of his team&apos;s total in a game decided by one. Eleven attempts is not a man easing back
-        in on a repaired knee — he took the second-most shots in the game.
+        Armijo is no stranger to the dome. He played the 2025 Winterdome for the Reno Reapers alongside
+        Ashton Anderegg, Eli Huntsman and Jaxon Gladhart, and entered the 2024 Winterdome 1v1 bracket as a
+        No. 2 seed before Eli Huntsman upset him in the Round of 8. The broken kneecap cost him his entire
+        2026 season until now.
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        Baker&apos;s Night
+        Five Deep
       </h2>
       <p>
-        On the other side, Jack Baker went <strong>0-for-13</strong> from the one-point line and 0-for-2
-        from three — fifteen shots, no points. He still had 2 assists and 5 blocks/steals, and the River
-        Kings still only lost by one, which says something about how close he came to stealing it anyway.
-        Ashton Anderegg scored all five of their points.
-      </p>
-
-      <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        Nobody Scored Big
-      </h2>
-      <p>
-        Not one point in this game came from beyond the one-point line. The four players went a combined
-        0-for-10 from three, and nobody attempted a two. Eleven points total, all of them scored the hard,
-        boring way.
+        The BDT&apos;s now run five deep: Anderegg, Atlee Gallagher, Devin Murray, Shipp and Armijo.
       </p>
       <p>
         The{" "}

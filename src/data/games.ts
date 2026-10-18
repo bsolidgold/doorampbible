@@ -41,12 +41,12 @@ export interface Game {
 export const games: Game[] = [
   {
     id: "game-12-2026",
-    date: "October 15, 2026",
+    date: "October 14, 2026",
     season: "2026",
     gameNumber: 12,
     winner: "BDT's",
-    notes: "Zachary Armijo's first NDL game ended in a win. The BDT's beat the River Kings 6-5, with Armijo scoring 2 in his debut after signing out of free agency. Jack Baker went 0-for-15 from the floor and did not score. Nobody on either team made a shot worth more than one point — the four players combined to go 0-for-10 from three.",
-    newsSlug: "bdts-sign-zachary-armijo",
+    notes: "Zachary Armijo's first game since breaking his kneecap ended in a win. The BDT's beat the River Kings 6-5, with Armijo scoring 2 in his debut after signing out of free agency earlier that day. Jack Baker went 0-for-15 from the floor and did not score. Nobody on either team made a shot worth more than one point — the four players combined to go 0-for-12 from three.",
+    newsSlug: "bdts-edge-river-kings-zach-armijo-debut-game12",
     teams: [
       {
         name: "BDT's",

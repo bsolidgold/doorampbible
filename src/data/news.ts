@@ -20,11 +20,18 @@ export const newsArticles: NewsArticle[] = [
     imageAlt: "NDL Halloween tournament poster",
   },
   {
+    slug: "bdts-edge-river-kings-zach-armijo-debut-game12",
+    title: "BDT's Edge River Kings 6-5 in Zachary Armijo's Return From a Broken Kneecap",
+    date: "October 14, 2026",
+    excerpt:
+      "Zachary Armijo scored 2 in his first game since breaking his kneecap, and David Anderegg added 4 as the BDT's held off the River Kings 6-5. Jack Baker went 0-for-15 in defeat.",
+  },
+  {
     slug: "bdts-sign-zachary-armijo",
     title: "He Asked for the BDT's and Got Them — Zachary Armijo Signs",
-    date: "October 15, 2026",
+    date: "October 14, 2026",
     excerpt:
-      "Ten days after returning from a broken kneecap and naming his target, Zachary Armijo signed with the BDT's — and debuted the same day in a 6-5 win over the River Kings. Jack Baker went 0-for-15 in defeat.",
+      "Nine days after returning from a broken kneecap and naming his target, Zachary Armijo got his wish. David Anderegg has signed him to the BDT's, their second free agent signing in three weeks.",
     image: "/images/news/zachary-armijo-returns.jpg",
     imageAlt: "Zachary Armijo",
   },
