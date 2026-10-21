@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "ashton-anderegg-17-fredholers",
+    title: "Every Way You Can Score: Ashton Anderegg Drops 17",
+    date: "October 21, 2026",
+    excerpt:
+      "Ashton Anderegg scored 17 of the River Kings' 20 in a rout of the Fredholers, going 4-for-6 on two-pointers and becoming the first player this season to score a one, a two and a three in the same game. Isaac Cameron shot the first free throws in league history.",
+  },
+  {
     slug: "halloween-1v1-tournament",
     title: "Eight Men, One Dome: NDL Halloween 1v1 Tournament",
     date: "October 16, 2026",
