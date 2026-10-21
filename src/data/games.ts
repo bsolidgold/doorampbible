@@ -40,6 +40,61 @@ export interface Game {
 
 export const games: Game[] = [
   {
+    id: "game-13-2026",
+    date: "October 21, 2026",
+    season: "2026",
+    gameNumber: 13,
+    winner: "River Kings",
+    notes: "Ashton Anderegg scored 17 of the River Kings' 20 points and became the first player this season to score a one, a two and a three in the same game, going 4-for-6 on twos. The Freaky Fredholers managed 2. Archer Rugh made his NDL debut five weeks after signing out of free agency, and Isaac Cameron took the first free throws recorded in league play.",
+    newsSlug: "ashton-anderegg-17-fredholers",
+    teams: [
+      {
+        name: "River Kings",
+        score: 20,
+        players: [
+          {
+            playerId: "ashton-anderegg",
+            onePtMade: 6, onePtAtt: 10,
+            twoPtMade: 4, twoPtAtt: 6,
+            threePtMade: 1, threePtAtt: 12,
+            ftMade: 0, ftAtt: 0,
+            assists: 1, blocks: 0, rebounds: 0,
+          },
+          {
+            playerId: "jack-baker",
+            onePtMade: 3, onePtAtt: 8,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 2, blocks: 0, rebounds: 0,
+          },
+        ],
+      },
+      {
+        name: "Freaky Fredholers",
+        score: 2,
+        players: [
+          {
+            playerId: "isaac-cameron",
+            onePtMade: 1, onePtAtt: 3,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 2,
+            ftMade: 1, ftAtt: 2,
+            assists: 0, blocks: 0, rebounds: 0,
+          },
+          {
+            playerId: "archer-rugh",
+            onePtMade: 0, onePtAtt: 1,
+            twoPtMade: 0, twoPtAtt: 0,
+            threePtMade: 0, threePtAtt: 0,
+            ftMade: 0, ftAtt: 0,
+            assists: 0, blocks: 1, rebounds: 0,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "game-12-2026",
     date: "October 14, 2026",
     season: "2026",
