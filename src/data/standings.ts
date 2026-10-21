@@ -7,8 +7,8 @@ export interface Team {
 
 export const standings: Team[] = [
   { name: "Murray Mice", wins: 7, losses: 1, logo: "/images/teams/murray-mice.png" },
-  { name: "Trampoline Titans", wins: 1, losses: 2, logo: "/images/teams/trampoline-titans.png" },
   { name: "River Kings", wins: 3, losses: 6, logo: "/images/teams/river-kings.png" },
+  { name: "Trampoline Titans", wins: 1, losses: 2, logo: "/images/teams/trampoline-titans.png" },
   { name: "Freaky Fredholers", wins: 0, losses: 2, logo: "/images/teams/freaky-fredholers.png" },
   { name: "BDT's", wins: 2, losses: 2, logo: "/images/teams/bdts.png" },
 ];
