@@ -55,7 +55,9 @@ export function getCalendarEvents(scheduled: UpcomingGame[] = upcomingGames): Ca
       id: game.id,
       date: iso,
       label: `${teamA.name} vs ${teamB.name}`,
-      detail: `${teamA.score ?? "—"}–${teamB.score ?? "—"} · ${game.winner} win`,
+      detail: game.isForfeit
+        ? `Forfeit · ${game.winner} win`
+        : `${teamA.score ?? "—"}–${teamB.score ?? "—"} · ${game.winner} win`,
       status: "final",
     });
   }

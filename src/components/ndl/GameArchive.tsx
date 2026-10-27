@@ -119,6 +119,12 @@ function GameCard({ game }: { game: Game }) {
           </span>
         )}
 
+        {game.isForfeit && (
+          <span className="text-[10px] font-bold text-ndl-muted uppercase tracking-wider flex-shrink-0 border border-ndl-muted/50 rounded px-1.5 py-0.5">
+            Forfeit
+          </span>
+        )}
+
         <span className="text-[11px] text-ndl-muted flex-shrink-0">{game.date}</span>
 
         <div className="flex-shrink-0 text-ndl-muted">
@@ -133,16 +139,17 @@ function GameCard({ game }: { game: Game }) {
             <p className="text-ndl-muted text-sm italic">{game.notes}</p>
           )}
 
-          {game.teams.map((team) => (
-            <div key={team.name}>
-              <div className="mb-2">
-                <span className={`font-heading font-bold text-sm uppercase tracking-wider ${game.winner === team.name ? "text-ndl-accent" : "text-ndl-muted"}`}>
-                  {team.name}{game.winner === team.name && " — WIN"}
-                </span>
+          {!game.isForfeit &&
+            game.teams.map((team) => (
+              <div key={team.name}>
+                <div className="mb-2">
+                  <span className={`font-heading font-bold text-sm uppercase tracking-wider ${game.winner === team.name ? "text-ndl-accent" : "text-ndl-muted"}`}>
+                    {team.name}{game.winner === team.name && " — WIN"}
+                  </span>
+                </div>
+                <StatTable playerStats={team.players} />
               </div>
-              <StatTable playerStats={team.players} />
-            </div>
-          ))}
+            ))}
 
           {game.sharedPlayers && (
             <div className="border-t border-dashed border-ndl-surface pt-4">

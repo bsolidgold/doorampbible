@@ -30,6 +30,8 @@ export interface Game {
   newsSlug?: string;
   /** Exhibition games (e.g. the All-Star Game) — shown on the site but excluded from standings and totals. */
   isAllStar?: boolean;
+  /** Awarded without play because a team did not show. No scores, no stat lines. */
+  isForfeit?: boolean;
   /** Players who appeared for both teams; listed once in their own section rather than under either roster. */
   sharedPlayers?: {
     label: string;
@@ -39,6 +41,34 @@ export interface Game {
 }
 
 export const games: Game[] = [
+  {
+    id: "game-15-2026",
+    date: "October 27, 2026",
+    season: "2026",
+    gameNumber: 15,
+    winner: "River Kings",
+    isForfeit: true,
+    notes: "Forfeit. Grant Bowers did not show, and the win was awarded to the River Kings without play. No stats were recorded.",
+    newsSlug: "fredholers-forfeit-two-games",
+    teams: [
+      { name: "River Kings", score: null, players: [] },
+      { name: "Freaky Fredholers", score: null, players: [] },
+    ],
+  },
+  {
+    id: "game-14-2026",
+    date: "October 27, 2026",
+    season: "2026",
+    gameNumber: 14,
+    winner: "Murray Mice",
+    isForfeit: true,
+    notes: "Forfeit. Grant Bowers did not show, and the win was awarded to the Murray Mice without play. No stats were recorded.",
+    newsSlug: "fredholers-forfeit-two-games",
+    teams: [
+      { name: "Murray Mice", score: null, players: [] },
+      { name: "Freaky Fredholers", score: null, players: [] },
+    ],
+  },
   {
     id: "game-13-2026",
     date: "October 21, 2026",
