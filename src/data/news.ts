@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "fredholers-forfeit-two-games",
+    title: "Fredholers Forfeit Two: Grant Bowers Doesn't Show",
+    date: "October 27, 2026",
+    excerpt:
+      "Grant Bowers failed to show for two fixtures, handing wins to the Murray Mice and River Kings. The Fredholers fall to 0-4, half of those losses without a shot being taken.",
+  },
+  {
     slug: "ashton-anderegg-17-fredholers",
     title: "Every Way You Can Score: Ashton Anderegg Drops 17",
     date: "October 21, 2026",
