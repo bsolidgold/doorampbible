@@ -11,6 +11,13 @@ export interface NewsArticle {
 
 export const newsArticles: NewsArticle[] = [
   {
+    slug: "halloween-doubleheader-fredholers",
+    title: "Halloween Doubleheader: 7-for-7 and a Third-Quarter Walk-Off",
+    date: "October 31, 2026",
+    excerpt:
+      "The Fredholers lost twice on Halloween. Adam Swartzfager scored 15 of the Mice's 16 in the first; in the second, Ashton Anderegg went 7-for-7 on two-pointers before Grant Bowers forfeited in the third quarter.",
+  },
+  {
     slug: "fredholers-forfeit-two-games",
     title: "Fredholers Forfeit Two: Grant Bowers Doesn't Show",
     date: "October 27, 2026",
