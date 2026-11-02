@@ -139,7 +139,7 @@ function GameCard({ game }: { game: Game }) {
             <p className="text-ndl-muted text-sm italic">{game.notes}</p>
           )}
 
-          {!game.isForfeit &&
+          {game.teams.some((team) => team.players.length > 0) &&
             game.teams.map((team) => (
               <div key={team.name}>
                 <div className="mb-2">
