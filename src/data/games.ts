@@ -186,7 +186,7 @@ export const games: Game[] = [
     season: "2026",
     gameNumber: 13,
     winner: "River Kings",
-    notes: "Ashton Anderegg scored 17 of the River Kings' 20 points and became the first player this season to score a one, a two and a three in the same game, going 4-for-6 on twos. The Freaky Fredholers managed 2. Archer Rugh made his NDL debut five weeks after signing out of free agency, and Isaac Cameron took the first free throws recorded in league play.",
+    notes: "Ashton Anderegg scored 17 of the River Kings' 20 points and became the first player this season to score a one, a two and a three in the same game, going 4-for-6 on twos. The Freaky Fredholers managed 2. Archer Rugh made his NDL debut five weeks after signing out of free agency.",
     newsSlug: "ashton-anderegg-17-fredholers",
     teams: [
       {
