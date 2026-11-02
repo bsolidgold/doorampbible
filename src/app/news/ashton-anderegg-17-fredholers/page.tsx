@@ -34,12 +34,11 @@ export default function AshtonAndereggSeventeenPage() {
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
-        The First Free Throws
+        Both Points From Cameron
       </h2>
       <p>
-        Isaac Cameron shot the first free throws ever recorded in NDL play, going 1-for-2 under the 3-2-1
-        system. Both of the Fredholers&apos; points came from him &mdash; one from the field, one from the
-        line.
+        Isaac Cameron scored both of the Fredholers&apos; points &mdash; one from the field, and one from
+        the line, going 1-for-2 on free throws under the 3-2-1 system.
       </p>
 
       <h2 className="font-heading font-bold text-xl uppercase tracking-wide text-ndl-text mt-6">
